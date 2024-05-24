@@ -1,0 +1,1 @@
+{"version":3,"file":"css/screen.css","mappings":";;;AACA;EACI;AAAJ,C","sources":["webpack://write-white/./resources/scss/screen.scss"],"sourcesContent":["\r\nbody {\r\n    background-color: ghostwhite;\r\n}"],"names":[],"sourceRoot":""}

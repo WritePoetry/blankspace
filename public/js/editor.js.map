@@ -1,0 +1,1 @@
+{"version":3,"file":"js/editor.js","mappings":";;;;;AAAAA,OAAO,CAACC,GAAG,CAAC,WAAW,CAAC,C","sources":["webpack://write-white/./resources/js/editor.js"],"sourcesContent":["console.log('editor.js');"],"names":["console","log"],"sourceRoot":""}
