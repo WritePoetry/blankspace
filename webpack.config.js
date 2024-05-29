@@ -6,16 +6,50 @@ const RemoveEmptyScriptsPlugin = require( 'webpack-remove-empty-scripts' );
 
 // Utilities.
 const path = require( 'path' );
+const { globSync } = require( 'glob' );
+
+// Import the helper to find and generate the entry points in the src directory
+const {
+	fromProjectRoot,
+	getWebpackEntryPoints,
+	getWordPressSrcDirectory,
+} = require( '@wordpress/scripts/utils' );
+
+/**
+ * Processes individual block stylesheets for a specific block namespace. These
+ * are not imported into the primary stylesheets and are enqueued separately.
+ *
+ * @since  1.0.0
+ * @param  {string} namespace
+ * @return {Object.<string, string>}
+ */
+const blockStylesheets = ( namespace ) => {
+	return globSync( `./resources/scss/blocks/${ namespace }/*.scss` ).reduce(
+		( files, filepath ) => {
+			const name = path.parse( filepath ).name;
+
+			files[ `css/blocks/${ namespace }/${ name }` ] = path.resolve(
+				process.cwd(),
+				`resources/scss/blocks/${ namespace }`,
+				`${ name }.scss`
+			);
+
+			return files;
+		}, {}
+	)
+};
 
 // Add any new entry points by extending the webpack config.
 module.exports = {
 	...defaultConfig,
 	...{
 		entry: {
+			...getWebpackEntryPoints(),
+			...blockStylesheets( 'core' ),
 			'js/editor':  path.resolve( process.cwd(), 'resources/js',   'editor.js'   ),
 			'js/screen':  path.resolve( process.cwd(), 'resources/js',   'screen.js'   ),
-			'css/screen': path.resolve( process.cwd(), 'resources/scss', 'screen.scss' ),
 			'css/editor': path.resolve( process.cwd(), 'resources/scss', 'editor.scss' ),
+			'css/screen': path.resolve( process.cwd(), 'resources/scss', 'screen.scss' ),
 		},
 		plugins: [
 			// Include WP's plugin config.
