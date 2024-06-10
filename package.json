@@ -1,6 +1,6 @@
 {
   "name": "write-white",
-  "version": "1.0.0",
+  "version": "0.0.2",
   "main": "webpack.config.js",
   "scripts": {
     "start": "wp-scripts start --webpack-src-dir=resources --output-path=assets",
