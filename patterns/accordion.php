@@ -1,6 +1,6 @@
 <?php
 /**
- * Title: Post Meta
+ * Title: Accordion
  * Slug: write-white/accordion
  * Categories: query
  * Keywords: post meta
