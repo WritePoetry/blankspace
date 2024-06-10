@@ -1,8 +1,76 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/theme.json",
 	"version": 2,
+	"customTemplates": [
+		{
+			"name": "blank",
+			"title": "Blank",
+			"postTypes": [
+				"page",
+				"post"
+			]
+		},
+		{
+			"name": "page-large-header",
+			"title": "Page (Large Header)",
+			"postTypes": [
+				"page"
+			]
+		},
+		{
+			"name": "single-no-separators",
+			"title": "Single Post (No Separators)",
+			"postTypes": [
+				"post"
+			]
+		},
+		{
+			"name": "page-no-separators",
+			"title": "Page (No Separators)",
+			"postTypes": [
+				"page"
+			]
+		},
+		{
+			"name": "blog-alternative",
+			"postTypes": [
+				"page"
+			],
+			"title": "Blog (Alternative)"
+		},
+		{
+			"name": "404",
+			"postTypes": [
+				"page"
+			],
+			"title": "404"
+		},
+		{
+			"name": "page-no-title",
+			"postTypes": ["page"],
+			"title": "Page No Title"
+		},
+		{
+			"name": "page-with-sidebar",
+			"postTypes": [
+				"post",
+				"page"
+			],
+			"title": "Page with Sidebar"
+		},
+		{
+			"name": "page-wide",
+			"postTypes": ["page"],
+			"title": "Page with Wide Image"
+		},
+		{
+			"name": "single-with-sidebar",
+			"postTypes": ["post"],
+			"title": "Single with Sidebar"
+		}
+	],
 	"settings": {
-		"appearanceTools": false,
+		"appearanceTools": true,
 		"useRootPaddingAwareAlignments": false,
 		"border": {
 			"color": false,
@@ -128,67 +196,33 @@
 			"link": false,
 			"palette": [
 				{
-					"name": "Black",
-					"slug": "black",
-					"color": "#000000"
+					"color": "#eeeeee",
+					"name": "Base",
+					"slug": "base"
 				},
 				{
-					"name": "Cyan bluish gray",
-					"slug": "cyan-bluish-gray",
-					"color": "#abb8c3"
+					"color": "#1d1d1d",
+					"name": "Contrast",
+					"slug": "contrast"
 				},
 				{
-					"name": "White",
-					"slug": "white",
-					"color": "#ffffff"
+					"color": "#FA6900",
+					"name": "Primary",
+					"slug": "primary"
 				},
 				{
-					"name": "Pale pink",
-					"slug": "pale-pink",
-					"color": "#f78da7"
-				},
-				{
-					"name": "Vivid red",
-					"slug": "vivid-red",
-					"color": "#cf2e2e"
-				},
-				{
-					"name": "Luminous vivid orange",
-					"slug": "luminous-vivid-orange",
-					"color": "#ff6900"
-				},
-				{
-					"name": "Luminous vivid amber",
-					"slug": "luminous-vivid-amber",
-					"color": "#fcb900"
-				},
-				{
-					"name": "Light green cyan",
-					"slug": "light-green-cyan",
-					"color": "#7bdcb5"
-				},
-				{
-					"name": "Vivid green cyan",
-					"slug": "vivid-green-cyan",
-					"color": "#00d084"
-				},
-				{
-					"name": "Pale cyan blue",
-					"slug": "pale-cyan-blue",
-					"color": "#8ed1fc"
-				},
-				{
-					"name": "Vivid cyan blue",
-					"slug": "vivid-cyan-blue",
-					"color": "#0693e3"
-				},
-				{
-					"name": "Vivid purple",
-					"slug": "vivid-purple",
-					"color": "#9b51e0"
+					"color": "#fff400",
+					"name": "Accent",
+					"slug": "accent"
 				}
+
+
 			],
 			"text": true
+		},
+		"layout": {
+			"contentSize": "650px",
+			"wideSize": "1400px"
 		},
 		"shadow": {
 			"defaultPresets": true,
@@ -293,22 +327,27 @@
 				{
 					"name": "Small",
 					"slug": "small",
-					"size": "13px"
+					"size": "0.8rem"
 				},
 				{
 					"name": "Medium",
 					"slug": "medium",
-					"size": "20px"
+					"size": "1rem"
 				},
 				{
 					"name": "Large",
 					"slug": "large",
-					"size": "36px"
+					"size": "1.875rem"
 				},
 				{
 					"name": "Extra Large",
 					"slug": "x-large",
-					"size": "42px"
+					"size": "2rem"
+				},
+				{
+					"name": "Extra Extra Large",
+					"slug": "xx-large",
+					"size": "3.50rem"
 				}
 			],
 			"fontStyle": true,
@@ -317,7 +356,7 @@
 			"lineHeight": false,
 			"textDecoration": true,
 			"textTransform": true,
-			"writingMode": false
+			"writingMode": true
 		},
 		"blocks": {
 			"core/button": {
@@ -386,7 +425,7 @@
 			"heading": {
 				"typography": {
 					"fontFamily": "var(--wp--preset--font-family--source-serif-pro)",
-					"fontWeight": "800",
+					"fontWeight": "400",
 					"lineHeight": "1.4"
 				}
 			},
@@ -409,6 +448,10 @@
 			"fontFamily": "var(--wp--preset--font-family--open-sans)",
 			"fontSize": "var(--wp--preset--font-size--medium)",
 			"lineHeight": "1.6"
+		},
+		"color": {
+			"background": "var(--wp--preset--color--base)",
+			"text": "var(--wp--preset--color--contrast)"
 		}
 	}
 }
