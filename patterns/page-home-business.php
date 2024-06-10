@@ -10,6 +10,4 @@
  */
 ?>
 <!-- wp:pattern {"slug":"write-white/banner-hero-full-screen"} /-->
-<!-- wp:shortcode -->
-[sibwp_form id=1]
-<!-- /wp:shortcode -->
+<!-- wp:template-part {"slug":"footer","area":"footer","tagName":"footer"} /-->
