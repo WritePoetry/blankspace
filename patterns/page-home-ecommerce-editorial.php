@@ -14,5 +14,5 @@
 
 <!-- wp:pattern {"slug":"blank-theme/hero"} /-->
 
-<!-- wp:template-part {"slug":"footer","tagName":"footer"} /-->
 
+<!-- wp:template-part {"slug":"footer","tagName":"footer"} /-->
