@@ -5,67 +5,51 @@
 		{
 			"name": "blank",
 			"title": "Blank",
-			"postTypes": [
-				"page",
-				"post"
-			]
+			"postTypes": [ "page", "post" ]
 		},
 		{
 			"name": "page-large-header",
 			"title": "Page (Large Header)",
-			"postTypes": [
-				"page"
-			]
+			"postTypes": [ "page" ]
 		},
 		{
 			"name": "single-no-separators",
 			"title": "Single Post (No Separators)",
-			"postTypes": [
-				"post"
-			]
+			"postTypes": [ "post" ]
 		},
 		{
 			"name": "page-no-separators",
 			"title": "Page (No Separators)",
-			"postTypes": [
-				"page"
-			]
+			"postTypes": [ "page" ]
 		},
 		{
 			"name": "blog-alternative",
-			"postTypes": [
-				"page"
-			],
+			"postTypes": [ "page" ],
 			"title": "Blog (Alternative)"
 		},
 		{
 			"name": "404",
-			"postTypes": [
-				"page"
-			],
+			"postTypes": [ "page" ],
 			"title": "404"
 		},
 		{
 			"name": "page-no-title",
-			"postTypes": ["page"],
+			"postTypes": [ "page" ],
 			"title": "Page No Title"
 		},
 		{
 			"name": "page-with-sidebar",
-			"postTypes": [
-				"post",
-				"page"
-			],
+			"postTypes": [ "post", "page" ],
 			"title": "Page with Sidebar"
 		},
 		{
 			"name": "page-wide",
-			"postTypes": ["page"],
+			"postTypes": [ "page" ],
 			"title": "Page with Wide Image"
 		},
 		{
 			"name": "single-with-sidebar",
-			"postTypes": ["post"],
+			"postTypes": [ "post" ],
 			"title": "Single with Sidebar"
 		}
 	],
@@ -215,8 +199,6 @@
 					"name": "Accent",
 					"slug": "accent"
 				}
-
-
 			],
 			"text": true
 		},

@@ -1,1 +1,1 @@
-console.log('editor.js');
+console.log( 'editor.js' );
