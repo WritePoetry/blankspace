@@ -1,22 +1,52 @@
 {
-  "name": "write-white",
-  "version": "0.0.2",
-  "main": "webpack.config.js",
-  "scripts": {
-    "start": "wp-scripts start --webpack-src-dir=resources --output-path=assets",
-    "build": "wp-scripts build --webpack-src-dir=resources --output-path=assets"
-  },
-  "author": "",
-  "license": "ISC",
-  "description": "",
-  "devDependencies": {
-    "@wordpress/scripts": "^27.9.0",
-    "copy-webpack-plugin": "^12.0.2",
-    "glob": "^10.4.1",
-    "path": "^0.12.7",
-    "webpack-remove-empty-scripts": "^1.0.4"
-  },
-  "dependencies": {
-    "@wordpress/interactivity": "^5.7.0"
-  }
+	"name": "write-white-theme",
+	"description": "",
+	"author": "Giacomo Secchi",
+	"license": "GPL-2.0-or-later",
+	"files": [
+		"assets",
+		"inc",
+		"functions.php",
+		"parts",
+		"patterns",
+		"templates",
+		"screenshot.png",
+		"style.css",
+		"theme.json"
+	],
+	"dependencies": {
+		"@wordpress/interactivity": "^5.7.0"
+	},
+	"devDependencies": {
+		"@wordpress/scripts": "^27.9.0",
+		"copy-webpack-plugin": "^12.0.2",
+		"glob": "^10.4.1",
+		"path": "^0.12.7",
+		"webpack-remove-empty-scripts": "^1.0.4"
+	},
+	"scripts": {
+		"build": "wp-scripts build --webpack-src-dir=resources --output-path=assets",
+		"check-engines": "wp-scripts check-engines",
+		"check-licenses": "wp-scripts check-licenses",
+		"format": "wp-scripts format",
+		"lint:css": "wp-scripts lint-style",
+		"lint:js": "wp-scripts lint-js",
+		"lint:md:docs": "wp-scripts lint-md-docs",
+		"lint:pkg-json": "wp-scripts lint-pkg-json",
+		"packages-update": "wp-scripts packages-update",
+		"plugin-zip": "wp-scripts plugin-zip",
+		"start": "wp-scripts start --webpack-src-dir=resources --output-path=assets",
+		"test:e2e": "wp-scripts test-e2e",
+		"test:unit": "wp-scripts test-unit-js"
+	},
+	"npmpackagejsonlint": {
+		"extends": "@wordpress/npm-package-json-lint-config",
+		"rules": {
+			"require-keywords": "off",
+			"require-bugs": "off",
+			"require-homepage": "off",
+			"require-repository": "off",
+			"require-version": "off"
+		}
+	}
 }
