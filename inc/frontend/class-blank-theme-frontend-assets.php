@@ -139,7 +139,11 @@ if ( ! class_exists( 'Blank_Theme_Frontend_Assets' ) ) :
 		}
 
 
-
+		/**
+		 * Load front-end assets.
+		 *
+		 * @return void
+		 */
 		public function load_assets() {
 			// Load front-end assets.
 			$asset = include get_theme_file_path( 'assets/css/screen.asset.php' );
@@ -161,6 +165,8 @@ if ( ! class_exists( 'Blank_Theme_Frontend_Assets' ) ) :
 				true
 			);
 		}
+
+
 
 
 		// Load editor stylesheets.
