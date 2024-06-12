@@ -70,6 +70,7 @@ jobs:
             - name: Zip Release Asset
               run: |
                   npm install
+                  npm run build
                   npm run plugin-zip
               working-directory: ${{ github.workspace }}
 
