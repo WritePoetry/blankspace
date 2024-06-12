@@ -15,6 +15,8 @@
 		"theme.json"
 	],
 	"dependencies": {
+		"@wordpress/api-fetch": "^7.0.0",
+		"@wordpress/dom-ready": "^4.0.0",
 		"@wordpress/interactivity": "^5.7.0"
 	},
 	"devDependencies": {
