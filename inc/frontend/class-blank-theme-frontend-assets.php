@@ -107,7 +107,7 @@ if ( ! class_exists( 'Blank_Theme_Frontend_Assets' ) ) :
 			global $blank_theme;
 
 			// Get the base assets path using a filter hook.
-			// This allows customization of the path through the 'blank_theme__blocks_styles_asset_path' filter.
+			// This allows customization of the path through the 'blank_theme_blocks_styles_asset_path' filter.
 
 			// Use glob to get the list of stylesheets files in the assets folder.
 			$blocks_path = glob( get_theme_file_path( $this->assets_path ) . '/*/*.css' );
