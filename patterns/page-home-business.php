@@ -10,4 +10,5 @@
  */
 ?>
 <!-- wp:pattern {"slug":"write-white/banner-hero-full-screen"} /-->
+<!-- wp:pattern {"slug":"write-white/jetpack-testimonials"} /-->
 <!-- wp:template-part {"slug":"footer","area":"footer","tagName":"footer"} /-->
