@@ -21,6 +21,7 @@ $blank_theme = (object) array(
 	 */
 	'main'       => require 'inc/class-blank-theme.php',
 	'assets'       => require 'inc/frontend/class-blank-theme-frontend-assets.php',
+	'blocks'       => require 'inc/frontend/class-blank-theme-frontend-blocks.php'
 );
 
 /**
