@@ -92,8 +92,12 @@ module.exports = {
 						to: './fonts',
 					},
 					{
-						from: './resources/media',
-						to: './media',
+						from: './resources/images',
+						to: './images',
+					},
+					{
+						from: './resources/videos',
+						to: './videos',
 					},
 				],
 			} ),
