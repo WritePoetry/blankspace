@@ -79,6 +79,11 @@
 					"slug": "dark-grayscale"
 				},
 				{
+					"name": "Orange and gray",
+					"colors": [ "#FA6900", "#EEEEEE" ],
+					"slug": "orange-gray"
+				},
+				{
 					"name": "Grayscale",
 					"colors": [ "#000000", "#ffffff" ],
 					"slug": "grayscale"
@@ -180,12 +185,12 @@
 			"link": false,
 			"palette": [
 				{
-					"color": "#eeeeee",
+					"color": "#EEEEEE",
 					"name": "Base",
 					"slug": "base"
 				},
 				{
-					"color": "#1d1d1d",
+					"color": "#361C1C",
 					"name": "Contrast",
 					"slug": "contrast"
 				},
@@ -195,9 +200,9 @@
 					"slug": "primary"
 				},
 				{
-					"color": "#fff400",
-					"name": "Accent",
-					"slug": "accent"
+					"color": "#473BF0",
+					"name": "Secondary",
+					"slug": "secondary"
 				}
 			],
 			"text": true
@@ -245,7 +250,7 @@
 			"spacingScale": {
 				"operator": "*",
 				"increment": 1.5,
-				"steps": 7,
+				"steps": 10,
 				"mediumStep": 1.5,
 				"unit": "rem"
 			}
@@ -257,27 +262,137 @@
 				{
 					"fontFace": [
 						{
-							"fontFamily": "Source Serif Pro",
-							"fontStretch": "normal",
+							"fontFamily": "Source Code Pro",
 							"fontStyle": "normal",
-							"fontWeight": "200 900",
+							"fontWeight": "200",
 							"src": [
-								"file:./public/fonts/source-serif-pro/SourceSerif4Variable-Roman.ttf.woff2"
+								"file:./assets/fonts/source-code-pro/source-code-pro_normal_200.ttf"
 							]
 						},
 						{
-							"fontFamily": "Source Serif Pro",
-							"fontStretch": "normal",
-							"fontStyle": "italic",
-							"fontWeight": "200 900",
+							"fontFamily": "Source Code Pro",
+							"fontStyle": "normal",
+							"fontWeight": "300",
 							"src": [
-								"file:./public/fonts/source-serif-pro/SourceSerif4Variable-Italic.ttf.woff2"
+								"file:./assets/fonts/source-code-pro/source-code-pro_normal_300.ttf"
+							]
+						},
+						{
+							"fontFamily": "Source Code Pro",
+							"fontStyle": "normal",
+							"fontWeight": "400",
+							"src": [
+								"file:./assets/fonts/source-code-pro/source-code-pro_normal_400.ttf"
+							]
+						},
+						{
+							"fontFamily": "Source Code Pro",
+							"fontStyle": "normal",
+							"fontWeight": "500",
+							"src": [
+								"file:./assets/fonts/source-code-pro/source-code-pro_normal_500.ttf"
+							]
+						},
+						{
+							"fontFamily": "Source Code Pro",
+							"fontStyle": "normal",
+							"fontWeight": "600",
+							"src": [
+								"file:./assets/fonts/source-code-pro/source-code-pro_normal_600.ttf"
+							]
+						},
+						{
+							"fontFamily": "Source Code Pro",
+							"fontStyle": "normal",
+							"fontWeight": "700",
+							"src": [
+								"file:./assets/fonts/source-code-pro/source-code-pro_normal_700.ttf"
+							]
+						},
+						{
+							"fontFamily": "Source Code Pro",
+							"fontStyle": "normal",
+							"fontWeight": "800",
+							"src": [
+								"file:./assets/fonts/source-code-pro/source-code-pro_normal_800.ttf"
+							]
+						},
+						{
+							"fontFamily": "Source Code Pro",
+							"fontStyle": "normal",
+							"fontWeight": "900",
+							"src": [
+								"file:./assets/fonts/source-code-pro/source-code-pro_normal_900.ttf"
+							]
+						},
+						{
+							"fontFamily": "Source Code Pro",
+							"fontStyle": "italic",
+							"fontWeight": "200",
+							"src": [
+								"file:./assets/fonts/source-code-pro/source-code-pro_italic_200.ttf"
+							]
+						},
+						{
+							"fontFamily": "Source Code Pro",
+							"fontStyle": "italic",
+							"fontWeight": "300",
+							"src": [
+								"file:./assets/fonts/source-code-pro/source-code-pro_italic_300.ttf"
+							]
+						},
+						{
+							"fontFamily": "Source Code Pro",
+							"fontStyle": "italic",
+							"fontWeight": "400",
+							"src": [
+								"file:./assets/fonts/source-code-pro/source-code-pro_italic_400.ttf"
+							]
+						},
+						{
+							"fontFamily": "Source Code Pro",
+							"fontStyle": "italic",
+							"fontWeight": "500",
+							"src": [
+								"file:./assets/fonts/source-code-pro/source-code-pro_italic_500.ttf"
+							]
+						},
+						{
+							"fontFamily": "Source Code Pro",
+							"fontStyle": "italic",
+							"fontWeight": "600",
+							"src": [
+								"file:./assets/fonts/source-code-pro/source-code-pro_italic_600.ttf"
+							]
+						},
+						{
+							"fontFamily": "Source Code Pro",
+							"fontStyle": "italic",
+							"fontWeight": "700",
+							"src": [
+								"file:./assets/fonts/source-code-pro/source-code-pro_italic_700.ttf"
+							]
+						},
+						{
+							"fontFamily": "Source Code Pro",
+							"fontStyle": "italic",
+							"fontWeight": "800",
+							"src": [
+								"file:./assets/fonts/source-code-pro/source-code-pro_italic_800.ttf"
+							]
+						},
+						{
+							"fontFamily": "Source Code Pro",
+							"fontStyle": "italic",
+							"fontWeight": "900",
+							"src": [
+								"file:./assets/fonts/source-code-pro/source-code-pro_italic_900.ttf"
 							]
 						}
 					],
-					"fontFamily": "\"Source Serif Pro\", serif",
-					"name": "Source Serif Pro",
-					"slug": "source-serif-pro"
+					"fontFamily": "\"Source Code Pro\", serif",
+					"name": "Source Code Pro",
+					"slug": "source-code-pro"
 				},
 				{
 					"fontFace": [
@@ -287,7 +402,7 @@
 							"fontStyle": "normal",
 							"fontWeight": "500",
 							"src": [
-								"file:./public/fonts/open-sans/open-sans_normal_500.ttf"
+								"file:./assets/fonts/open-sans/open-sans_normal_500.ttf"
 							]
 						},
 						{
@@ -296,7 +411,7 @@
 							"fontStyle": "italic",
 							"fontWeight": "500",
 							"src": [
-								"file:./public/fonts/open-sans/open-sans_italic_500.ttf"
+								"file:./assets/fonts/open-sans/open-sans_italic_500.ttf"
 							]
 						}
 					],
@@ -306,6 +421,11 @@
 				}
 			],
 			"fontSizes": [
+				{
+					"name": "Tiny",
+					"slug": "tiny",
+					"size": "0.75rem"
+				},
 				{
 					"name": "Small",
 					"slug": "small",
@@ -317,6 +437,10 @@
 					"size": "1rem"
 				},
 				{
+					"fluid": {
+						"min": "1.75rem",
+						"max": "1.875rem"
+					},
 					"name": "Large",
 					"slug": "large",
 					"size": "1.875rem"
@@ -329,7 +453,7 @@
 				{
 					"name": "Extra Extra Large",
 					"slug": "xx-large",
-					"size": "3.50rem"
+					"size": "3.5rem"
 				}
 			],
 			"fontStyle": true,
@@ -388,8 +512,8 @@
 		"elements": {
 			"button": {
 				"color": {
-					"text": "#fff",
-					"background": "#32373c"
+					"text": "var(--wp--preset--color--base)",
+					"background": "var(--wp--preset--color--primary)"
 				},
 				"spacing": {
 					"padding": "calc(0.667em + 2px) calc(1.333em + 2px)"
@@ -406,7 +530,7 @@
 			},
 			"heading": {
 				"typography": {
-					"fontFamily": "var(--wp--preset--font-family--source-serif-pro)",
+					"fontFamily": "var(--wp--preset--font-family--source-code-pro)",
 					"fontWeight": "400",
 					"lineHeight": "1.4"
 				}
@@ -435,5 +559,22 @@
 			"background": "var(--wp--preset--color--base)",
 			"text": "var(--wp--preset--color--contrast)"
 		}
-	}
+	},
+	"templateParts": [
+		{
+			"name": "header",
+			"title": "Header",
+			"area": "header"
+		},
+		{
+			"name": "footer",
+			"title": "Footer",
+			"area": "footer"
+		},
+		{
+			"name": "sidebar",
+			"title": "Sidebar",
+			"area": "uncategorized"
+		}
+	]
 }
