@@ -6,13 +6,14 @@
  * Keywords: newsletter, subscribe, button
  */
 ?>
-<!-- wp:group {"backgroundColor":"contrast","layout":{"type":"constrained"}} -->
-<div class="wp-block-group has-contrast-background-color has-background">
-
+<!-- wp:group {"style":{"elements":{"link":{"color":{"text":"var:preset|color|base"}}}},"backgroundColor":"contrast","textColor":"base","layout":{"type":"constrained"}} -->
+<div class="wp-block-group has-base-color has-contrast-background-color has-text-color has-background has-link-color">
+	
 	<!-- wp:html -->
 	<?php
 		// print the newsletter shortcode this way to prevent the <p> tags from being added
 	 	echo do_shortcode( '[testimonials]' );
 	?>
-	<!-- /wp:html --></div>
-	<!-- /wp:group -->
+	<!-- /wp:html -->
+</div>
+<!-- /wp:group -->

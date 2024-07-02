@@ -10,5 +10,9 @@
  */
 ?>
 <!-- wp:pattern {"slug":"write-white/banner-hero-full-screen"} /-->
+ <!-- wp:pattern {"slug":"write-white/github-project-versions"} /-->
+
 <!-- wp:pattern {"slug":"write-white/jetpack-testimonials"} /-->
+ <!-- wp:pattern {"slug":"write-white/three-columns-icons"} /-->
+
 <!-- wp:template-part {"slug":"footer","area":"footer","tagName":"footer"} /-->

@@ -6,6 +6,8 @@
  * Viewport width: 1400
  */
 ?>
+
+
 <!-- wp:group {"tagName":"main","style":{"dimensions":{"minHeight":"100vh"}},"layout":{"type":"flex","orientation":"vertical","justifyContent":"center","verticalAlignment":"center","flexWrap":"nowrap"}} -->
 <main class="wp-block-group" style="min-height:100vh;">
 
