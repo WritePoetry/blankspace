@@ -21,22 +21,22 @@ const {
  * are not imported into the primary stylesheets and are enqueued separately.
  *
  * @since  1.0.0
- * @param {string} namespace
+ * @param {string} folder
  * @return {Object.<string, string>}
  */
-const blockStylesheets = () => {
-	return globSync( `./resources/scss/blocks/**/*.scss` ).reduce(
+const blockStylesheets = ( folder ) => {
+	return globSync( `./resources/scss/${ folder }/**/*.scss` ).reduce(
 		( files, filepath ) => {
 			const relativePath = path.relative(
-				'./resources/scss/blocks',
+				'./resources/scss/${ folder }',
 				filepath
 			);
 			const namespace = path.dirname( relativePath );
 			const name = path.parse( filepath ).name;
 
-			files[ `css/blocks/${ namespace }/${ name }` ] = path.resolve(
+			files[ `css/${ folder }/${ namespace }/${ name }` ] = path.resolve(
 				process.cwd(),
-				`resources/scss/blocks/${ namespace }`,
+				`resources/scss/${ folder }/${ namespace }`,
 				`${ name }.scss`
 			);
 
@@ -45,6 +45,7 @@ const blockStylesheets = () => {
 		{}
 	);
 };
+ 
 
 // Add any new entry points by extending the webpack config.
 module.exports = {
@@ -52,7 +53,8 @@ module.exports = {
 	...{
 		entry: {
 			...getWebpackEntryPoints(),
-			...blockStylesheets(),
+			...blockStylesheets( 'blocks' ),
+			...blockStylesheets( 'plugins' ),
 			'js/editor': path.resolve(
 				process.cwd(),
 				'resources/js',
@@ -63,7 +65,7 @@ module.exports = {
 				'resources/js',
 				'screen.js'
 			),
-			'css/editor': path.resolve(
+			'css/admin/editor': path.resolve(
 				process.cwd(),
 				'resources/scss',
 				'editor.scss'
