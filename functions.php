@@ -8,14 +8,13 @@
 /**
  * Get theme version.
  */
-$stylesheet		= 'write-white';
-$theme_version  = wp_get_theme( $stylesheet )->get( 'Version' );
+$theme			= wp_get_theme( get_template() );
+$theme_version  = $theme->get( 'Version' );
 $version_string = is_string( $theme_version ) ? $theme_version : false;
 
 $blank_theme = (object) array(
-	'name'		 => $stylesheet,
-	'version'    => $theme_version,
-
+	'name'		 => $theme->stylesheet,
+	'version'    => $version_string,
 	/**
 	 * Initialize all the things.
 	 */
@@ -27,16 +26,19 @@ $blank_theme = (object) array(
 /**
  * Initialize Jetpack compatibility.
  */
-if ( class_exists( 'Jetpack' ) ) {
-	// $twenties->jetpack = require 'inc/class-twenties-jetpack.php';
+if ( class_exists( 'Jetpack' ) ) {	
+	$blank_theme->jetpack = require 'inc/plugins/jetpack/class-twenties-jetpack.php';
 }
 
 /**
  * Initialize TranslatePress - Multilingual compatibility.
  */
 if (class_exists( 'TRP_Translate_Press' ) ) {
-	require 'inc/translatepress-multilingual/blank-theme-translatepress-template-functions.php';
+	$blank_theme->translate_press = require 'inc/plugins/translatepress-multilingual/class-blank-theme-translatepress-template-functions.php';
 }
 
+if ( is_admin() ) {
+	$blank_theme->admin = require 'inc/admin/class-blank-theme-admin.php';
+}
 
 // require 'inc/class-twenties-ajax.php';
