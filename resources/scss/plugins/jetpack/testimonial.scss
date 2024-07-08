@@ -1,0 +1,22 @@
+.jetpack-testimonial-shortcode {
+    max-width: var(--wp--custom--jetpack-testimonial--width) !important;
+    .testimonial-featured-image img {
+        border-radius: var(--wp--custom--jetpack-testimonial--border-radius, 0px);
+    }    
+}
+
+.testimonial-entry {
+    display: flex;
+    flex-direction: column;
+    
+    .testimonial-entry-content {
+        order: 2;
+    }
+    .testimonial-entry-image {
+        order: 1;
+    }
+    .testimonial-entry-title {
+        order: 3;
+    }
+
+}
