@@ -53,9 +53,7 @@ if ( ! class_exists( 'Blank_Theme' ) ) :
 
 
 
-			/**
-			 * Add support for Block Styles.
-			 */
+			// Add support for block styles.
 			add_theme_support( 'wp-block-styles' );
 
 
