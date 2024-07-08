@@ -213,9 +213,10 @@
 			"text": true
 		},
 		"custom": {
-			"superDuper": {
-				"height": "1.5rem",
-				"filter": "grayscale( 100% )"
+			
+			"jetpackTestimonial": {
+				"borderRadius": "50px",
+				"width": "var(--wp--style--global--wide-size)"
 			}
 		},
 		"layout": {
