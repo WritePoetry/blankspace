@@ -14,5 +14,6 @@
 
 <!-- wp:pattern {"slug":"write-white/jetpack-testimonials"} /-->
  <!-- wp:pattern {"slug":"write-white/three-columns-icons"} /-->
+ <!-- wp:pattern {"slug":"write-white/media-rounded-image-right"} /-->
 
 <!-- wp:template-part {"slug":"footer","area":"footer","tagName":"footer"} /-->
