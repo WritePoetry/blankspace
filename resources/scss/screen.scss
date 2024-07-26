@@ -2,3 +2,12 @@ html {
     scroll-behavior: smooth;
     transition: all 10s ease-in-out;
 }
+
+input:where( :not( [type=checkbox] ):not( [type=radio ] ) ),
+select,
+textarea {
+	color: var( --wp--custom--form-input--color, inherit );
+	background: var( --wp--custom--form-input--background, transparent );
+	border: 1px solid var( --wp--custom--form-input--border-color, currentColor );
+	/* Other CSS rules... */
+}

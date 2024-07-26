@@ -213,7 +213,11 @@
 			"text": true
 		},
 		"custom": {
-			
+			"formInput": {
+				"color": "var(--wp--preset--color--base)",
+				"background": "var(--wp--preset--color--white)",
+				"borderColor": "var(--wp--preset--color--base)"
+			},
 			"jetpackTestimonial": {
 				"borderRadius": "50px",
 				"width": "var(--wp--style--global--wide-size)"
