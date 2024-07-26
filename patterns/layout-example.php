@@ -2,6 +2,7 @@
 /**
  * Title: Layout Example
  * Slug: write-white/layout-example
+ * Template Types: page-blank
  * Categories: query
  * Keywords: post meta
  * Block Types: core/template-part/post-meta
@@ -16,7 +17,7 @@
 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vitae consequat massa, vitae laoreet tellus. Morbi ultrices commodo est, a pharetra purus pharetra vel. Quisque eu tellus eu tortor suscipit consequat id in ligula. Nulla ac condimentum neque, eget cursus augue. Donec eget enim non elit pellentesque pellentesque id eget ex. Cras auctor tempor maximus. Proin dapibus quam diam, in lobortis purus molestie at. Duis ipsum diam, malesuada a nulla nec, porttitor placerat ex.</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:image {"sizeSlug":"large"} -->
+<!-- wp:image {"lightbox":{"enabled":true},"sizeSlug":"large"} -->
 <figure class="wp-block-image size-large"><img src="https://as1.ftcdn.net/v2/jpg/04/00/62/92/1000_F_400629277_TtV5T1MxEPtQJnMJ9vailAOxV2fEdYqx.jpg" alt=""/></figure>
 <!-- /wp:image --></div>
 <!-- /wp:group -->

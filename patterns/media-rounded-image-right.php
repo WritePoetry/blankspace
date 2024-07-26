@@ -17,7 +17,7 @@
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"placeholder":"Content…"} -->
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus commodo nunc sodales tincidunt pellentesque. Sed arcu sem, vestibulum id sagittis vel, rutrum vel ligula. In ornare lectus vel consequat pulvinar. Vestibulum porttitor eleifend interdum. Nam ac orci et libero mollis iaculis vitae in sapien. Pellentesque lobortis ultrices est, a molestie massa convallis pretium.</p>
-<!-- /wp:paragraph --></div><figure class="wp-block-media-text__media"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/images/pexels-mikael-blomkvist-6476783.jpg" alt="" class="wp-image-376 size-full"/></figure></div>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus commodo nunc sodales tincidunt pellentesque. Sed arcu sem, vestibulum id sagits vel, rutrum vel ligula. In ornare lectus vel consequat pulvinar. Vestibulum porttitor eleifend interdum. Nam ac orci et libero mollis iaculis vitae in sapien. Pellentesque lobortis ultrices est, a molestie massa convallis pretium.</p>
+<!-- /wp:paragraph --></div><figure class="wp-block-media-text__media"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/images/pexels-andrew-3178818.jpg" alt="" class="wp-image-376 size-full"/></figure></div>
 <!-- /wp:media-text -->
  
