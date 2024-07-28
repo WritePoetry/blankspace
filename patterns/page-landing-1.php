@@ -10,7 +10,7 @@
  */
 ?>
 
-<!-- wp:pattern {"slug":"write-white/header-inside-hero"} /-->
+<!-- wp:pattern {"slug":"write-white/header-hero"} /-->
 <!-- wp:pattern {"slug":"write-white/banner-list-right"} /-->
 <!-- wp:pattern {"slug":"write-white/banner-text-left"} /-->
 <!-- wp:pattern {"slug":"write-white/banner-text-right"} /-->

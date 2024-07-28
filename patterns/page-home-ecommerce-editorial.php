@@ -1,6 +1,6 @@
 <?php
 /**
- * Title: Business home
+ * Title: Business ecommerce home
  * Slug: write-white/page-home-ecommerce
  * Categories: twentytwentyfour_page
  * Keywords: starter

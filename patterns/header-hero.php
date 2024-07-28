@@ -14,8 +14,7 @@
 <div class="wp-block-cover" style="min-height:100vh" id="header-cover"><span aria-hidden="true" class="wp-block-cover__background has-background-dim has-background-dim "></span>
 <img class="wp-block-cover__image-background " alt="" src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/images/pexels-charlotte-may-5824814.jpg" data-object-fit="cover" />
     <div class="wp-block-cover__inner-container">
-
-		<!-- wp:pattern {"slug":"write-white/header-tagline"} /-->
+		<!-- wp:pattern {"slug":"write-white/header-default"} /--> 
 
 		<!-- wp:columns {"align":"wide","style":{"layout":{"selfStretch":"fill","flexSize":null}}} -->
 		<div class="wp-block-columns alignwide"><!-- wp:column {"verticalAlignment":"center"} -->
