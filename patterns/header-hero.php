@@ -18,14 +18,15 @@
 
 		<!-- wp:columns {"align":"wide","style":{"layout":{"selfStretch":"fill","flexSize":null}}} -->
 		<div class="wp-block-columns alignwide"><!-- wp:column {"verticalAlignment":"center"} -->
-			<div class="wp-block-column is-vertically-aligned-center"><!-- wp:paragraph {"style":{"typography":{"textTransform":"uppercase"}},"textColor":"luminous-vivid-orange","fontSize":"small"} -->
+			<div class="wp-block-column is-vertically-aligned-center">
+				<!-- wp:paragraph {"style":{"typography":{"textTransform":"uppercase"}},"textColor":"luminous-vivid-orange","fontSize":"small"} -->
 				<p class="has-luminous-vivid-orange-color has-text-color has-small-font-size" style="text-transform:uppercase">Only 4 slots available</p>
 				<!-- /wp:paragraph -->
 
-				<!-- wp:heading {"style":{"typography":{"fontStyle":"normal","fontWeight":"300"},"spacing":{"margin":{"top":"0"}}}} -->
-				<h2 class="wp-block-heading" id="lorem-ipsum" style="margin-top:0;font-style:normal;font-weight:300">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
+				<!-- wp:heading {"style":{"typography":{"fontStyle":"normal"},"spacing":{"margin":{"top":"0"}}}} -->
+				<h2 class="wp-block-heading" id="lorem-ipsum" style="margin-top:0;font-style:normal">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
 				<!-- /wp:heading -->
-
+				 
 				<!-- wp:paragraph -->
 				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ut sodales tortor. Vestibulum efficitur lacinia posuere. Etiam efficitur metus vitae tellus pretium vehicula. Curabitur metus dolor, tempus id aliquam volutpat, commodo ac magna. </p>
 				<!-- /wp:paragraph -->

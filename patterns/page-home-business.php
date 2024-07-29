@@ -12,7 +12,7 @@
 
 <!-- wp:pattern {"slug":"write-white/banner-hero-full-screen"} /-->
 <!-- wp:pattern {"slug":"write-white/github-project-versions"} /-->
-
+<!-- wp:pattern {"slug":"write-white/banner-list-right"} /-->
 <!-- wp:pattern {"slug":"write-white/jetpack-testimonials"} /-->
 <!-- wp:pattern {"slug":"write-white/three-columns-icons"} /-->
 <!-- wp:pattern {"slug":"write-white/media-rounded-image-right"} /-->

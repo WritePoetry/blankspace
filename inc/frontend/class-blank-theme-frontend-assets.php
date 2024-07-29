@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 if ( ! class_exists( 'Blank_Theme_Frontend_Assets' ) ) :
 
 	/**
-	 * The main Twenties class
+	 * The main Blank_Theme class
 	 */
 	class Blank_Theme_Frontend_Assets {
         /**
@@ -111,7 +111,7 @@ if ( ! class_exists( 'Blank_Theme_Frontend_Assets' ) ) :
 				'core/list'	=> array(
 					array(
 						'name'			=> 'primary-disc-list',
-						'label'			=> __( 'Primary Color Disc', 'twenties' ),
+						'label'			=> __( 'Primary Color Disc', 'whritewhite' ),
 						'inline_style' => '
 						ul.is-style-primary-disc-list {
 							list-style-type: disc;
@@ -123,7 +123,7 @@ if ( ! class_exists( 'Blank_Theme_Frontend_Assets' ) ) :
 					),
 					array(
 						'name'			=> 'secondary-disc-list',
-						'label'			=> __( 'Secondary Color Disc', 'twenties' ),
+						'label'			=> __( 'Secondary Color Disc', 'whritewhite' ),
 						'inline_style' => '
 						ul.is-style-secondary-disc-list {
 							list-style-type: disc;
@@ -132,32 +132,44 @@ if ( ! class_exists( 'Blank_Theme_Frontend_Assets' ) ) :
 						ul.is-style-secondary-disc-list li::marker {
 							color: var(--wp--preset--color--secondary);
 						}',
+					),
+					array(
+						'name'			=> 'checked',
+						'label'			=> __( 'Checked', 'whritewhite' ),
+						'inline_style' => '
+						ul.is-style-checked {
+							 
+						}
+
+						ul.is-style-checked li::marker {
+							 
+						}',
 					)
 				),
 				'core/cover' => array(
 					array(
 						'name'         => 'inline1',
-						'label'        => __( 'Inline1', 'twenties' ),
+						'label'        => __( 'Inline1', 'whritewhite' ),
 						'is_default'   => true,
 						'inline_style' => '  .is-style-inline1 { display: block; }',
 					),
 					array(
 						'name'         => 'inline2',
-						'label'        => __( 'Inline2', 'twenties' ),
+						'label'        => __( 'Inline2', 'whritewhite' ),
 						'inline_style' => '  .is-style-inline2 { display: inline-flex; }',
 					),
 				),
 				'core/media-text' => array(
 					array(
 						'name'         => 'rounded-image',
-						'label'        => __( 'Rounded Image', 'twenties' ),
+						'label'        => __( 'Rounded Image', 'whritewhite' ),
 						'is_default'   => true,
 						'inline_style' => '  .is-style-rounded-image img { border-radius: var(--wp--custom--jetpack-testimonial--border-radius, 100%); width: 75%; display: block; margin: 0 auto; }',
 					)
 				),
 				'core/group' => array(
 					'name'         => 'inline',
-					'label'        => __( 'Inline', 'twenties' ),
+					'label'        => __( 'Inline', 'whritewhite' ),
 					'is_default'   => true,
 					'inline_style' => '.wp-block-group.is-style-inline { display: inline-flex; }',
 				)
