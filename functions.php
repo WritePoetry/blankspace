@@ -34,7 +34,7 @@ if ( class_exists( 'Jetpack' ) ) {
  * Initialize TranslatePress - Multilingual compatibility.
  */
 if (class_exists( 'TRP_Translate_Press' ) ) {
-	$blank_theme->translate_press = require 'inc/plugins/translatepress-multilingual/class-blank-theme-translatepress-template-functions.php';
+	$blank_theme->translate_press = require 'inc/plugins/translatepress-multilingual/class-blank-theme-translatepress.php';
 }
 
 if ( is_admin() ) {
