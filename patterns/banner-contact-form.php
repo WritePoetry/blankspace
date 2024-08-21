@@ -32,7 +32,7 @@
 <p>Let’s chat! Send us a little information about your product to see if it’s a good fit for our podcast audience.</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:jetpack/contact-form {"to":"giacomosecchi@gmail.com","className":"is-style-default"} -->
+<!-- wp:jetpack/contact-form {"to":"example@example.com","className":"is-style-default"} -->
 <div class="wp-block-jetpack-contact-form is-style-default"><!-- wp:jetpack/field-name {"required":true} /-->
 
 <!-- wp:jetpack/field-email {"required":true} /-->
