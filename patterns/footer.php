@@ -16,7 +16,7 @@
 		<!-- wp:columns -->
 		<div class="wp-block-columns"><!-- wp:column {"width":"33.33%"} -->
 			<div class="wp-block-column" style="flex-basis:33.33%">
-				<!-- wp:site-title {"level":5,"style":{"elements":{"link":{"color":{"text":"var:preset|color|tertiary"}}}}} /-->
+    			<!-- wp:pattern {"slug":"write-white/branding"} /-->
 
 				<!-- wp:paragraph -->
 				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed est arcu, iaculis eu augue et, auctor bibendum odio. Maecenas ultrices nisl et nibh imperdiet lacinia. Phasellus scelerisque metus velit, nec pellentesque tellus tempus semper.</p>
