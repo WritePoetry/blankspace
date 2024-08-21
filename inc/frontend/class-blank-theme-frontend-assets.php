@@ -137,13 +137,13 @@ if ( ! class_exists( 'Blank_Theme_Frontend_Assets' ) ) :
 						'name'			=> 'checked',
 						'label'			=> __( 'Checked', 'whritewhite' ),
 						'inline_style' => '
-						ul.is-style-checked {
-							 
+						 
+						@counter-style check {
+							system: cyclic;
+							symbols: "✅";
+							suffix: " ";
 						}
-
-						ul.is-style-checked li::marker {
-							 
-						}',
+						ul.is-style-checked { list-style: check; }',
 					)
 				),
 				'core/cover' => array(
@@ -163,8 +163,8 @@ if ( ! class_exists( 'Blank_Theme_Frontend_Assets' ) ) :
 					array(
 						'name'         => 'rounded-image',
 						'label'        => __( 'Rounded Image', 'whritewhite' ),
-						'is_default'   => true,
-						'inline_style' => '  .is-style-rounded-image img { border-radius: var(--wp--custom--jetpack-testimonial--border-radius, 100%); width: 75%; display: block; margin: 0 auto; }',
+						'is_default'   => false,
+						'inline_style' => '  .is-style-rounded-image img { border-radius: var(--wp--custom--core-media-text--border-radius, 20px); }',
 					)
 				),
 				'core/group' => array(
