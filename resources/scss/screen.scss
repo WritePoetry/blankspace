@@ -1,6 +1,11 @@
 html {
-    scroll-behavior: smooth;
     transition: all 10s ease-in-out;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	html {
+		scroll-behavior: smooth;
+	}
 }
 
 input:where( :not( [type=checkbox] ):not( [type=radio ] ) ),
