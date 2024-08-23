@@ -144,6 +144,11 @@ if ( ! class_exists( 'Blank_Theme_Frontend_Assets' ) ) :
 							suffix: " ";
 						}
 						ul.is-style-checked { list-style: check; }',
+					),
+					array(
+						'name'			=> 'none',
+						'label'			=> __( 'None', 'whritewhite' ),
+						'inline_style' => 'ul.is-style-none { list-style: none; }',
 					)
 				),
 				'core/cover' => array(
