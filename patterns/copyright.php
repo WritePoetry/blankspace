@@ -8,7 +8,7 @@
  */
 ?>
 
-<!-- wp:group {"layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"center"}} -->
+<!-- wp:group {"layout":{"type":"flex","justifyContent":"center"}} -->
 <div class="wp-block-group">
     <!-- wp:paragraph {"metadata":{"bindings":{"content":{"source":"write-white/copyright"}}}} -->
 <p class="has-tiny-font-size">Copyright Block</p>
