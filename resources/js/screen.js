@@ -38,6 +38,17 @@ const initialize = () => {
 			} )
 			.catch( ( error ) => console.error( error ) );
 	});
+	
+
+	// Get the pagination from the server
+	let params = new URLSearchParams( {
+		action:  'pagination'
+	} );
+
+ 	fetch( `${writewhite_frontend_ajax_object.ajaxurl}?${params}`)
+		.then( ( response ) => response.text() )
+		.then( data => console.log(data) )
+		.catch( ( error ) => console.error( error ) );
 };
 
 if ( typeof window !== 'undefined' ) {

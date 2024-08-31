@@ -1,21 +1,21 @@
 <?php
 /**
- * Twenties Child Class
+ * Blank Theme Jetpack Plugin Class
  *
- * @since    0.0.1
- * @package  Twenty_Twenty_Child
+ * @since    0.1.4
+ * @package  Blank_Theme
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! class_exists( 'Twenties_Child_Jetpack' ) ) :
+if ( ! class_exists( 'Blank_Theme_Jetpack' ) ) :
 
 	/**
 	 * The main Twenties class
 	 */
-	class Twenties_Child_Jetpack {
+	class Blank_Theme_Jetpack {
 		const CUSTOM_POST_TYPE       = 'jetpack-portfolio';
 		const CUSTOM_TAXONOMY_TYPE   = 'jetpack-portfolio-type';
 		const CUSTOM_TAXONOMY_TAG    = 'jetpack-portfolio-tag';
@@ -24,7 +24,7 @@ if ( ! class_exists( 'Twenties_Child_Jetpack' ) ) :
 		/**
 		 * Setup class.
 		 *
-		 * @since 1.0
+		 * @since 0.1.4
 		 */
 		public function __construct() {
 			add_filter( 'wpseo_exclude_from_sitemap_by_post_ids',  array( $this, 'exclude_posts_from_xml_sitemaps' ), 10, 2 );
@@ -48,7 +48,7 @@ if ( ! class_exists( 'Twenties_Child_Jetpack' ) ) :
 		}
 
 
-		private function filter_query() {
+		private function filter_query(   ) {
 			$queried_object = get_queried_object();
 
 			if ( $queried_object instanceof WP_Term ) {
@@ -61,6 +61,9 @@ if ( ! class_exists( 'Twenties_Child_Jetpack' ) ) :
 					),
 				);
 			}
+			
+			var_dump( 111111);die;
+
 
 			$query['post_type'] = 'jetpack-portfolio';
 
@@ -68,10 +71,13 @@ if ( ! class_exists( 'Twenties_Child_Jetpack' ) ) :
 			$query['meta_key'] = 'writepoetry_project_year';
 
 			// Show all posts
-			$query['nopaging'] = true;
+			// $query['nopaging'] = true;
 
 			// Skip SQL_CALC_FOUND_ROWS for performance (no pagination).
-			$query['no_found_rows'] = true;
+			// $query['no_found_rows'] = true;
+			
+			$query['posts_per_page'] = 1;
+
 
 			// also likely want to set order by this key in desc so more recent project are listed first.
 			$query['orderby'] = 'meta_value_num';
@@ -86,9 +92,22 @@ if ( ! class_exists( 'Twenties_Child_Jetpack' ) ) :
 				// Filters the arguments which will be passed to WP_Query for the Query Loop Block.
 				add_filter( 'query_loop_block_query_vars',
 					function( $query, $block ) use ( $parsed_block ) {
+						// Retrieve the query parameters from the block attributes
+ 						
+						
 						// add same meta query arguments for front-end.
-						$query = $this->filter_query();
-                		return $query;
+						$query = $this->filter_query( $block );
+						
+						// Execute the query
+						$wp_query = new WP_Query( $query );
+						
+						// Check if the query returns any posts
+						if ( ! $wp_query->have_posts() ) {		 
+							
+							// Modify the query to use a fallback meta key
+							$query['meta_key'] = '';
+						}
+                 		return $query;
 					},
 					10,
 					2
@@ -175,4 +194,8 @@ if ( ! class_exists( 'Twenties_Child_Jetpack' ) ) :
 	}
 endif;
 
-return new Twenties_Child_Jetpack();
+return new Blank_Theme_Jetpack();
+
+
+
+  

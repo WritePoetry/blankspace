@@ -1,3 +1,7 @@
+// Set from https://www.npmjs.com/package/@wordpress/scripts
+// Add package.json with the @wordpress/scripts dependency.
+// Add a root file called webpack.config.js
+
 // WordPress webpack config.
 const defaultConfig = require( '@wordpress/scripts/config/webpack.config' );
 

@@ -18,16 +18,16 @@ $blank_theme = (object) array(
 	/**
 	 * Initialize all the things.
 	 */
-	'main'       => require 'inc/class-blank-theme.php',
-	'assets'       => require 'inc/frontend/class-blank-theme-frontend-assets.php',
-	'blocks'       => require 'inc/frontend/class-blank-theme-frontend-blocks.php'
+	'main'		=> require 'inc/class-blank-theme.php',
+	'assets'	=> require 'inc/frontend/class-blank-theme-frontend-assets.php',
+	'blocks'	=> require 'inc/frontend/class-blank-theme-frontend-blocks.php'
 );
 
 /**
  * Initialize Jetpack compatibility.
  */
 if ( class_exists( 'Jetpack' ) ) {	
-	$blank_theme->jetpack = require 'inc/plugins/jetpack/class-twenties-jetpack.php';
+	$blank_theme->jetpack = require 'inc/plugins/jetpack/class-blank-theme-jetpack.php';
 }
 
 /**
@@ -40,5 +40,6 @@ if (class_exists( 'TRP_Translate_Press' ) ) {
 if ( is_admin() ) {
 	$blank_theme->admin = require 'inc/admin/class-blank-theme-admin.php';
 }
+
 
 // require 'inc/class-twenties-ajax.php';

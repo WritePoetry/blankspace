@@ -10,12 +10,15 @@
  */
 ?>
 
-<!-- wp:group {"metadata":{"name":"Basic Header Sticky"},"align":"wide","className":"basic-header-sticky","style":{"position":{"type":"sticky","top":"0px"}},"layout":{"type":"flex"}} -->
-<div class="wp-block-group basic-header-sticky alignwide">
-    <!-- wp:pattern {"slug":"write-white/branding"} /-->
+<!-- wp:group {"align":"wide","style":{"spacing":{"padding":{"top":"20px","bottom":"20px"}}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignwide"
+	style="padding-top:20px;padding-bottom:20px">
+	<!-- wp:group {"align":"wide","layout":{"type":"flex","justifyContent":"space-between","flexWrap":"wrap"}} -->
+	<div class="wp-block-group alignwide">
+        <!-- wp:pattern {"slug":"write-white/branding"} /-->
          
-    <!-- wp:pattern {"slug":"write-white/main-navigation"} /-->
+        <!-- wp:pattern {"slug":"write-white/main-navigation"} /-->
+	</div>
+	<!-- /wp:group -->
 </div>
 <!-- /wp:group -->
-
-

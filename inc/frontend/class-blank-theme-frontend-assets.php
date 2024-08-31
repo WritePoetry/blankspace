@@ -103,7 +103,8 @@ if ( ! class_exists( 'Blank_Theme_Frontend_Assets' ) ) :
 			}
 		}
 		
-
+		
+ 
 
 		public function get_block_styles() {
 			// Define block styles with their labels and CSS styles
@@ -227,7 +228,7 @@ if ( ! class_exists( 'Blank_Theme_Frontend_Assets' ) ) :
 		
 				
 		/**
-		 * Load front-end  assets.
+		 * Load front-end assets.
 		 *
 		 * @param string $path The path to the assets.
 		 * @param string $assets_type The assets_type of assets to load ('css' or 'js').
@@ -239,20 +240,20 @@ if ( ! class_exists( 'Blank_Theme_Frontend_Assets' ) ) :
 			
 			// Get the asset files.
 			$asset_files = glob( get_parent_theme_file_path( $path ) . '*.asset.php'  );
-			
-		 
 
 			// Check if it is a child theme.
 			if ( is_child_theme() ) {
 				$asset_files = array_merge( $asset_files, glob( get_theme_file_path( $path ) . '*.' . $assets_type ) );
+ 			
+				 
+			
 			}
 			
 			 
 			foreach (  $asset_files as $asset_file ) {
 				// Load front-end assets.
 				$file_extension = pathinfo( $asset_file, PATHINFO_EXTENSION );
-
-
+				
 				if ( 'php' === $file_extension ) {
 					$asset = include $asset_file;
 					
@@ -260,8 +261,7 @@ if ( ! class_exists( 'Blank_Theme_Frontend_Assets' ) ) :
 				} else {
 					$file_name = basename( $asset_file, ".$assets_type" );
 				}
-				
-		 
+
 				
 				$params = array(
 					"$stylesheet-$file_name",
@@ -285,9 +285,7 @@ if ( ! class_exists( 'Blank_Theme_Frontend_Assets' ) ) :
 					// Enqueue theme scripts.
 					wp_enqueue_script( ...$params );	
 				}
-			}
-			
-			
+			}			
 		}
  
 
@@ -300,15 +298,13 @@ if ( ! class_exists( 'Blank_Theme_Frontend_Assets' ) ) :
 		public function load_assets() {
 			global $blank_theme;
 			
+			// Get the theme stylesheet.
 			$theme_stylesheet = $blank_theme->name;	
 
 			// Check if it is a child theme.
 			if ( is_child_theme() ) {
- 				
+				// Get the child theme stylesheet.
 				$theme_stylesheet = get_stylesheet();
-				
-				
-				
 			}
 			 
 			$this->enqueue_assets( $this->assets_js_path, $theme_stylesheet, 'js' );
@@ -317,9 +313,11 @@ if ( ! class_exists( 'Blank_Theme_Frontend_Assets' ) ) :
 			// Get the active plugins list.
 			$active_plugins = get_option( 'active_plugins' );
 			
+			// Check if there are active plugins.
 			foreach ( $active_plugins as $plugin ) {				
 				$plugin_dir = dirname( $plugin );
 				
+				// Load plugin assets.
 				$this->enqueue_assets( $this->assets_css_path . 'plugins/' . $plugin_dir . '/', $theme_stylesheet );
 				$this->enqueue_assets( $this->assets_js_path . 'plugins/' . $plugin_dir . '/', $theme_stylesheet, 'js' );
 			}

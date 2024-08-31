@@ -39,6 +39,7 @@ if ( ! class_exists( 'Blank_Theme_Frontend_Blocks' ) ) :
 					'get_value_callback' => array( $this, 'email_address_binding' ),
 				),
 			);
+			 
 			
 			foreach ( $sources as $source_name => $source_properties ) {
 				register_block_bindings_source( $source_name, $source_properties );

@@ -24,7 +24,7 @@ if ( ! class_exists( 'Blank_Theme' ) ) :
 		 */
 		public function __construct() {
 			add_action( 'after_setup_theme', array( $this, 'setup' ) );
-			add_action( 'init', array( $this, 'register_block_bindings' ) );
+ 
 		}
 
 		/**
@@ -41,17 +41,20 @@ if ( ! class_exists( 'Blank_Theme' ) ) :
 			 * Note: the first-loaded translation file overrides any following ones if the same translation is present.
 			 */
 
-			// Loads wp-content/languages/themes/storefront-it_IT.mo.
-			load_theme_textdomain( 'twenties', trailingslashit( WP_LANG_DIR ) . 'themes' );
+			// Loads wp-content/languages/themes/writewhite-it_IT.mo.
+			load_theme_textdomain( 'writewhite', trailingslashit( WP_LANG_DIR ) . 'themes' );
 
-			// Loads wp-content/themes/child-theme-name/languages/it_IT.mo.
-			load_theme_textdomain( 'twenties', get_stylesheet_directory() . '/languages' );
+			// Loads wp-content/themes/writewhite/languages/it_IT.mo.
+			load_theme_textdomain( 'writewhite', get_template_directory() . '/languages' );
 
-			// Loads wp-content/themes/storefront/languages/it_IT.mo.
-			load_theme_textdomain( 'twenties', get_template_directory() . '/languages' );
-
-
-
+			// Make theme available for translation.
+			load_theme_textdomain( 'writewhite' );
+			if ( ! 'writewhite' === wp_get_theme()->get( 'TextDomain' ) ) {
+				// Loads wp-content/themes/child-theme-name/languages/it_IT.mo.
+				load_theme_textdomain( 'writewhite', get_stylesheet_directory() . '/languages' );
+			
+				load_theme_textdomain( wp_get_theme()->get( 'TextDomain' ) );
+			}
 
 			// Add support for block styles.
 			add_theme_support( 'wp-block-styles' );
@@ -74,20 +77,13 @@ if ( ! class_exists( 'Blank_Theme' ) ) :
 			 * Add support for responsive embedded content.
 			 */
 			add_theme_support( 'responsive-embeds' );
+			
+			/**
+			 * Add support for responsive embedded content.
+			 */
+			add_theme_support( 'post-thumbnails' );
  		}
-
-
-
-		public function register_block_bindings() {
-			register_block_bindings_source( 'twenties/copyright', array(
-				'label'              => __( 'Copyright', 'twenties' ),
-				'get_value_callback' => array( $this, 'copyright_binding' )
-			) );
-		}
-
-		public function copyright_binding() {
-			return '&copy; ' . date( 'Y' );
-		}
+	
 	}
 endif;
 
