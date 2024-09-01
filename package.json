@@ -9,8 +9,8 @@
 		"functions.php",
 		"parts",
 		"patterns",
-		"resources",
 		"template-parts",
+		"templates",
 		"screenshot.png",
 		"style.css",
 		"theme.json"
