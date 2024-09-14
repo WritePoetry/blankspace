@@ -13,6 +13,15 @@
     padding: 2em;
     box-sizing: border-box;
     
+    p {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        -webkit-line-clamp: var(--wp--custom--jetpack-testimonial--description-ellipsis, unset);
+        line-clamp: var(--wp--custom--jetpack-testimonial--description-ellipsis, unset);
+    }
+    
     .testimonial-entry-content {
         order: 2;
     }
