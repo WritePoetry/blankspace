@@ -1,45 +1,28 @@
 <?php
 /**
- * Write White Theme
+ * WritePoetry Blank Theme
  *
- * @package Twenty_Twenty_Child
+ * @package WritePoetry\BlankTheme
  */
 
-/**
- * Get theme version.
- */
-$theme			= wp_get_theme( get_template() );
-$theme_version  = $theme->get( 'Version' );
-$version_string = is_string( $theme_version ) ? $theme_version : false;
+namespace WritePoetry\BlankTheme;
 
-$blank_theme = (object) array(
-	'name'		 => $theme->stylesheet,
-	'version'    => $version_string,
-	/**
-	 * Initialize all the things.
-	 */
-	'main'		=> require 'inc/class-blank-theme.php',
-	'assets'	=> require 'inc/frontend/class-blank-theme-frontend-assets.php',
-	'blocks'	=> require 'inc/frontend/class-blank-theme-frontend-blocks.php'
-);
+// If this file is called directly, abort.
+if ( ! defined( 'WPINC' ) ) {
+	die;
+}
 
-/**
- * Initialize Jetpack compatibility.
- */
-if ( class_exists( 'Jetpack' ) ) {	
-	$blank_theme->jetpack = require 'inc/plugins/jetpack/class-blank-theme-jetpack.php';
+# Load the autoloader.
+if ( is_readable( __DIR__ . '/vendor/autoload.php' ) ) {
+	require_once __DIR__ . '/vendor/autoload.php';
 }
 
 /**
- * Initialize TranslatePress - Multilingual compatibility.
+ * Initialize all the core classes of the theme
+ *
  */
-if (class_exists( 'TRP_Translate_Press' ) ) {
-	$blank_theme->translate_press = require 'inc/plugins/translatepress-multilingual/class-blank-theme-translatepress.php';
-}
-
-if ( is_admin() ) {
-	$blank_theme->admin = require 'inc/admin/class-blank-theme-admin.php';
+if ( class_exists( 'WritePoetry\\BlankTheme\\Init' ) ) {
+	Init::register_services();
 }
 
 
-// require 'inc/class-twenties-ajax.php';

@@ -22,6 +22,7 @@
 	},
 	"devDependencies": {
 		"@wordpress/browserslist-config": "^6.1.0",
+		"@wordpress/env": "^10.8.0",
 		"@wordpress/scripts": "^28.1.0",
 		"browserslist": "^4.23.1",
 		"copy-webpack-plugin": "^12.0.2",
@@ -33,6 +34,7 @@
 		"build": "wp-scripts build --webpack-src-dir=resources --output-path=assets",
 		"check-engines": "wp-scripts check-engines",
 		"check-licenses": "wp-scripts check-licenses",
+		"composer": "wp-env run cli --env-cwd=wp-content/themes/write-white composer",
 		"format": "wp-scripts format",
 		"lint:css": "wp-scripts lint-style",
 		"lint:js": "wp-scripts lint-js",
@@ -42,7 +44,8 @@
 		"plugin-zip": "wp-scripts plugin-zip",
 		"start": "wp-scripts start --webpack-src-dir=resources --output-path=assets",
 		"test:e2e": "wp-scripts test-e2e",
-		"test:unit": "wp-scripts test-unit-js"
+		"test:unit": "wp-scripts test-unit-js",
+		"wp-env": "wp-env"
 	},
 	"npmpackagejsonlint": {
 		"extends": "@wordpress/npm-package-json-lint-config",

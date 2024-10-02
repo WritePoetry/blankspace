@@ -2,20 +2,26 @@
 /**
  * Blank Theme Frontend Class
  *
- * @since    0.0.1
- * @package  Blank_Theme
+ * @package           WritePoetry/BlankTheme
+ * @subpackage        WritePoetry/BlankTheme/Assets
+ * @author            Giacomo Secchi <giacomo.secchi@gmail.com>
+ * @copyright         2023 Giacomo Secchi
+ * @license           GPL-2.0-or-later
+ * @since             0.2.0
  */
+
+namespace WritePoetry\BlankTheme;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! class_exists( 'Blank_Theme_Frontend_Assets' ) ) :
+if ( ! class_exists( 'Assets' ) ) :
 
 	/**
-	 * The main Blank_Theme class
+	 * The Assets class
 	 */
-	class Blank_Theme_Frontend_Assets {
+	class Assets {
         /**
          * The path to the assets directory.
          *
@@ -51,6 +57,7 @@ if ( ! class_exists( 'Blank_Theme_Frontend_Assets' ) ) :
 		 * @since 1.0
 		 */
 		public function __construct() {
+			var_dump( 'Assets' );
 			// Get the base assets path using a filter hook.
 			$this->assets_path = apply_filters( 'blank_theme_asset_path', 'assets' );
 
@@ -192,6 +199,10 @@ if ( ! class_exists( 'Blank_Theme_Frontend_Assets' ) ) :
 		 */
 		public function load_blocks_styles() {
 			global $blank_theme;
+			$config = new Config();
+
+			
+			
 
 			// Use glob to get the list of stylesheets files in the assets folder.
 			$blocks_path = get_theme_file_path( $this->blocks_assets_path );
@@ -325,7 +336,6 @@ if ( ! class_exists( 'Blank_Theme_Frontend_Assets' ) ) :
 	}
 endif;
 
-return new Blank_Theme_Frontend_Assets();
 
 
 
