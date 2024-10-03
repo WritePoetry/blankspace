@@ -12,7 +12,6 @@
 
 namespace WritePoetry\BlankTheme;
 
-
 /**
  * Main Init class
  */
@@ -23,8 +22,6 @@ final class Setup {
 	 *
 	 * @return array Full list of classes
 	 */
-	public function __construct()
-    {
-      
-    }
+	public function __construct() {
+	}
 }

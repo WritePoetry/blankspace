@@ -35,7 +35,7 @@ if ( ! class_exists( 'Twenties_Ajax' ) ) :
 		 */
 		public function localize_scripts() {
 			$params = array(
-				'ajaxurl' => admin_url( 'admin-ajax.php' ),
+				'ajaxurl'    => admin_url( 'admin-ajax.php' ),
 				'data_var_1' => 'value 1',
 				'data_var_2' => 'value 2',
 			);
@@ -47,10 +47,7 @@ if ( ! class_exists( 'Twenties_Ajax' ) ) :
 
 			echo get_bloginfo( 'title' );
 			die();
-
 		}
-
-
 	}
 
 endif;

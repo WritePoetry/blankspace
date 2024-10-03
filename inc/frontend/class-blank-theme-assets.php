@@ -22,32 +22,32 @@ if ( ! class_exists( 'Assets' ) ) :
 	 * The Assets class
 	 */
 	class Assets {
-        /**
-         * The path to the assets directory.
-         *
-         * @var string
-         */
+		/**
+		 * The path to the assets directory.
+		 *
+		 * @var string
+		 */
 		private $assets_path;
-		
+
 		/**
-         * The path to the css directory.
-         *
-         * @var string
-         */
+		 * The path to the css directory.
+		 *
+		 * @var string
+		 */
 		private $assets_js_path;
-		
+
 		/**
-         * The path to the js directory.
-         *
-         * @var string
-         */
+		 * The path to the js directory.
+		 *
+		 * @var string
+		 */
 		private $assets_css_path;
-		
+
 		/**
-         * The path to the blocks assets directory.
-         *
-         * @var string
-         */
+		 * The path to the blocks assets directory.
+		 *
+		 * @var string
+		 */
 		private $blocks_assets_path;
 
 
@@ -63,8 +63,8 @@ if ( ! class_exists( 'Assets' ) ) :
 
 			// This allows customization of the path through the 'blank_theme_blocks_styles_asset_path' filter.
 			$this->blocks_assets_path = apply_filters( 'blank_theme_blocks_styles_asset_path', $this->assets_path . '/css/blocks' );
-			
-			$this->assets_js_path = apply_filters( 'blank_theme_js_asset_path', $this->assets_path . '/js/' );
+
+			$this->assets_js_path  = apply_filters( 'blank_theme_js_asset_path', $this->assets_path . '/js/' );
 			$this->assets_css_path = apply_filters( 'blank_theme_css_asset_path', $this->assets_path . '/css/' );
 
 			add_action( 'init', array( $this, 'register_block_styles' ) );
@@ -74,11 +74,10 @@ if ( ! class_exists( 'Assets' ) ) :
 			add_action( 'after_setup_theme', array( $this, 'load_blocks_styles' ) );
 
 			add_action( 'wp_enqueue_scripts', array( $this, 'load_assets' ) );
-
 		}
-		
-		
-	
+
+
+
 		/**
 		 * Register each block style with its label and CSS style
 		 *
@@ -109,17 +108,17 @@ if ( ! class_exists( 'Assets' ) ) :
 				}
 			}
 		}
-		
-		
- 
+
+
+
 
 		public function get_block_styles() {
 			// Define block styles with their labels and CSS styles
 			$block_styles = array(
-				'core/list'	=> array(
+				'core/list'       => array(
 					array(
-						'name'			=> 'primary-disc-list',
-						'label'			=> __( 'Primary Color Disc', 'whritewhite' ),
+						'name'         => 'primary-disc-list',
+						'label'        => __( 'Primary Color Disc', 'whritewhite' ),
 						'inline_style' => '
 						ul.is-style-primary-disc-list {
 							list-style-type: disc;
@@ -130,8 +129,8 @@ if ( ! class_exists( 'Assets' ) ) :
 						}',
 					),
 					array(
-						'name'			=> 'secondary-disc-list',
-						'label'			=> __( 'Secondary Color Disc', 'whritewhite' ),
+						'name'         => 'secondary-disc-list',
+						'label'        => __( 'Secondary Color Disc', 'whritewhite' ),
 						'inline_style' => '
 						ul.is-style-secondary-disc-list {
 							list-style-type: disc;
@@ -142,8 +141,8 @@ if ( ! class_exists( 'Assets' ) ) :
 						}',
 					),
 					array(
-						'name'			=> 'checked',
-						'label'			=> __( 'Checked', 'whritewhite' ),
+						'name'         => 'checked',
+						'label'        => __( 'Checked', 'whritewhite' ),
 						'inline_style' => '
 						 
 						@counter-style check {
@@ -154,12 +153,12 @@ if ( ! class_exists( 'Assets' ) ) :
 						ul.is-style-checked { list-style: check; }',
 					),
 					array(
-						'name'			=> 'none',
-						'label'			=> __( 'None', 'whritewhite' ),
+						'name'         => 'none',
+						'label'        => __( 'None', 'whritewhite' ),
 						'inline_style' => 'ul.is-style-none { list-style: none; }',
-					)
+					),
 				),
-				'core/cover' => array(
+				'core/cover'      => array(
 					array(
 						'name'         => 'inline1',
 						'label'        => __( 'Inline1', 'whritewhite' ),
@@ -178,16 +177,15 @@ if ( ! class_exists( 'Assets' ) ) :
 						'label'        => __( 'Rounded Image', 'whritewhite' ),
 						'is_default'   => false,
 						'inline_style' => '  .is-style-rounded-image img { border-radius: var(--wp--custom--core-media-text--border-radius, 20px); }',
-					)
+					),
 				),
-				'core/group' => array(
+				'core/group'      => array(
 					'name'         => 'inline',
 					'label'        => __( 'Inline', 'whritewhite' ),
 					'is_default'   => true,
 					'inline_style' => '.wp-block-group.is-style-inline { display: inline-flex; }',
-				)
+				),
 			);
-
 
 			return $block_styles;
 		}
@@ -201,14 +199,11 @@ if ( ! class_exists( 'Assets' ) ) :
 			global $blank_theme;
 			$config = new Config();
 
-			
-			
-
 			// Use glob to get the list of stylesheets files in the assets folder.
 			$blocks_path = get_theme_file_path( $this->blocks_assets_path );
-		
-			$blocks_files =  glob( $blocks_path . '/*/*.css' );
-			
+
+			$blocks_files = glob( $blocks_path . '/*/*.css' );
+
 			/**
 			 * Load additional block styles.
 			 */
@@ -235,70 +230,66 @@ if ( ! class_exists( 'Assets' ) ) :
 				);
 			}
 		}
-		
-		
-				
+
+
+
 		/**
 		 * Load front-end assets.
 		 *
 		 * @param string $path The path to the assets.
 		 * @param string $assets_type The assets_type of assets to load ('css' or 'js').
-		 * 
+		 *
 		 * @return void
 		 */
 		public function enqueue_assets( $path, $stylesheet, $assets_type = 'css' ) {
 			global $blank_theme;
-			
+
 			// Get the asset files.
-			$asset_files = glob( get_parent_theme_file_path( $path ) . '*.asset.php'  );
+			$asset_files = glob( get_parent_theme_file_path( $path ) . '*.asset.php' );
 
 			// Check if it is a child theme.
 			if ( is_child_theme() ) {
 				$asset_files = array_merge( $asset_files, glob( get_theme_file_path( $path ) . '*.' . $assets_type ) );
- 			
-				 
-			
+
 			}
-			
-			 
-			foreach (  $asset_files as $asset_file ) {
+
+			foreach ( $asset_files as $asset_file ) {
 				// Load front-end assets.
 				$file_extension = pathinfo( $asset_file, PATHINFO_EXTENSION );
-				
+
 				if ( 'php' === $file_extension ) {
 					$asset = include $asset_file;
-					
+
 					$file_name = basename( $asset_file, '.asset.php' );
 				} else {
 					$file_name = basename( $asset_file, ".$assets_type" );
 				}
 
-				
 				$params = array(
 					"$stylesheet-$file_name",
 					get_theme_file_uri( "$path$file_name.$assets_type" ),
 					$asset['dependencies'],
 					$asset['version'],
-				);	
-				
-				if	( 'css' === $assets_type ) {
+				);
+
+				if ( 'css' === $assets_type ) {
 					// Enqueue theme stylesheet.
 					wp_enqueue_style( ...$params );
 				}
-				
-				if	( 'js' === $assets_type ) {
+
+				if ( 'js' === $assets_type ) {
 					// Pass the script $args as parameters.
-					$params[] = $args = array( 
+					$params[] = $args = array(
 						'in_footer' => true,
 						'strategy'  => 'defer',
 					);
-										
+
 					// Enqueue theme scripts.
-					wp_enqueue_script( ...$params );	
+					wp_enqueue_script( ...$params );
 				}
-			}			
+			}
 		}
- 
+
 
 
 		/**
@@ -308,26 +299,26 @@ if ( ! class_exists( 'Assets' ) ) :
 		 */
 		public function load_assets() {
 			global $blank_theme;
-			
+
 			// Get the theme stylesheet.
-			$theme_stylesheet = $blank_theme->name;	
+			$theme_stylesheet = $blank_theme->name;
 
 			// Check if it is a child theme.
 			if ( is_child_theme() ) {
 				// Get the child theme stylesheet.
 				$theme_stylesheet = get_stylesheet();
 			}
-			 
+
 			$this->enqueue_assets( $this->assets_js_path, $theme_stylesheet, 'js' );
 			$this->enqueue_assets( $this->assets_css_path, $theme_stylesheet );
-			
+
 			// Get the active plugins list.
 			$active_plugins = get_option( 'active_plugins' );
-			
+
 			// Check if there are active plugins.
-			foreach ( $active_plugins as $plugin ) {				
+			foreach ( $active_plugins as $plugin ) {
 				$plugin_dir = dirname( $plugin );
-				
+
 				// Load plugin assets.
 				$this->enqueue_assets( $this->assets_css_path . 'plugins/' . $plugin_dir . '/', $theme_stylesheet );
 				$this->enqueue_assets( $this->assets_js_path . 'plugins/' . $plugin_dir . '/', $theme_stylesheet, 'js' );
@@ -335,13 +326,3 @@ if ( ! class_exists( 'Assets' ) ) :
 		}
 	}
 endif;
-
-
-
-
-
-
-
-
-
-

@@ -24,7 +24,6 @@ if ( ! class_exists( 'Blank_Theme' ) ) :
 		 */
 		public function __construct() {
 			add_action( 'after_setup_theme', array( $this, 'setup' ) );
- 
 		}
 
 		/**
@@ -52,38 +51,33 @@ if ( ! class_exists( 'Blank_Theme' ) ) :
 			if ( ! 'writewhite' === wp_get_theme()->get( 'TextDomain' ) ) {
 				// Loads wp-content/themes/child-theme-name/languages/it_IT.mo.
 				load_theme_textdomain( 'writewhite', get_stylesheet_directory() . '/languages' );
-			
+
 				load_theme_textdomain( wp_get_theme()->get( 'TextDomain' ) );
 			}
 
 			// Add support for block styles.
 			add_theme_support( 'wp-block-styles' );
 
-
-
 			/**
 			 * Add support for editor styles.
 			 */
 			add_theme_support( 'editor-styles' );
-
 
 			/**
 			 * Enqueue editor styles.
 			 */
 			// add_editor_style( 'style.css' );
 
-
 			/**
 			 * Add support for responsive embedded content.
 			 */
 			add_theme_support( 'responsive-embeds' );
-			
+
 			/**
 			 * Add support for responsive embedded content.
 			 */
 			add_theme_support( 'post-thumbnails' );
- 		}
-	
+		}
 	}
 endif;
 

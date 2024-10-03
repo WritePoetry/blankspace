@@ -12,7 +12,6 @@
 
 namespace WritePoetry\BlankTheme;
 
-
 /**
  * Main Init class
  */
@@ -33,27 +32,26 @@ final class Init {
 
 		if ( is_admin() ) {
 			// array_push(
-			// 	$services,
-				
+			// $services,
+
 			// );
-			
+
 			// inc/admin/class-blank-theme-admin.php';
 		}
 
 		// if ( Base_Controller::is_woocommerce_activated() ) {
 			// array_push(
-			// 	$services,
-				
+			// $services,
+
 			// );
 		// }
-		
 
 		/**
 		 * Initialize Jetpack compatibility.
 		 */
-		if ( class_exists( 'Jetpack' ) ) {	
+		if ( class_exists( 'Jetpack' ) ) {
 			// array_push(
-			// 	$services,
+			// $services,
 			// );
 			// $blank_theme->jetpack = require 'inc/plugins/jetpack/class-blank-theme-jetpack.php';
 		}
@@ -61,11 +59,11 @@ final class Init {
 		/**
 		 * Initialize TranslatePress - Multilingual compatibility.
 		 */
-		if (class_exists( 'TRP_Translate_Press' ) ) {
+		if ( class_exists( 'TRP_Translate_Press' ) ) {
 			// array_push(
-			// 	$services,
+			// $services,
 			// );
-			//require 'inc/plugins/translatepress-multilingual/class-blank-theme-translatepress.php';
+			// require 'inc/plugins/translatepress-multilingual/class-blank-theme-translatepress.php';
 		}
 
 		return $services;
@@ -80,7 +78,7 @@ final class Init {
 	public static function register_services() {
 		foreach ( self::get_services() as $class ) {
 			$service = self::instantiate( $class );
-			
+
 			if ( method_exists( $service, 'register' ) ) {
 				$service->register();
 			}
