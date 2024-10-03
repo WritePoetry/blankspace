@@ -2,9 +2,15 @@
 /**
  * Blank Theme Jetpack Plugin Class
  *
- * @since    0.1.4
- * @package  Blank_Theme
+ * @package           WritePoetry/BlankTheme
+ * @subpackage        WritePoetry/BlankTheme/Blank_Theme_Jetpack
+ * @author            Giacomo Secchi <giacomo.secchi@gmail.com>
+ * @copyright         2023 Giacomo Secchi
+ * @license           GPL-2.0-or-later
+ * @since             0.2.0
  */
+
+namespace WritePoetry\BlankTheme;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -13,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 if ( ! class_exists( 'Blank_Theme_Jetpack' ) ) :
 
 	/**
-	 * The main Twenties class
+	 * The main Jetpack class
 	 */
 	class Blank_Theme_Jetpack {
 		const CUSTOM_POST_TYPE     = 'jetpack-portfolio';
@@ -27,6 +33,7 @@ if ( ! class_exists( 'Blank_Theme_Jetpack' ) ) :
 		 * @since 0.1.4
 		 */
 		public function __construct() {
+
 			add_filter( 'wpseo_exclude_from_sitemap_by_post_ids', array( $this, 'exclude_posts_from_xml_sitemaps' ), 10, 2 );
 			// add_action( 'init', array( $this, 'register_block_bindings' ) );
 
@@ -66,9 +73,6 @@ if ( ! class_exists( 'Blank_Theme_Jetpack' ) ) :
 					),
 				);
 			}
-
-			var_dump( 111111 );
-			die;
 
 			$query['post_type'] = 'jetpack-portfolio';
 
@@ -200,5 +204,3 @@ if ( ! class_exists( 'Blank_Theme_Jetpack' ) ) :
 		}
 	}
 endif;
-
-return new Blank_Theme_Jetpack();

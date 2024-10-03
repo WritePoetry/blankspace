@@ -25,45 +25,36 @@ final class Init {
 	public static function get_services() {
 
 		$services = array(
-			// Assets::class,
+			Assets::class,
 			Config::class,
-			// Setup::class,
+			Setup::class,
 		);
 
 		if ( is_admin() ) {
-			// array_push(
-			// $services,
-
-			// );
-
-			// inc/admin/class-blank-theme-admin.php';
+			array_push(
+				$services,
+				Admin::class
+			);
 		}
-
-		// if ( Base_Controller::is_woocommerce_activated() ) {
-			// array_push(
-			// $services,
-
-			// );
-		// }
 
 		/**
 		 * Initialize Jetpack compatibility.
 		 */
 		if ( class_exists( 'Jetpack' ) ) {
-			// array_push(
-			// $services,
-			// );
-			// $blank_theme->jetpack = require 'inc/plugins/jetpack/class-blank-theme-jetpack.php';
+			array_push(
+				$services,
+				Blank_Theme_Jetpack::class
+			);
 		}
 
 		/**
 		 * Initialize TranslatePress - Multilingual compatibility.
 		 */
 		if ( class_exists( 'TRP_Translate_Press' ) ) {
-			// array_push(
-			// $services,
-			// );
-			// require 'inc/plugins/translatepress-multilingual/class-blank-theme-translatepress.php';
+			array_push(
+				$services,
+				Blank_Theme_TranslatePress::class
+			);
 		}
 
 		return $services;

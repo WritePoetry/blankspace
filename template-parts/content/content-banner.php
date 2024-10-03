@@ -12,17 +12,21 @@
 ?>
 
 <?php
-    $args = array(
-        'name'      => $args,
-        'post_type' => 'page',
-    );
+	$args = array(
+		'name'      => $args,
+		'post_type' => 'page',
+	);
 
-    $query = new WP_Query( $args );
+	$query = new WP_Query( $args );
 
-    if ( $query->have_posts() ) :
-        while ( $query->have_posts() ) : $query->the_post(); ?>
-            <?php the_content(); ?>
-        <?php 
-        endwhile; 
-        wp_reset_postdata(); ?>
-    <?php endif; ?>
+	if ( $query->have_posts() ) :
+		while ( $query->have_posts() ) :
+			$query->the_post();
+			?>
+			<?php the_content(); ?>
+			<?php
+		endwhile;
+		wp_reset_postdata();
+		?>
+		<?php
+	endif;

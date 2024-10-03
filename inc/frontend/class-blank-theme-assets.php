@@ -57,7 +57,7 @@ if ( ! class_exists( 'Assets' ) ) :
 		 * @since 1.0
 		 */
 		public function __construct() {
-			var_dump( 'Assets' );
+
 			// Get the base assets path using a filter hook.
 			$this->assets_path = apply_filters( 'blank_theme_asset_path', 'assets' );
 
@@ -197,7 +197,6 @@ if ( ! class_exists( 'Assets' ) ) :
 		 */
 		public function load_blocks_styles() {
 			global $blank_theme;
-			$config = new Config();
 
 			// Use glob to get the list of stylesheets files in the assets folder.
 			$blocks_path = get_theme_file_path( $this->blocks_assets_path );
@@ -243,6 +242,8 @@ if ( ! class_exists( 'Assets' ) ) :
 		 */
 		public function enqueue_assets( $path, $stylesheet, $assets_type = 'css' ) {
 			global $blank_theme;
+			$theme_name    = Config::get_theme_name();
+			$theme_version = Config::get_theme_version();
 
 			// Get the asset files.
 			$asset_files = glob( get_parent_theme_file_path( $path ) . '*.asset.php' );

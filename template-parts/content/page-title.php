@@ -10,6 +10,6 @@
  */
 ?>
 
-<?php 
+<?php
 // Print the title of the page
-echo esc_html( get_the_title( $args ) ); ?>
+echo esc_html( get_the_title( $args ) );

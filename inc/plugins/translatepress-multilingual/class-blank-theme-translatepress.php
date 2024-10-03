@@ -1,10 +1,16 @@
 <?php
 /**
- * Twenties Child Class
+ * TranslatePress customizations Class
  *
- * @since    0.0.1
- * @package  Twenty_Twenty_Child
+ * @package           WritePoetry/BlankTheme
+ * @subpackage        WritePoetry/BlankTheme/Blank_Theme_Translatepress
+ * @author            Giacomo Secchi <giacomo.secchi@gmail.com>
+ * @copyright         2023 Giacomo Secchi
+ * @license           GPL-2.0-or-later
+ * @since             0.2.0
  */
+
+namespace WritePoetry\BlankTheme;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -68,7 +74,6 @@ if ( ! class_exists( 'Blank_Theme_Translatepress' ) ) :
 
 endif;
 
-return new Blank_Theme_TranslatePress();
 
 
 

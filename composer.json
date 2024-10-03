@@ -4,7 +4,10 @@
     "autoload": {
         "classmap": [
             "inc/"
-        ]
+        ],
+		"psr-4": {
+			"WritePoetry\\BlankTheme\\": "./inc"
+		}
     },
     "authors": [
         {

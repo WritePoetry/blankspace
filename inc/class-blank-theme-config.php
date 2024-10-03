@@ -26,7 +26,7 @@ class Config {
 	/**
 	 * Initializes the theme object.
 	 */
-	public function init() {
+	public static function init() {
 		self::$theme = wp_get_theme( self::get_theme_name() );
 	}
 

@@ -2,25 +2,31 @@
 /**
  * Blank Theme Admin Class
  *
- * @since    0.0.6
- * @package  Blank_Theme
+ * @package           WritePoetry/BlankTheme
+ * @subpackage        WritePoetry/BlankTheme/Admin
+ * @author            Giacomo Secchi <giacomo.secchi@gmail.com>
+ * @copyright         2023 Giacomo Secchi
+ * @license           GPL-2.0-or-later
+ * @since             0.2.0
  */
+
+namespace WritePoetry\BlankTheme;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! class_exists( 'Blank_Theme_Admin' ) ) :
+if ( ! class_exists( 'Admin' ) ) :
 
 	/**
-	 * The main Twenties class
+	 * The main Admin class
 	 */
-	class Blank_Theme_Admin extends Blank_Theme_Frontend_Assets {
+	class Admin extends Assets {
 
 		/**
 		 * Setup class.
 		 *
-		 * @since 0.0.6
+		 * @since 0.2.0
 		 */
 		public function __construct() {
 			add_action( 'after_setup_theme', array( $this, 'editor_styles' ) );
@@ -62,5 +68,3 @@ if ( ! class_exists( 'Blank_Theme_Admin' ) ) :
 		}
 	}
 endif;
-
-return new Blank_Theme_Admin();
