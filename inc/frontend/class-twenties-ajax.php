@@ -41,6 +41,17 @@ if ( ! class_exists( 'Twenties_Ajax' ) ) :
 			);
 
 			wp_localize_script( 'twenties-frontend-ajax', 'twenties_frontend_ajax_object', $params );
+			
+			// example in js file
+			// Get the pagination from the server
+			// let params = new URLSearchParams( {
+			// 	action:  'pagination'
+			// } );
+
+			// fetch( `${writewhite_frontend_ajax_object.ajaxurl}?${params}`)
+			// 	.then( ( response ) => response.text() )
+			// 	.then( data => console.log(data) )
+			// 	.catch( ( error ) => console.error( error ) );
 		}
 
 		public function my_ajax_pagination() {

@@ -25,10 +25,10 @@
 	<!-- wp:paragraph -->
 	<p>Write Poetry Plugin latest version:&nbsp;</p>
 	<!-- /wp:paragraph -->
-
-	 <!-- wp:html -->
-     <div class="api-fetch" data-api-url="https://api.github.com/repos/giacomo-secchi/write-poetry/releases/latest" data-api-link="html_url" data-api-text="tag_name"></div>
-        <!-- /wp:html -->
+	 
+	<!-- wp:write-poetry/api-fetcher {"url":" https://api.github.com/repos/WritePoetry/wordpress-plugin/releases/latest","text":"tag_name","link":"html_url"} -->
+	<span data-url="https://api.github.com/repos/WritePoetry/wordpress-plugin/releases/latest" data-link="html_url" data-text="tag_name" class="wp-block-write-poetry-api-fetcher">Fetching data…</span>
+	<!-- /wp:write-poetry/api-fetcher -->
 </div>
 <!-- /wp:group -->
     
@@ -52,9 +52,9 @@
 	<p>_Blank Theme latest version:&nbsp;</p>
 	<!-- /wp:paragraph -->
 
-	 <!-- wp:html -->
-     <div class="api-fetch" data-api-url="https://api.github.com/repos/giacomo-secchi/write-white/releases/latest" data-api-link="html_url" data-api-text="tag_name"></div>
-        <!-- /wp:html -->
+	<!-- wp:write-poetry/api-fetcher {"url":" https://api.github.com/repos/WritePoetry/_blank-theme/releases/latest","text":"tag_name","link":"html_url"} -->
+	<span data-url="https://api.github.com/repos/WritePoetry/_blank-theme/releases/latest" data-link="html_url" data-text="tag_name" class="wp-block-write-poetry-api-fetcher">Fetching data…</span>
+	<!-- /wp:write-poetry/api-fetcher -->
 </div>
 <!-- /wp:group -->
     
