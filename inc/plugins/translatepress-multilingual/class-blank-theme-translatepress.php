@@ -35,7 +35,7 @@ if ( ! class_exists( 'Blank_Theme_Translatepress' ) ) :
 
 		public function register_block_bindings() {
 			register_block_bindings_source(
-				'write-white/translatepress-language-switcher',
+				'_blank/translatepress-language-switcher',
 				array(
 					'label'              => __( 'Translatepress Language Switcher', 'writewhite' ),
 					'get_value_callback' => array( $this, 'custom_language_switcher' ),
