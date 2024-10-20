@@ -27,29 +27,35 @@ if ( ! class_exists( 'Assets' ) ) :
 		 *
 		 * @var string
 		 */
-		private $assets_path;
+		protected $assets_path;
 
 		/**
 		 * The path to the css directory.
 		 *
 		 * @var string
 		 */
-		private $assets_js_path;
+		protected $assets_js_path;
 
 		/**
 		 * The path to the js directory.
 		 *
 		 * @var string
 		 */
-		private $assets_css_path;
+		protected $assets_css_path;
 
 		/**
 		 * The path to the blocks assets directory.
 		 *
 		 * @var string
 		 */
-		private $blocks_assets_path;
+		protected $blocks_assets_path;
 
+		/**
+		 * The list of active plugins.
+		 *
+		 * @var array
+		 */
+		protected $active_plugins;
 
 		/**
 		 * Setup class.
@@ -66,213 +72,77 @@ if ( ! class_exists( 'Assets' ) ) :
 
 			$this->assets_js_path  = apply_filters( 'blank_theme_js_asset_path', $this->assets_path . '/js/' );
 			$this->assets_css_path = apply_filters( 'blank_theme_css_asset_path', $this->assets_path . '/css/' );
-
-			add_action( 'init', array( $this, 'register_block_styles' ) );
-
-			add_filter( 'blank_theme_register_block_style', array( $this, 'get_block_styles' ) );
-
-			add_action( 'after_setup_theme', array( $this, 'load_blocks_styles' ) );
-
-			add_action( 'wp_enqueue_scripts', array( $this, 'load_assets' ) );
+		
+			// Get the active plugins list.
+			$this->active_plugins = get_option( 'active_plugins' );
 		}
-
-
-
+		
 		/**
-		 * Register each block style with its label and CSS style
+		 * Enqueue JavaScript assets.
+		 *
+		 * @param array  $asset_files The asset files to enqueue.
+		 * @param string $handle      The handle for the enqueued script.
+		 */
+		public function enqueue_js_assets( $asset_files, $handle ) {
+			$this->enqueue_assets( $asset_files, $handle, 'js' );
+		}
+		
+		/**
+		 * Enqueue CSS assets.
+		 *
+		 * @param array  $asset_files The asset files to enqueue.
+		 * @param string $handle      The handle for the enqueued stylesheet.
+		 */
+		public function enqueue_css_assets( $asset_files, $handle ) {
+			$this->enqueue_assets( $asset_files, $handle, 'css' );
+		}
+		
+		
+		/**
+		 * Load theme related assets.
 		 *
 		 * @return void
 		 */
-		public function register_block_styles() {
-			// Check if it is possible to use the `register_block_style` function.
-			if ( function_exists( 'register_block_style' ) ) {
-				/**
-				 *   Add new Block Styles just using the `writepoetry_register_block_style` hook. An example here: [Add new Blocks Styles via filter](https://github.com/giacomo-secchi/write-poetry/blob/f39ad41e6ac3a9b5c8ec6f2467ea44b7055ef8df/themes/twentytwenty-child/functions.php#L41).
-				 */
-				foreach ( apply_filters( 'blank_theme_register_block_style', array() ) as $block_name => $style_properties ) {
+		public function load_theme_assets( $js_files, $css_files, $theme_name) {
 
-					/**
-					 * Check for the presence of an inner array key
-					 * to correctly determine whether a particular element in the `$block_styles` array
-					 * is a single block style definition or an array of block style definitions.
-					 */
-					if ( isset( $style_properties['name'] ) ) {
-						// Register each block style with its label and CSS styles.
-						register_block_style( $block_name, $style_properties );
-					} else {
-						foreach ( $style_properties as $style ) {
-							// Register the block style.
-							register_block_style( $block_name, $style );
-						}
-					}
-				}
-			}
+			$this->enqueue_js_assets( $js_files, $theme_name );
+			$this->enqueue_css_assets( $css_files, $theme_name );
 		}
-
-
-
-
-		public function get_block_styles() {
-			// Define block styles with their labels and CSS styles
-			$block_styles = array(
-				'core/list'       => array(
-					array(
-						'name'         => 'primary-disc-list',
-						'label'        => __( 'Primary Color Disc', 'whritewhite' ),
-						'inline_style' => '
-						ul.is-style-primary-disc-list {
-							list-style-type: disc;
-						}
-
-						ul.is-style-primary-disc-list li::marker {
-							color: var(--wp--preset--color--primary);
-						}',
-					),
-					array(
-						'name'         => 'secondary-disc-list',
-						'label'        => __( 'Secondary Color Disc', 'whritewhite' ),
-						'inline_style' => '
-						ul.is-style-secondary-disc-list {
-							list-style-type: disc;
-						}
-
-						ul.is-style-secondary-disc-list li::marker {
-							color: var(--wp--preset--color--secondary);
-						}',
-					),
-					array(
-						'name'         => 'checked',
-						'label'        => __( 'Checked', 'whritewhite' ),
-						'inline_style' => '
-						 
-						@counter-style check {
-							system: cyclic;
-							symbols: "✅";
-							suffix: " ";
-						}
-						ul.is-style-checked { list-style: check; }',
-					),
-					array(
-						'name'         => 'none',
-						'label'        => __( 'None', 'whritewhite' ),
-						'inline_style' => 'ul.is-style-none { list-style: none; }',
-					),
-				),
-				'core/cover'      => array(
-					array(
-						'name'         => 'inline1',
-						'label'        => __( 'Inline1', 'whritewhite' ),
-						'is_default'   => true,
-						'inline_style' => '  .is-style-inline1 { display: block; }',
-					),
-					array(
-						'name'         => 'inline2',
-						'label'        => __( 'Inline2', 'whritewhite' ),
-						'inline_style' => '  .is-style-inline2 { display: inline-flex; }',
-					),
-				),
-				'core/media-text' => array(
-					array(
-						'name'         => 'rounded-image',
-						'label'        => __( 'Rounded Image', 'whritewhite' ),
-						'is_default'   => false,
-						'inline_style' => '  .is-style-rounded-image img { border-radius: var(--wp--custom--core-media-text--border-radius, 20px); }',
-					),
-				),
-				'core/group'      => array(
-					'name'         => 'inline',
-					'label'        => __( 'Inline', 'whritewhite' ),
-					'is_default'   => true,
-					'inline_style' => '.wp-block-group.is-style-inline { display: inline-flex; }',
-				),
-			);
-
-			return $block_styles;
-		}
-
-		/**
-		 * Enqueues a stylesheet for a specific block.
-		 *
-		 * @return void
-		 */
-		public function load_blocks_styles() {
-			global $blank_theme;
-
-			// Use glob to get the list of stylesheets files in the assets folder.
-			$blocks_path = get_theme_file_path( $this->blocks_assets_path );
-
-			$blocks_files = glob( $blocks_path . '/*/*.css' );
-
-			/**
-			 * Load additional block styles.
-			 */
-			foreach ( $blocks_files as $block_path ) {
-
-				$block_info = pathinfo( $block_path );
-
-				// Add blocks styles.
-				// Reconstruct block name core/site-title.
-				$block_name = basename( $block_info['dirname'] ) . '/' . $block_info['filename'];
-
-				// Replace slash with hyphen for filename.
-				$block_slug = str_replace( '/', '-', $block_name );
-
-				// Enqueue asset.
-				wp_enqueue_block_style(
-					$block_name,
-					array(
-						'handle' => "$blank_theme->name-block-$block_slug",
-						'src'    => get_theme_file_uri( "$this->assets_path/$block_name.css" ),
-						'path'   => wp_normalize_path( $block_path ),
-						'ver'    => $blank_theme->version,
-					)
-				);
-			}
-		}
-
-
-
+	   
+ 
 		/**
 		 * Load front-end assets.
 		 *
 		 * @param string $path The path to the assets.
-		 * @param string $assets_type The assets_type of assets to load ('css' or 'js').
+		 * @param string $file_extension The file_extension of assets to load ('css' or 'js').
 		 *
 		 * @return void
 		 */
-		public function enqueue_assets( $path, $stylesheet, $assets_type = 'css' ) {
-			global $blank_theme;
-			$theme_name    = Config::get_theme_name();
-			$theme_version = Config::get_theme_version();
-
-			// Get the asset files.
-			$asset_files = glob( get_parent_theme_file_path( $path ) . '*.asset.php' );
-
-			// Check if it is a child theme.
-			if ( is_child_theme() ) {
-				$asset_files = array_merge( $asset_files, glob( get_theme_file_path( $path ) . '*.' . $assets_type ) );
-
-			}
-
+		private function enqueue_assets( $asset_files, $stylesheet, $assets_type = 'css' ) {
 			foreach ( $asset_files as $asset_file ) {
-				// Load front-end assets.
+				// Get file extension.
 				$file_extension = pathinfo( $asset_file, PATHINFO_EXTENSION );
-
+				
 				if ( 'php' === $file_extension ) {
 					$asset = include $asset_file;
 
 					$file_name = basename( $asset_file, '.asset.php' );
 				} else {
-					$file_name = basename( $asset_file, ".$assets_type" );
+					$file_name = basename( $asset_file, ".$file_extension" );
 				}
 
+
+				$handle = "$stylesheet-$file_name";
+				
+				$src = get_theme_file_uri( "$this->assets_css_path$file_name.$assets_type" );
+
 				$params = array(
-					"$stylesheet-$file_name",
-					get_theme_file_uri( "$path$file_name.$assets_type" ),
+					$handle,
+					$src,
 					$asset['dependencies'],
 					$asset['version'],
 				);
-
+				
 				if ( 'css' === $assets_type ) {
 					// Enqueue theme stylesheet.
 					wp_enqueue_style( ...$params );
@@ -290,40 +160,27 @@ if ( ! class_exists( 'Assets' ) ) :
 				}
 			}
 		}
-
-
-
+		
 		/**
-		 * Load front-end assets.
+		 * Load plugin related assets.
 		 *
 		 * @return void
 		 */
-		public function load_assets() {
-			global $blank_theme;
-
-			// Get the theme stylesheet.
-			$theme_stylesheet = $blank_theme->name;
-
-			// Check if it is a child theme.
-			if ( is_child_theme() ) {
-				// Get the child theme stylesheet.
-				$theme_stylesheet = get_stylesheet();
-			}
-
-			$this->enqueue_assets( $this->assets_js_path, $theme_stylesheet, 'js' );
-			$this->enqueue_assets( $this->assets_css_path, $theme_stylesheet );
-
-			// Get the active plugins list.
-			$active_plugins = get_option( 'active_plugins' );
-
+		public function load_plugins_assets( $theme_name ) {
 			// Check if there are active plugins.
-			foreach ( $active_plugins as $plugin ) {
+			foreach ( $this->active_plugins as $plugin ) {
 				$plugin_dir = dirname( $plugin );
-
-				// Load plugin assets.
-				$this->enqueue_assets( $this->assets_css_path . 'plugins/' . $plugin_dir . '/', $theme_stylesheet );
-				$this->enqueue_assets( $this->assets_js_path . 'plugins/' . $plugin_dir . '/', $theme_stylesheet, 'js' );
+				$plugin_path ='plugins/' . $plugin_dir . '/';
+				$css_path = $this->assets_css_path . $plugin_path;
+				$js_path = $this->assets_js_path . $plugin_path;
+				
+			
+				
+				// Load plugin related assets.
+				$this->enqueue_css_assets( $css_path, $theme_name );
+				$this->enqueue_js_assets( $js_path, $theme_name );
 			}
+
 		}
 	}
 endif;
