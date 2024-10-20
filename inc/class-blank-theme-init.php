@@ -25,9 +25,11 @@ final class Init {
 	public static function get_services() {
 
 		$services = array(
-			Assets::class,
 			Config::class,
 			Setup::class,
+			Main_Theme_Assets::class,
+			Block_Bindings_API::class,
+			Block_Styles::class,
 		);
 
 		if ( is_admin() ) {
@@ -54,6 +56,13 @@ final class Init {
 			array_push(
 				$services,
 				Blank_Theme_TranslatePress::class
+			);
+		}
+		
+		if ( is_child_theme() ) {
+			array_push(
+				$services,
+				Child_Theme_Assets::class
 			);
 		}
 

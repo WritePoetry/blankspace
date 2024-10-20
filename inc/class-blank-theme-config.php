@@ -54,4 +54,22 @@ class Config {
 	public static function get_theme_name() {
 		return is_child_theme() ? get_stylesheet() : get_template();
 	}
+	
+	/**
+	 * Get the name of the parent active theme name.
+	 *
+	 * @return string Active theme name (stylesheet for child theme or template).
+	 */
+	public static function get_parent_theme_name() {
+		return is_child_theme() ? get_template()  : null;
+	}
+ 
+	/**
+	 * Get the name of the parent active theme name.
+	 *
+	 * @return string Active theme name (stylesheet for child theme or template).
+	 */
+	public static function get_parent_theme_version() {
+		return is_child_theme() ?  wp_get_theme( get_template() )->get( 'Version' )  : null;
+	}
 }
