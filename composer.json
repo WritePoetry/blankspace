@@ -16,7 +16,7 @@
     ],
     "scripts": {
 		"check-cs": [
-			"@php ./vendor/squizlabs/php_codesniffer/bin/phpcs -ps ./inc/class-blank-theme-config.php"
+			"@php ./vendor/squizlabs/php_codesniffer/bin/phpcs -ps . "
 		],
 		"fix-cs": [
 			"@php ./vendor/squizlabs/php_codesniffer/bin/phpcbf --report=summary,source"
