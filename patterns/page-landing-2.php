@@ -1,7 +1,7 @@
 <?php
 /**
  * Title: Landing page 2
- * Slug: write-white/page-landing-2
+ * Slug: _blank/page-landing-2
  * Categories: twentytwentyfour_page
  * Keywords: starter
  * Block Types: core/post-content

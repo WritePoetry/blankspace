@@ -1,7 +1,7 @@
 <?php
 /**
  * Title: Brevo Newsletter Subscribe
- * Slug: write-white/newsletter-subscribe-brevo
+ * Slug: _blank/newsletter-subscribe-brevo
  * Categories: call-to-action
  * Keywords: newsletter, subscribe, button
  */

@@ -1,7 +1,7 @@
 <?php
 /**
  * Title: Blog Home
- * Slug: write-white/blog-home
+ * Slug: _blank/blog-home
  * Categories: featured
  * Keywords: Hero
  * Block Types: core/buttons

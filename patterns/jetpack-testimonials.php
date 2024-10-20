@@ -1,7 +1,7 @@
 <?php
 /**
  * Title: Testimonial custom post type 
- * Slug: write-white/jetpack-testimonials
+ * Slug: _blank/jetpack-testimonials
  * Categories: call-to-action
  * Keywords: newsletter, subscribe, button
  */

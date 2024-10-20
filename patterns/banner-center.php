@@ -1,7 +1,7 @@
 <?php
 /**
  * Title: Banner with text centered
- * Slug: write-white/banner-center
+ * Slug: _blank/banner-center
  * Categories: banner, call-to-action, featured
  * Viewport width: 1400
  */

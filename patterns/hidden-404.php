@@ -1,7 +1,7 @@
 <?php
 /**
  * Title: 404
- * Slug: write-white/hidden-404
+ * Slug: _blank/hidden-404
  * Inserter: no
  */
 ?>

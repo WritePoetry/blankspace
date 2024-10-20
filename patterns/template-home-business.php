@@ -8,6 +8,6 @@
  */
 ?>
 
-<!-- wp:pattern {"slug":"write-white/banner-center"} /-->
-<!-- wp:pattern {"slug":"write-white/banner-text-left"} /-->
-<!-- wp:pattern {"slug":"write-white/banner-text-right"} /-->
+<!-- wp:pattern {"slug":"_blank/banner-center"} /-->
+<!-- wp:pattern {"slug":"_blank/banner-text-left"} /-->
+<!-- wp:pattern {"slug":"_blank/banner-text-right"} /-->

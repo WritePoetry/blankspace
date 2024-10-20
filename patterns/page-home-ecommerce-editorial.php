@@ -1,7 +1,7 @@
 <?php
 /**
  * Title: Business ecommerce home
- * Slug: write-white/page-home-ecommerce
+ * Slug: _blank/page-home-ecommerce
  * Categories: twentytwentyfour_page
  * Keywords: starter
  * Block Types: core/post-content

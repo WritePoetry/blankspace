@@ -1,7 +1,7 @@
 <?php
 /**
  * Title: Banner with text on the right
- * Slug: write-white/banner-text-right
+ * Slug: _blank/banner-text-right
  * Categories: banner, call-to-action, featured
  * Viewport width: 1400
  */
@@ -37,7 +37,7 @@
 
         <!-- wp:buttons -->
         <div class="wp-block-buttons"><!-- wp:button -->
-        <div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="https://github.com/giacomo-secchi/write-white/releases/latest">Dowload now →</a></div>
+        <div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="https://github.com/WritePoetry/_blank-theme/releases/latest">Dowload now →</a></div>
         <!-- /wp:button --></div>
         <!-- /wp:buttons --></div>
         <!-- /wp:column --></div>

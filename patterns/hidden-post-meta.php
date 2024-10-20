@@ -1,7 +1,7 @@
 <?php
 /**
  * Title: Post meta
- * Slug: write-white/hidden-post-meta
+ * Slug: _blank/hidden-post-meta
  * Inserter: no
  */
 ?>

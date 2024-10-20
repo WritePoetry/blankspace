@@ -1,7 +1,7 @@
 <?php
 /**
  * Title: Jetpack Newsletter Subscribe
- * Slug: write-white/newsletter-subscribe-jetpack
+ * Slug: _blank/newsletter-subscribe-jetpack
  * Categories: call-to-action
  * Keywords: newsletter, subscribe, button
  */

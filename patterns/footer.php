@@ -2,7 +2,7 @@
 
 /**
  * Title: Footer with copyright
- * Slug: write-white/footer
+ * Slug: _blank/footer
  * Categories: footer
  * Block Types: core/template-part/footer
  * Keywords: newsletter, subscribe, button
@@ -16,7 +16,7 @@
 		<!-- wp:columns -->
 		<div class="wp-block-columns"><!-- wp:column {"width":"33.33%"} -->
 			<div class="wp-block-column" style="flex-basis:33.33%">
-    			<!-- wp:pattern {"slug":"write-white/branding"} /-->
+    			<!-- wp:pattern {"slug":"_blank/branding"} /-->
 
 				<!-- wp:paragraph -->
 				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed est arcu, iaculis eu augue et, auctor bibendum odio. Maecenas ultrices nisl et nibh imperdiet lacinia. Phasellus scelerisque metus velit, nec pellentesque tellus tempus semper.</p>
@@ -26,7 +26,7 @@
 
 			<!-- wp:column {"width":"66.66%"} -->
 			<div class="wp-block-column" style="flex-basis:66.66%">
-				<!-- wp:pattern {"slug":"write-white/newsletter-subscribe-jetpack"} /-->
+				<!-- wp:pattern {"slug":"_blank/newsletter-subscribe-jetpack"} /-->
 
 
 				<!-- wp:columns -->
@@ -114,4 +114,4 @@
 </div>
 <!-- /wp:group -->
 
-<!-- wp:pattern {"slug":"write-white/copyright"} /-->
+<!-- wp:pattern {"slug":"_blank/copyright"} /-->

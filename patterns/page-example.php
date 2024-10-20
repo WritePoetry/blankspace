@@ -1,7 +1,7 @@
 <?php
 /**
  * Title: Page example
- * Slug: write-white/page-example
+ * Slug: _blank/page-example
  * Categories: twentytwentyfour_page
  * Keywords: starter
  * Block Types: core/post-content
@@ -10,5 +10,5 @@
  */
 ?>
 
-<!-- wp:pattern {"slug":"write-white/layout-example"} /-->
+<!-- wp:pattern {"slug":"_blank/layout-example"} /-->
 

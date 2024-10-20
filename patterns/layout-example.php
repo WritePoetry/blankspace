@@ -1,7 +1,7 @@
 <?php
 /**
  * Title: Layout Example
- * Slug: write-white/layout-example
+ * Slug: _blank/layout-example
  * Template Types: page-blank
  * Categories: query
  * Keywords: post meta

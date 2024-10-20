@@ -1,7 +1,7 @@
 <?php
 /**
  * Title: Main navigation
- * Slug: write-white/main-navigation
+ * Slug: _blank/main-navigation
  */
 ?>
 
