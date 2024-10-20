@@ -46,7 +46,7 @@ if ( ! class_exists( 'Block_Styles' ) ) :
 			// Check if it is possible to use the `register_block_style` function.
 			if ( function_exists( 'register_block_style' ) ) {
 				/**
-				 *   Add new Block Styles just using the `writepoetry_register_block_style` hook. An example here: [Add new Blocks Styles via filter](https://github.com/giacomo-secchi/write-poetry/blob/f39ad41e6ac3a9b5c8ec6f2467ea44b7055ef8df/themes/twentytwenty-child/functions.php#L41).
+				 *   Add new Block Styles just using the `writepoetry_register_block_style` hook. An example here: [Add new Blocks Styles via filter](https://github.com/WritePoetry/_blank-theme/blob/f39ad41e6ac3a9b5c8ec6f2467ea44b7055ef8df/themes/twentytwenty-child/functions.php#L41).
 				 */
 				foreach ( apply_filters( 'blank_theme_register_block_style', array() ) as $block_name => $style_properties ) {
 
