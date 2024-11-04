@@ -25,7 +25,6 @@ final class Init {
 	public static function get_services() {
 
 		$services = array(
-			Config::class,
 			Setup::class,
 			Main_Theme_Assets::class,
 			Block_Bindings_API::class,
@@ -62,6 +61,7 @@ final class Init {
 		if ( is_child_theme() ) {
 			array_push(
 				$services,
+				Child_Block_Styles::class,
 				Child_Theme_Assets::class
 			);
 		}

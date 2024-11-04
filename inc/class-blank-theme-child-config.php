@@ -3,7 +3,7 @@
  * Main Init Class
  *
  * @package           WritePoetry/BlankTheme
- * @subpackage        WritePoetry/BlankTheme/Theme_Config
+ * @subpackage        WritePoetry/BlankTheme/Config
  * @author            Giacomo Secchi <giacomo.secchi@gmail.com>
  * @copyright         2023 Giacomo Secchi
  * @license           GPL-2.0-or-later
@@ -15,19 +15,24 @@ namespace WritePoetry\BlankTheme;
 /**
  * Main Init class for theme configuration
  */
-class Theme_Config {
+class Child_Theme_Config extends Theme_Config {
 	/**
 	 * Stores the current active theme object.
 	 *
 	 * @var WP_Theme
 	 */
 	private static $theme;
+	
+	
+	public static $theme_name;
+
 
 	/**
 	 * Initializes the theme object.
 	 */
 	public static function init() {
 		self::$theme = wp_get_theme( self::get_theme_name() );
+		self::$theme_name = self::get_theme_name();
 	}
 
 	/**
@@ -40,6 +45,7 @@ class Theme_Config {
 		if ( ! self::$theme ) {
 			self::init();
 		}
+		
 
 		$theme_version = self::$theme->get( 'Version' );
 
@@ -52,7 +58,7 @@ class Theme_Config {
 	 * @return string Active theme name (stylesheet for child theme or template).
 	 */
 	public static function get_theme_name() {
-		return get_template();
+		return get_stylesheet();
 	}
 	
  
