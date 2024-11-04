@@ -35,7 +35,7 @@ if ( ! class_exists( 'Blank_Theme_Translatepress' ) ) :
 
 		public function register_block_bindings() {
 			register_block_bindings_source(
-				'_blank/translatepress-language-switcher',
+				'blank/translatepress-language-switcher',
 				array(
 					'label'              => __( 'Translatepress Language Switcher', 'writewhite' ),
 					'get_value_callback' => array( $this, 'custom_language_switcher' ),
@@ -50,7 +50,7 @@ if ( ! class_exists( 'Blank_Theme_Translatepress' ) ) :
 		 */
 		public function custom_language_switcher() {
 			ob_start();
-			?>
+ 			?>
 			<?php $array = trp_custom_language_switcher(); ?>
 			<!-- IMPORTANT! You need to have data-no-translation on the wrapper with the links or TranslatePress will automatically translate them in a secondary language. -->    
 			<ul data-no-translation>
