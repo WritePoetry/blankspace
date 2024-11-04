@@ -20,3 +20,11 @@ textarea {
 .basic-header-sticky {
 	mix-blend-mode: difference;
 }
+
+.has-no-root-padding-top {
+    margin-top: calc(-1 * var(--wp--style--root--padding-top));
+}
+
+.has-no-root-padding-bottom {
+    margin-bottom: calc(-1 * var(--wp--style--root--padding-bottom));
+}
