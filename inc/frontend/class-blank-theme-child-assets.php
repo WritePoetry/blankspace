@@ -58,11 +58,12 @@ if ( ! class_exists( 'Child_Theme_Assets' ) ) :
 		
 		private function get_files( $file_path, $file_type ) {
 			// Get the asset files from the child theme.
-			$child_asset_files = glob( get_theme_file_path( $file_path ) . '*.asset.php' );			
+			$child_asset_files = $this->get_dependencies_files_from_folder( get_theme_file_path( $file_path ) );	
 
 			// Get the final files from the child theme.
-			$child_files = glob( get_theme_file_path( $this->assets_css_path ) . "*.$file_type" );
-
+			$child_files = $this->get_files_from_folder( 
+				get_theme_file_path( $this->assets_css_path ) . "*.$file_type" 
+			);
 			
 			// Filter CSS files to include only those without a corresponding .asset.php file.
 			foreach ( $child_files as $child_file ) {

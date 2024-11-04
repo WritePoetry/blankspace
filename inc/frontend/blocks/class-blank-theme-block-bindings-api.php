@@ -41,11 +41,11 @@ if ( ! class_exists( 'Block_Bindings_API' ) ) :
 		public function register_block_bindings() {
 
 			$sources = array(
-				'_blank/copyright'   => array(
+				'blank/copyright'   => array(
 					'label'              => __( 'Copyright', 'whritewhite' ),
 					'get_value_callback' => array( $this, 'copyright_binding' ),
 				),
-				'_blank/admin-email' => array(
+				'blank/admin-email' => array(
 					'label'              => __( 'Admin Email Address', 'whritewhite' ),
 					'get_value_callback' => array( $this, 'email_address_binding' ),
 				),

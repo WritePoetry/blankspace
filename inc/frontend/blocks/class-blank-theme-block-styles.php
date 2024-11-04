@@ -22,6 +22,10 @@ if ( ! class_exists( 'Block_Styles' ) ) :
 	 * The Assets class
 	 */
 	class Block_Styles extends Assets {
+		
+		private $theme_name;
+		
+		private $theme_version;
 
 		/**
 		 * Setup class.
@@ -30,6 +34,11 @@ if ( ! class_exists( 'Block_Styles' ) ) :
 		 */
 		public function __construct() {
 			parent::__construct();
+			
+			$this->theme_name = Theme_Config::get_theme_name();
+			$this->theme_version = Theme_Config::get_theme_version();
+
+			
 			add_action( 'init', array( $this, 'register_block_styles' ) );
 
 			add_filter( 'blank_theme_register_block_style', array( $this, 'get_block_styles' ) );
@@ -156,8 +165,8 @@ if ( ! class_exists( 'Block_Styles' ) ) :
 		/**
 		 * Load additional block styles.
 		 */
-		private function load_additional_block_styles( $blocks_files, $theme_name, $theme_version ) {
-			
+		public function load_additional_block_styles( $blocks_files, $theme_name, $theme_version ) {
+
 			foreach ( $blocks_files as $block_path ) {
 
 				$block_info = pathinfo( $block_path );
@@ -181,6 +190,14 @@ if ( ! class_exists( 'Block_Styles' ) ) :
 				);
 			}
 		}
+	
+	
+		
+		public function get_blocks_path() {
+			// Get the list of stylesheets files in the assets folder. 			
+			return get_template_directory() . '/' . $this->blocks_assets_path;
+		}
+
 		
 		/**
 		 * Enqueues a stylesheet for a specific block.
@@ -188,28 +205,13 @@ if ( ! class_exists( 'Block_Styles' ) ) :
 		 * @return void
 		 */
 		public function load_blocks_styles() {
-			$theme_name = Config::get_theme_name();
-			$theme_version = Config::get_theme_version();
-			
-			$seach_pattern = is_rtl() ? '/*/*-rtl.css' : '/*/*.css';
-			
-			// Use glob to get the list of stylesheets files in the assets folder.
-			$blocks_path = get_theme_file_path( $this->blocks_assets_path );
-			$blocks_files = glob( $blocks_path . $seach_pattern );
-			
-		 
-			// Load block styles of the active theme
-			$this->load_additional_block_styles( $blocks_files, $theme_name, $theme_version );
 
-	 
-			// Check if a child theme is active
-			if ( is_child_theme() ) {
-				$parent_theme_blocks_path = get_template_directory() . '/' . $this->blocks_assets_path;
-				$parent_theme_blocks_files = glob( $parent_theme_blocks_path . $seach_pattern );
-		 
-				// Load block styles of the parent theme
-				$this->load_additional_block_styles( $parent_theme_blocks_files, get_template(), Config::get_parent_theme_version() );
-			}			
+			$blocks_files = $this->filter_rtl_files( 
+				$this->get_css_files_from_folder( $this->get_blocks_path())
+			);
+
+			// Load block styles of the active theme
+			$this->load_additional_block_styles( $blocks_files, $this->theme_name, $this->theme_version );
 		}
 	}
 endif;

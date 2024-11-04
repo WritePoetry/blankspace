@@ -49,6 +49,14 @@ if ( ! class_exists( 'Assets' ) ) :
 		 * @var string
 		 */
 		protected $blocks_assets_path;
+		
+		
+		/**
+		 * The path to the plugins assets directory.
+		 *
+		 * @var string
+		 */
+		protected $plugins_assets_path;
 
 		/**
 		 * The list of active plugins.
@@ -56,6 +64,7 @@ if ( ! class_exists( 'Assets' ) ) :
 		 * @var array
 		 */
 		protected $active_plugins;
+		
 
 		/**
 		 * Setup class.
@@ -69,12 +78,21 @@ if ( ! class_exists( 'Assets' ) ) :
 
 			// This allows customization of the path through the 'blank_theme_blocks_styles_asset_path' filter.
 			$this->blocks_assets_path = apply_filters( 'blank_theme_blocks_styles_asset_path', $this->assets_path . '/css/blocks' );
+			$this->plugins_assets_path = apply_filters( 'blank_theme_plugins_styles_asset_path', $this->assets_path . '/css/plugins' );
 
 			$this->assets_js_path  = apply_filters( 'blank_theme_js_asset_path', $this->assets_path . '/js/' );
 			$this->assets_css_path = apply_filters( 'blank_theme_css_asset_path', $this->assets_path . '/css/' );
 		
 			// Get the active plugins list.
 			$this->active_plugins = get_option( 'active_plugins' );
+		}
+		
+			
+		public function filter_rtl_files( $all_files) {
+			// Use array_filter to conditionally return the right files based on is_rtl()
+			return array_filter( $all_files, function ( $file ) {
+				return strpos( $file, '-rtl.css' ) === ( is_rtl() ? 0 : false );
+			} );
 		}
 		
 		/**
@@ -162,11 +180,57 @@ if ( ! class_exists( 'Assets' ) ) :
 		}
 		
 		/**
+		 * Get CSS files from a folder.
+		 *
+		 * @param string $file_path The path to the folder.
+		 *
+		 * @return mixed The list of files.
+		 */
+		public function get_css_files_from_folder( $file_path ) {
+			$search_pattern = '*/*.css';
+
+			return $this->get_files_from_folder( $file_path, $search_pattern );
+		}
+		
+		/**
+		 * Get dependencies files from a folder.
+		 *
+		 * @param string $file_path The path to the folder.
+		 *
+		 * @return mixed The list of files.
+		 */
+		public function get_dependencies_files_from_folder( $file_path ) {
+			$search_pattern = '*.asset.php';
+
+			
+			return $this->get_files_from_folder( $file_path, $search_pattern );
+		}
+			
+		/**
+		 * Get files from a folder.
+		 *
+		 * @param string $file_path The path to the folder.
+		 * @param string $search_pattern The search pattern.
+		 *
+		 * @return array The list of files.
+		 */
+		public function get_files_from_folder( $file_path, $search_pattern = '*.txt' ) {
+			// check if the path is not ending with a slash.
+			$pattern = rtrim( $file_path, '/' ) . '/' . $search_pattern;
+
+			// Get files.
+			return glob( $pattern );
+		}
+		
+		/**
 		 * Load plugin related assets.
 		 *
 		 * @return void
 		 */
 		public function load_plugins_assets( $theme_name ) {
+			
+			var_dump($this->get_css_files_from_folder( get_parent_theme_file_path($this->assets_css_path )));
+ 			
 			// Check if there are active plugins.
 			foreach ( $this->active_plugins as $plugin ) {
 				$plugin_dir = dirname( $plugin );
@@ -174,7 +238,7 @@ if ( ! class_exists( 'Assets' ) ) :
 				$css_path = $this->assets_css_path . $plugin_path;
 				$js_path = $this->assets_js_path . $plugin_path;
 				
-			
+ 
 				
 				// Load plugin related assets.
 				$this->enqueue_css_assets( $css_path, $theme_name );
