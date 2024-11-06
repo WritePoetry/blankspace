@@ -1,7 +1,7 @@
 <?php
 /**
 * Title: Banner with GitHub latest version
-* Slug: _blank/github-project-versions
+* Slug: blankspace/github-project-versions
 * Categories: banner, call-to-action, featured
 * Viewport width: 1400
 */

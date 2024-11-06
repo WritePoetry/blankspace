@@ -2,15 +2,15 @@
 /**
  * Blank Theme Frontend Class
  *
- * @package           WritePoetry/BlankTheme
- * @subpackage        WritePoetry/BlankTheme/Block_Styles
+ * @package           WritePoetry/BlankSpace
+ * @subpackage        WritePoetry/BlankSpace/Block_Styles
  * @author            Giacomo Secchi <giacomo.secchi@gmail.com>
  * @copyright         2023 Giacomo Secchi
  * @license           GPL-2.0-or-later
  * @since             0.2.0
  */
 
-namespace WritePoetry\BlankTheme;
+namespace WritePoetry\BlankSpace;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -41,7 +41,7 @@ if ( ! class_exists( 'Block_Styles' ) ) :
 			
 			add_action( 'init', array( $this, 'register_block_styles' ) );
 
-			add_filter( 'blank_theme_register_block_style', array( $this, 'get_block_styles' ) );
+			add_filter( 'blankspace_register_block_style', array( $this, 'get_block_styles' ) );
 			
 			add_action( 'after_setup_theme', array( $this, 'load_blocks_styles' ) );
 		}
@@ -55,9 +55,9 @@ if ( ! class_exists( 'Block_Styles' ) ) :
 			// Check if it is possible to use the `register_block_style` function.
 			if ( function_exists( 'register_block_style' ) ) {
 				/**
-				 *   Add new Block Styles just using the `writepoetry_register_block_style` hook. An example here: [Add new Blocks Styles via filter](https://github.com/WritePoetry/_blank-theme/blob/f39ad41e6ac3a9b5c8ec6f2467ea44b7055ef8df/themes/twentytwenty-child/functions.php#L41).
+				 *   Add new Block Styles just using the `blankspace_register_block_style` hook. An example here: [Add new Blocks Styles via filter](https://github.com/WritePoetry/_blank-theme/blob/f39ad41e6ac3a9b5c8ec6f2467ea44b7055ef8df/themes/twentytwenty-child/functions.php#L41).
 				 */
-				foreach ( apply_filters( 'blank_theme_register_block_style', array() ) as $block_name => $style_properties ) {
+				foreach ( apply_filters( 'blankspace_register_block_style', array() ) as $block_name => $style_properties ) {
 
 					/**
 					 * Check for the presence of an inner array key
@@ -88,7 +88,7 @@ if ( ! class_exists( 'Block_Styles' ) ) :
 				'core/list'       => array(
 					array(
 						'name'         => 'primary-disc-list',
-						'label'        => __( 'Primary Color Disc', 'whritewhite' ),
+						'label'        => __( 'Primary Color Disc', 'blankspace' ),
 						'inline_style' => '
 						ul.is-style-primary-disc-list {
 							list-style-type: disc;
@@ -100,7 +100,7 @@ if ( ! class_exists( 'Block_Styles' ) ) :
 					),
 					array(
 						'name'         => 'secondary-disc-list',
-						'label'        => __( 'Secondary Color Disc', 'whritewhite' ),
+						'label'        => __( 'Secondary Color Disc', 'blankspace' ),
 						'inline_style' => '
 						ul.is-style-secondary-disc-list {
 							list-style-type: disc;
@@ -112,7 +112,7 @@ if ( ! class_exists( 'Block_Styles' ) ) :
 					),
 					array(
 						'name'         => 'checked',
-						'label'        => __( 'Checked', 'whritewhite' ),
+						'label'        => __( 'Checked', 'blankspace' ),
 						'inline_style' => '
 						 
 						@counter-style check {
@@ -124,34 +124,34 @@ if ( ! class_exists( 'Block_Styles' ) ) :
 					),
 					array(
 						'name'         => 'none',
-						'label'        => __( 'None', 'whritewhite' ),
+						'label'        => __( 'None', 'blankspace' ),
 						'inline_style' => 'ul.is-style-none { list-style: none; }',
 					),
 				),
 				'core/cover'      => array(
 					array(
 						'name'         => 'inline1',
-						'label'        => __( 'Inline1', 'whritewhite' ),
+						'label'        => __( 'Inline1', 'blankspace' ),
 						'is_default'   => true,
 						'inline_style' => '  .is-style-inline1 { display: block; }',
 					),
 					array(
 						'name'         => 'inline2',
-						'label'        => __( 'Inline2', 'whritewhite' ),
+						'label'        => __( 'Inline2', 'blankspace' ),
 						'inline_style' => '  .is-style-inline2 { display: inline-flex; }',
 					),
 				),
 				'core/media-text' => array(
 					array(
 						'name'         => 'rounded-image',
-						'label'        => __( 'Rounded Image', 'whritewhite' ),
+						'label'        => __( 'Rounded Image', 'blankspace' ),
 						'is_default'   => false,
 						'inline_style' => '  .is-style-rounded-image img { border-radius: var(--wp--custom--core-media-text--border-radius, 20px); }',
 					),
 				),
 				'core/group'      => array(
 					'name'         => 'inline',
-					'label'        => __( 'Inline', 'whritewhite' ),
+					'label'        => __( 'Inline', 'blankspace' ),
 					'is_default'   => true,
 					'inline_style' => '.wp-block-group.is-style-inline { display: inline-flex; }',
 				),

@@ -2,7 +2,7 @@
 
 /**
  * Title: Banner with text on the right
- * Slug: _blank/banner-list-right
+ * Slug: blankspace/banner-list-right
  * Categories: banner, call-to-action, featured
  * Viewport width: 1400
  */

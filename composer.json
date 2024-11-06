@@ -1,12 +1,12 @@
 {
-    "name": "write-poetry/blank-theme",
+    "name": "write-poetry/blankspace-theme",
     "type": "wordpress-theme",
     "autoload": {
         "classmap": [
             "inc/"
         ],
 		"psr-4": {
-			"WritePoetry\\BlankTheme\\": "./inc"
+			"WritePoetry\\BlankSpace\\": "./inc"
 		}
     },
     "authors": [

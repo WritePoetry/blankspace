@@ -2,15 +2,15 @@
 /**
  * TranslatePress customizations Class
  *
- * @package           WritePoetry/BlankTheme
- * @subpackage        WritePoetry/BlankTheme/Blank_Theme_Translatepress
+ * @package           WritePoetry/BlankSpace
+ * @subpackage        WritePoetry/BlankSpace/Blank_Theme_Translatepress
  * @author            Giacomo Secchi <giacomo.secchi@gmail.com>
  * @copyright         2023 Giacomo Secchi
  * @license           GPL-2.0-or-later
  * @since             0.2.0
  */
 
-namespace WritePoetry\BlankTheme;
+namespace WritePoetry\BlankSpace;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;

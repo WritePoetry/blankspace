@@ -1,7 +1,7 @@
 <?php
 /**
  * Title: Language switcher
- * Slug: _blank/language-switcher
+ * Slug: blankspace/language-switcher
  * Categories: banner, call-to-action, featured
  * Viewport width: 1400
  */

@@ -5,8 +5,8 @@
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-page
  *
  * @package WritePoetry
- * @subpackage Twenty_Twenty_Child
- * @since Twenties Child 0.1
+ * @subpackage BlankSpace
+ * @since BlankSpace 0.1
  */
 
 ?>

@@ -2,15 +2,15 @@
 /**
  * Main Init Class
  *
- * @package           WritePoetry/BlankTheme
- * @subpackage        WritePoetry/BlankTheme/Init
+ * @package           WritePoetry/BlankSpace
+ * @subpackage        WritePoetry/BlankSpace/Init
  * @author            Giacomo Secchi <giacomo.secchi@gmail.com>
  * @copyright         2023 Giacomo Secchi
  * @license           GPL-2.0-or-later
  * @since             0.2.0
  */
 
-namespace WritePoetry\BlankTheme;
+namespace WritePoetry\BlankSpace;
 
 /**
  * Main Init class

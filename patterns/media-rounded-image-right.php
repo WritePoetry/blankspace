@@ -1,7 +1,7 @@
 <?php
 /**
  * Title: Media with  rounded image on the right
- * Slug: _blank/media-rounded-image-right
+ * Slug: blankspace/media-rounded-image-right
  * Categories: banner, call-to-action, featured
  * Viewport width: 1400
  */

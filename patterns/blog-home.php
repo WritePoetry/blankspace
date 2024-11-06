@@ -1,7 +1,7 @@
 <?php
 /**
  * Title: Blog Home
- * Slug: _blank/blog-home
+ * Slug: blankspace/blog-home
  * Categories: featured
  * Keywords: Hero
  * Block Types: core/buttons
@@ -17,7 +17,7 @@
 <!-- /wp:spacer -->
 	
 <!-- wp:paragraph {"align":"center","style":{"typography":{"textTransform":"uppercase"},"elements":{"link":{"color":{"text":"var:preset|color|secondary"}}}},"textColor":"secondary","fontSize":"small"} -->
-	<p class="has-text-align-center has-secondary-color has-text-color has-link-color has-small-font-size" style="text-transform:uppercase"><?php echo esc_html_x( 'Blog & news', 'writewhite' ); ?></p>
+	<p class="has-text-align-center has-secondary-color has-text-color has-link-color has-small-font-size" style="text-transform:uppercase"><?php echo esc_html_x( 'Blog & news', 'blankspace' ); ?></p>
 <!-- /wp:paragraph -->
 		
 <!-- wp:heading {"textAlign":"center","align":"wide","style":{"elements":{"link":{"color":{"text":"var:preset|color|primary"}}},"spacing":{"margin":{"top":"0","bottom":"0"}}},"textColor":"primary"} -->

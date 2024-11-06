@@ -1,8 +1,8 @@
 <?php
 /**
  * Title: Business ecommerce home
- * Slug: _blank/page-home-ecommerce
- * Categories: twentytwentyfour_page
+ * Slug: blankspace/page-home-ecommerce
+ * Categories: blankspace_page
  * Keywords: starter
  * Block Types: core/post-content
  * Post Types: page, wp_template

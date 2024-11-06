@@ -1,11 +1,11 @@
 <?php
 /**
- * WritePoetry Blank Theme
+ * WritePoetry BlankSpace Theme
  *
- * @package WritePoetry\BlankTheme
+ * @package WritePoetry\BlankSpace
  */
 
-namespace WritePoetry\BlankTheme;
+namespace WritePoetry\BlankSpace;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -20,6 +20,6 @@ if ( is_readable( __DIR__ . '/vendor/autoload.php' ) ) {
 /**
  * Initialize all the core classes of the theme
  */
-if ( class_exists( 'WritePoetry\\BlankTheme\\Init' ) ) {
+if ( class_exists( 'WritePoetry\\BlankSpace\\Init' ) ) {
 	Init::register_services();
 }

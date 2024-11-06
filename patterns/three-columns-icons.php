@@ -1,7 +1,7 @@
 <?php
 /**
  * Title: Three columns with icons
- * Slug: _blank/three-columns-icons
+ * Slug: blankspace/three-columns-icons
  * Categories: banner, call-to-action, featured
  * Viewport width: 1400
  */

@@ -1,7 +1,7 @@
 <?php
 /**
  * Title: Site title with tagline
- * Slug: _blank/branding
+ * Slug: blankspace/branding
  * Categories: header
  * Keywords: Basic Header, header, brand, site title, tagline
  * Viewport Width: 300

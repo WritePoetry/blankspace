@@ -1,7 +1,7 @@
 <?php
 /**
  * Title: Banner with text on the right
- * Slug: _blank/banner-text-right
+ * Slug: blankspace/banner-text-right
  * Categories: banner, call-to-action, featured
  * Viewport width: 1400
  */
