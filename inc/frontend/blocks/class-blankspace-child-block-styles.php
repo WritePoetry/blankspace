@@ -2,15 +2,15 @@
 /**
  * Blank Theme Frontend Class
  *
- * @package           WritePoetry/BlankTheme
- * @subpackage        WritePoetry/BlankTheme/Block_Styles
+ * @package           WritePoetry/BlankSpace
+ * @subpackage        WritePoetry/BlankSpace/Child_Block_Styles
  * @author            Giacomo Secchi <giacomo.secchi@gmail.com>
  * @copyright         2023 Giacomo Secchi
  * @license           GPL-2.0-or-later
  * @since             0.2.0
  */
 
-namespace WritePoetry\BlankTheme;
+namespace WritePoetry\BlankSpace;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;

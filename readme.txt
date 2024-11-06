@@ -1,4 +1,4 @@
-=== Twenty Twenty-Three Child ===
+=== BlankSpace ===
 Contributors: Giacomo Secchi
 Requires at least: 5.8
 Tested up to: 5.9
@@ -14,7 +14,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 = 0.0.4 =
 * Including CSS for block styles without write a line of code: you just need to add the css files following the
-naming convention rule: `my-theme/assets/css/blocks/prefix/blockname.css` (i.e., `write-white/assets/css/blocks/core/site-title.css`).
+naming convention rule: `my-theme/assets/css/blocks/prefix/blockname.css` (i.e., `blankspace/assets/css/blocks/core/site-title.css`).
 the file will load automatically only when the block with the same name will be rendered.
 In addition, if you want to change the default base folder for blocks styles (`assets/css/blocks`) you can use this filter `blank_theme_blocks_styles_asset_path`
 
@@ -23,8 +23,8 @@ In addition, if you want to change the default base folder for blocks styles (`a
 
 == Copyright ==
 
-Twenty Twenty-Three Child WordPress Theme, (C) 2023 Giacomo Secchi
-Twenty Twenty-Three Child is distributed under the terms of the GNU GPL.
+BlankSpace WordPress Theme, (C) 2023 Giacomo Secchi
+BlankSpace is distributed under the terms of the GNU GPL.
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

@@ -1,7 +1,7 @@
 <?php
 /**
  * Title: Copyright
- * Slug: _blank/copyright
+ * Slug: blankspace/copyright
  * Categories: footer
  * Block Types: core/template-part/footer
  * Keywords: newsletter, subscribe, button

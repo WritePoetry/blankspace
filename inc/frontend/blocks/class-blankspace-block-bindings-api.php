@@ -2,15 +2,15 @@
 /**
  * Blank Theme Frontend Class
  *
- * @package           WritePoetry/BlankTheme
- * @subpackage        WritePoetry/BlankTheme/Block_Bindings_API
+ * @package           WritePoetry/BlankSpace
+ * @subpackage        WritePoetry/BlankSpace/Block_Bindings_API
  * @author            Giacomo Secchi <giacomo.secchi@gmail.com>
  * @copyright         2023 Giacomo Secchi
  * @license           GPL-2.0-or-later
  * @since             0.2.0
  */
 
- namespace WritePoetry\BlankTheme;
+ namespace WritePoetry\BlankSpace;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 if ( ! class_exists( 'Block_Bindings_API' ) ) :
 
 	/**
-	 * The main Twenties class
+	 * The main Block_Bindings_API class
 	 */
 	class Block_Bindings_API {
 
@@ -41,12 +41,12 @@ if ( ! class_exists( 'Block_Bindings_API' ) ) :
 		public function register_block_bindings() {
 
 			$sources = array(
-				'blank/copyright'   => array(
-					'label'              => __( 'Copyright', 'whritewhite' ),
+				'blankspace/copyright'   => array(
+					'label'              => __( 'Copyright', 'blankspace' ),
 					'get_value_callback' => array( $this, 'copyright_binding' ),
 				),
-				'blank/admin-email' => array(
-					'label'              => __( 'Admin Email Address', 'whritewhite' ),
+				'blankspace/admin-email' => array(
+					'label'              => __( 'Admin Email Address', 'blankspace' ),
 					'get_value_callback' => array( $this, 'email_address_binding' ),
 				),
 			);

@@ -5,8 +5,8 @@
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-page
  *
  * @package WritePoetry
- * @subpackage Twenty_Twenty_Child
- * @since Twenties Child 0.1
+ * @subpackage BlankSpace
+ * @since BlankSpace 0.1
  */
 
 ?>
@@ -28,23 +28,23 @@
 
 			<?php
 			// Example url: http://localhost:8888/sample-page/?test-param=ciao&test-param2=caro.
-			$twenties_param1 = get_query_var( 'test-param' );
-			$twenties_param2 = get_query_var( 'test-param2' );
+			$blankspace_param1 = get_query_var( 'test-param' );
+			$blankspace_param2 = get_query_var( 'test-param2' );
 			?>
 
 			<h1>
 				<?php
 					/* translators: %1$s and %2$s: parameters values from url */
-					printf( esc_html__( 'The test-param value is: %1$s and test-param2 is: %2$s', 'twenties' ), esc_html( $twenties_param1 ), esc_html( $twenties_param2 ) );
+					printf( esc_html__( 'The test-param value is: %1$s and test-param2 is: %2$s', 'blankspace' ), esc_html( $blankspace_param1 ), esc_html( $blankspace_param2 ) );
 				?>
 			</h1>
 
 			<?php
 			// Display link to custom post type archive.
-			$twenties_archive_link = get_post_type_archive_link( 'punti_di_interesse' );
+			$blankspace_archive_link = get_post_type_archive_link( 'punti_di_interesse' );
 
-			if ( $twenties_archive_link ) {
-				echo 'Archive Link: <a href="' . esc_url( $twenties_archive_link ) . '" rel="nofollow ugc">Books Archive</a>';
+			if ( $blankspace_archive_link ) {
+				echo 'Archive Link: <a href="' . esc_url( $blankspace_archive_link ) . '" rel="nofollow ugc">Books Archive</a>';
 			} else {
 				echo 'The "book" post type does not have an archive.';
 			}

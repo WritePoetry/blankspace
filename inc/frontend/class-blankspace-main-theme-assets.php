@@ -2,15 +2,15 @@
 /**
  * Blank Theme Frontend Class
  *
- * @package           WritePoetry/BlankTheme
- * @subpackage        WritePoetry/BlankTheme/Styles
+ * @package           WritePoetry/BlankSpace
+ * @subpackage        WritePoetry/BlankSpace/Main_Theme_Assets
  * @author            Giacomo Secchi <giacomo.secchi@gmail.com>
  * @copyright         2023 Giacomo Secchi
  * @license           GPL-2.0-or-later
  * @since             0.2.0
  */
 
-namespace WritePoetry\BlankTheme;
+namespace WritePoetry\BlankSpace;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -53,7 +53,7 @@ if ( ! class_exists( 'Main_Theme_Assets' ) ) :
 			$this->load_theme_assets( $js, $this->get_files( $this->assets_css_path ), $this->theme_name );
 
 			// Load active plugin assets.
-			$this->load_plugins_assets( $this->theme_name );
+			// $this->load_plugins_assets( $this->theme_name );
 		}
 		
 		

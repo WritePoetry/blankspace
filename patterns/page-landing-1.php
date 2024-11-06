@@ -1,8 +1,8 @@
 <?php
 /**
  * Title: Landing page 1
- * Slug: _blank/page-landing-1
- * Categories: twentytwentyfour_page
+ * Slug: blankspace/page-landing-1
+ * Categories: blankspace_page
  * Keywords: starter
  * Block Types: core/post-content
  * Post Types: page, wp_template
@@ -10,12 +10,12 @@
  */
 ?>
 
-<!-- wp:pattern {"slug":"_blank/header-hero"} /-->
-<!-- wp:pattern {"slug":"_blank/banner-list-right"} /-->
-<!-- wp:pattern {"slug":"_blank/banner-text-left"} /-->
-<!-- wp:pattern {"slug":"_blank/banner-text-right"} /-->
-<!-- wp:pattern {"slug":"_blank/three-columns-icons"} /-->
-<!-- wp:pattern {"slug":"_blank/jetpack-testimonials"} /-->
-<!-- wp:pattern {"slug":"_blank/media-rounded-image-right"} /-->
-<!-- wp:pattern {"slug":"_blank/banner-contact-form"} /-->
+<!-- wp:pattern {"slug":"blankspace/header-hero"} /-->
+<!-- wp:pattern {"slug":"blankspace/banner-list-right"} /-->
+<!-- wp:pattern {"slug":"blankspace/banner-text-left"} /-->
+<!-- wp:pattern {"slug":"blankspace/banner-text-right"} /-->
+<!-- wp:pattern {"slug":"blankspace/three-columns-icons"} /-->
+<!-- wp:pattern {"slug":"blankspace/jetpack-testimonials"} /-->
+<!-- wp:pattern {"slug":"blankspace/media-rounded-image-right"} /-->
+<!-- wp:pattern {"slug":"blankspace/banner-contact-form"} /-->
 

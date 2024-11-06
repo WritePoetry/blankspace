@@ -1,5 +1,5 @@
 {
-	"name": "blank",
+	"name": "blankspace",
 	"description": "",
 	"author": "Giacomo Secchi",
 	"license": "GPL-2.0-or-later",
@@ -34,7 +34,7 @@
 		"build": "wp-scripts build --webpack-src-dir=resources --output-path=assets",
 		"check-engines": "wp-scripts check-engines",
 		"check-licenses": "wp-scripts check-licenses",
-		"composer": "wp-env run cli --env-cwd=wp-content/themes/write-white composer",
+		"composer": "wp-env run cli --env-cwd=wp-content/themes/blankspace-theme composer",
 		"format": "wp-scripts format",
 		"lint:css": "wp-scripts lint-style",
 		"lint:js": "wp-scripts lint-js",

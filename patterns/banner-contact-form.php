@@ -2,7 +2,7 @@
 
 /**
  * Title: Banner with contact form
- * Slug: _blank/banner-contact-form
+ * Slug: blankspace/banner-contact-form
  * Categories: banner, call-to-action, featured
  * Viewport width: 1400
  */

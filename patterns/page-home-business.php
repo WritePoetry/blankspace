@@ -1,8 +1,8 @@
 <?php
 /**
  * Title: Business home
- * Slug: _blank/page-home-business
- * Categories: twentytwentyfour_page
+ * Slug: blankspace/page-home-business
+ * Categories: blankspace_page
  * Keywords: starter
  * Block Types: core/post-content
  * Post Types: page, wp_template
@@ -10,10 +10,10 @@
  */
 ?>
 
-<!-- wp:pattern {"slug":"_blank/banner-hero-full-screen"} /-->
-<!-- wp:pattern {"slug":"_blank/github-project-versions"} /-->
-<!-- wp:pattern {"slug":"_blank/banner-list-right"} /-->
-<!-- wp:pattern {"slug":"_blank/jetpack-testimonials"} /-->
-<!-- wp:pattern {"slug":"_blank/three-columns-icons"} /-->
-<!-- wp:pattern {"slug":"_blank/media-rounded-image-right"} /-->
+<!-- wp:pattern {"slug":"blankspace/banner-hero-full-screen"} /-->
+<!-- wp:pattern {"slug":"blankspace/github-project-versions"} /-->
+<!-- wp:pattern {"slug":"blankspace/banner-list-right"} /-->
+<!-- wp:pattern {"slug":"blankspace/jetpack-testimonials"} /-->
+<!-- wp:pattern {"slug":"blankspace/three-columns-icons"} /-->
+<!-- wp:pattern {"slug":"blankspace/media-rounded-image-right"} /-->
 

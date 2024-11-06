@@ -1,8 +1,8 @@
 <?php
 /**
  * Title: Page example
- * Slug: _blank/page-example
- * Categories: twentytwentyfour_page
+ * Slug: blankspace/page-example
+ * Categories: blankspace_page
  * Keywords: starter
  * Block Types: core/post-content
  * Post Types: page, wp_template
@@ -10,5 +10,5 @@
  */
 ?>
 
-<!-- wp:pattern {"slug":"_blank/layout-example"} /-->
+<!-- wp:pattern {"slug":"blankspace/layout-example"} /-->
 

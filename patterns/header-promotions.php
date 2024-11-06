@@ -1,7 +1,7 @@
 <?php
 /**
  * Title: Promotions
- * Slug: _blank/header-promotions
+ * Slug: blankspace/header-promotions
  * Categories: featured
  * Keywords: Promotions
  * Block Types: core/buttons

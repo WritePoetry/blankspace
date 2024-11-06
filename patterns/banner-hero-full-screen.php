@@ -1,7 +1,7 @@
 <?php
 /**
  * Title: Hero
- * Slug: _blank/banner-hero-full-screen
+ * Slug: blankspace/banner-hero-full-screen
  * Categories: banner, call-to-action, featured
  * Viewport width: 1400
  */

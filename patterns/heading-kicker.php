@@ -1,7 +1,7 @@
 <?php
 /**
  * Title: Heading with kicker 
- * Slug: _blank/heading-kicker
+ * Slug: blankspace/heading-kicker
  * Categories: call-to-action
  * Keywords: newsletter, subscribe, button
  */

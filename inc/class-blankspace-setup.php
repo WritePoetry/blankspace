@@ -2,15 +2,15 @@
 /**
  * Main Init Class
  *
- * @package           WritePoetry/BlankTheme
- * @subpackage        WritePoetry/BlankTheme/Theme
+ * @package           WritePoetry/BlankSpace
+ * @subpackage        WritePoetry/BlankSpace/Theme
  * @author            Giacomo Secchi <giacomo.secchi@gmail.com>
  * @copyright         2023 Giacomo Secchi
  * @license           GPL-2.0-or-later
  * @since             0.2.1
  */
 
-namespace WritePoetry\BlankTheme;
+namespace WritePoetry\BlankSpace;
 
 /**
  * Main Init class
@@ -42,17 +42,17 @@ if ( ! class_exists( 'Setup' ) ) :
 			 * Note: the first-loaded translation file overrides any following ones if the same translation is present.
 			 */
 
-			// Loads wp-content/languages/themes/writewhite-it_IT.mo.
-			load_theme_textdomain( 'writewhite', trailingslashit( WP_LANG_DIR ) . 'themes' );
+			// Loads wp-content/languages/themes/blankspace-it_IT.mo.
+			load_theme_textdomain( 'blankspace', trailingslashit( WP_LANG_DIR ) . 'themes' );
 
-			// Loads wp-content/themes/writewhite/languages/it_IT.mo.
-			load_theme_textdomain( 'writewhite', get_template_directory() . '/languages' );
+			// Loads wp-content/themes/blankspace/languages/it_IT.mo.
+			load_theme_textdomain( 'blankspace', get_template_directory() . '/languages' );
 
 			// Make theme available for translation.
-			load_theme_textdomain( 'writewhite' );
-			if ( ! 'writewhite' === wp_get_theme()->get( 'TextDomain' ) ) {
+			load_theme_textdomain( 'blankspace' );
+			if ( ! 'blankspace' === wp_get_theme()->get( 'TextDomain' ) ) {
 				// Loads wp-content/themes/child-theme-name/languages/it_IT.mo.
-				load_theme_textdomain( 'writewhite', get_stylesheet_directory() . '/languages' );
+				load_theme_textdomain( 'blankspace', get_stylesheet_directory() . '/languages' );
 
 				load_theme_textdomain( wp_get_theme()->get( 'TextDomain' ) );
 			}

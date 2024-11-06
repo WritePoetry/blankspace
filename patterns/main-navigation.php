@@ -1,7 +1,7 @@
 <?php
 /**
  * Title: Main navigation
- * Slug: _blank/main-navigation
+ * Slug: blankspace/main-navigation
  */
 ?>
 

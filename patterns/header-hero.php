@@ -1,7 +1,7 @@
 <?php
 /**
  * Title: Header inside hero
- * Slug: _blank/header-hero
+ * Slug: blankspace/header-hero
  * Categories: header, banner, call-to-action
  * Keywords: header, nav, links, button
  * Viewport Width: 1500
@@ -15,7 +15,7 @@
 <div class="wp-block-cover" style="min-height:100vh" id="header-cover"><span aria-hidden="true" class="wp-block-cover__background has-background-dim has-background-dim "></span>
 <img class="wp-block-cover__image-background " alt="" src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/images/pexels-charlotte-may-5824814.jpg" data-object-fit="cover" />
     <div class="wp-block-cover__inner-container">
-		<!-- wp:pattern {"slug":"_blank/header-default"} /--> 
+		<!-- wp:pattern {"slug":"blankspace/header-default"} /--> 
 
 		<!-- wp:columns {"align":"wide","style":{"layout":{"selfStretch":"fill","flexSize":null}}} -->
 		<div class="wp-block-columns alignwide">
@@ -45,7 +45,7 @@
 				 
 				<!-- wp:buttons -->
 				<div class="wp-block-buttons"><!-- wp:button -->
-					<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="https://github.com/WritePoetry/_blank-theme/">Contribute to the project →</a></div>
+					<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="https://github.com/WritePoetry/blankspace-theme/">Contribute to the project →</a></div>
 					<!-- /wp:button -->
 				</div>
 				<!-- /wp:buttons -->
