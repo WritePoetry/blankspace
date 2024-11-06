@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 if ( ! class_exists( 'Block_Bindings_API' ) ) :
 
 	/**
-	 * The main Twenties class
+	 * The main Block_Bindings_API class
 	 */
 	class Block_Bindings_API {
 
@@ -41,11 +41,11 @@ if ( ! class_exists( 'Block_Bindings_API' ) ) :
 		public function register_block_bindings() {
 
 			$sources = array(
-				'blank/copyright'   => array(
+				'blankspace/copyright'   => array(
 					'label'              => __( 'Copyright', 'blankspace' ),
 					'get_value_callback' => array( $this, 'copyright_binding' ),
 				),
-				'blank/admin-email' => array(
+				'blankspace/admin-email' => array(
 					'label'              => __( 'Admin Email Address', 'blankspace' ),
 					'get_value_callback' => array( $this, 'email_address_binding' ),
 				),

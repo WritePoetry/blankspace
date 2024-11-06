@@ -36,7 +36,7 @@
 
     <!-- wp:buttons -->
     <div class="wp-block-buttons"><!-- wp:button -->
-    <div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="https://github.com/WritePoetry/_blank-theme/">Contribute to the project →</a></div>
+    <div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="https://github.com/WritePoetry/blankspace-theme/">Contribute to the project →</a></div>
     <!-- /wp:button --></div>
     <!-- /wp:buttons --></div>
     <!-- /wp:column -->

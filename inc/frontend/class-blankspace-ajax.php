@@ -1,21 +1,28 @@
 <?php
 /**
- * Storefront NUX Admin Class
+ * Ajax Class
  *
- * @package  storefront
- * @since    2.0.0
+ * @package           WritePoetry/BlankSpace
+ * @subpackage        WritePoetry/BlankSpace/Ajax
+ * @author            Giacomo Secchi <giacomo.secchi@gmail.com>
+ * @copyright         2023 Giacomo Secchi
+ * @license           GPL-2.0-or-later
+ * @since             0.2.0
  */
+
+ namespace WritePoetry\BlankSpace;
+
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! class_exists( 'Twenties_Ajax' ) ) :
+if ( ! class_exists( 'Ajax' ) ) :
 
 	/**
-	 * The Twenties Ajax class
+	 * The Ajax class
 	 */
-	class Twenties_Ajax {
+	class Ajax {
 		/**
 		 * Setup class.
 		 *
@@ -40,7 +47,7 @@ if ( ! class_exists( 'Twenties_Ajax' ) ) :
 				'data_var_2' => 'value 2',
 			);
 
-			wp_localize_script( 'twenties-frontend-ajax', 'twenties_frontend_ajax_object', $params );
+			wp_localize_script( 'blankspace-frontend-ajax', 'blankspace_frontend_ajax_object', $params );
 			
 			// example in js file
 			// Get the pagination from the server
@@ -48,7 +55,7 @@ if ( ! class_exists( 'Twenties_Ajax' ) ) :
 			// 	action:  'pagination'
 			// } );
 
-			// fetch( `${writewhite_frontend_ajax_object.ajaxurl}?${params}`)
+			// fetch( `${blankspace_frontend_ajax_object.ajaxurl}?${params}`)
 			// 	.then( ( response ) => response.text() )
 			// 	.then( data => console.log(data) )
 			// 	.catch( ( error ) => console.error( error ) );
@@ -63,4 +70,4 @@ if ( ! class_exists( 'Twenties_Ajax' ) ) :
 
 endif;
 
-return new Twenties_Ajax();
+

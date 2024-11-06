@@ -3,7 +3,7 @@
  * TranslatePress customizations Class
  *
  * @package           WritePoetry/BlankSpace
- * @subpackage        WritePoetry/BlankSpace/Blank_Theme_Translatepress
+ * @subpackage        WritePoetry/BlankSpace/Translatepress
  * @author            Giacomo Secchi <giacomo.secchi@gmail.com>
  * @copyright         2023 Giacomo Secchi
  * @license           GPL-2.0-or-later
@@ -16,12 +16,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! class_exists( 'Blank_Theme_Translatepress' ) ) :
+if ( ! class_exists( 'Translatepress' ) ) :
 
 	/**
-	 * The main Blank_Theme_TranslatePress class
+	 * The main TranslatePress class
 	 */
-	class Blank_Theme_TranslatePress {
+	class TranslatePress {
 
 		/**
 		 * Setup class.
@@ -37,7 +37,7 @@ if ( ! class_exists( 'Blank_Theme_Translatepress' ) ) :
 			register_block_bindings_source(
 				'blank/translatepress-language-switcher',
 				array(
-					'label'              => __( 'Translatepress Language Switcher', 'writewhite' ),
+					'label'              => __( 'Translatepress Language Switcher', 'blankspace' ),
 					'get_value_callback' => array( $this, 'custom_language_switcher' ),
 				)
 			);

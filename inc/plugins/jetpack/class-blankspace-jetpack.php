@@ -3,7 +3,7 @@
  * Blank Theme Jetpack Plugin Class
  *
  * @package           WritePoetry/BlankSpace
- * @subpackage        WritePoetry/BlankSpace/Blank_Theme_Jetpack
+ * @subpackage        WritePoetry/BlankSpace/Jetpack
  * @author            Giacomo Secchi <giacomo.secchi@gmail.com>
  * @copyright         2023 Giacomo Secchi
  * @license           GPL-2.0-or-later
@@ -16,12 +16,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! class_exists( 'Blank_Theme_Jetpack' ) ) :
+if ( ! class_exists( 'Jetpack' ) ) :
 
 	/**
 	 * The main Jetpack class
 	 */
-	class Blank_Theme_Jetpack {
+	class Jetpack {
 		const CUSTOM_POST_TYPE     = 'jetpack-portfolio';
 		const CUSTOM_TAXONOMY_TYPE = 'jetpack-portfolio-type';
 		const CUSTOM_TAXONOMY_TAG  = 'jetpack-portfolio-tag';
@@ -142,9 +142,9 @@ if ( ! class_exists( 'Blank_Theme_Jetpack' ) ) :
 
 		public function register_block_bindings() {
 			register_block_bindings_source(
-				'twenties/jetpack-projects-infos',
+				'blankspace/jetpack-projects-infos',
 				array(
-					'label'              => __( 'Project Informations', 'twenties' ),
+					'label'              => __( 'Project Informations', 'blankspace' ),
 					'get_value_callback' => array( $this, 'get_project_types' ),
 					'uses_context'       => array( 'postId', 'postType' ),
 				)

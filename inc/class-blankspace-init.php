@@ -44,7 +44,7 @@ final class Init {
 		if ( class_exists( 'Jetpack' ) ) {
 			array_push(
 				$services,
-				Blank_Theme_Jetpack::class
+				Jetpack::class
 			);
 		}
 
@@ -54,7 +54,7 @@ final class Init {
 		if ( class_exists( 'TRP_Translate_Press' ) ) {
 			array_push(
 				$services,
-				Blank_Theme_TranslatePress::class
+				TranslatePress::class
 			);
 		}
 		
