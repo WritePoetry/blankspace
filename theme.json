@@ -1,6 +1,6 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/theme.json",
-	"version": 2,
+	"version": 3,
 	"customTemplates": [
 		{
 			"name": "blank",
@@ -282,21 +282,20 @@
 			"fontFamilies": [
 				{
 					"fontFace": [
-						 
+						{
+							"fontFamily": "Roboto",
+							"fontStyle": "normal",
+							"fontWeight": "100",
+							"src": [
+								"file:./assets/fonts/roboto/roboto-100-normal.woff2"
+							]
+						},
 						{
 							"fontFamily": "Roboto",
 							"fontStyle": "normal",
 							"fontWeight": "300",
 							"src": [
-								"file:./assets/fonts/Roboto/Roboto-Light.ttf"
-							]
-						},
-						{
-							"fontFamily": "Roboto",
-							"fontStyle": "italic",
-							"fontWeight": "300",
-							"src": [
-								"file:./assets/fonts/Roboto/Roboto-LightItalic.ttf"
+								"file:./assets/fonts/roboto/roboto-300-normal.woff2"
 							]
 						},
 						{
@@ -304,7 +303,7 @@
 							"fontStyle": "normal",
 							"fontWeight": "400",
 							"src": [
-								"file:./assets/fonts/Roboto/Roboto-Regular.ttf"
+								"file:./assets/fonts/roboto/roboto-400-normal.woff2"
 							]
 						},
 						{
@@ -312,15 +311,7 @@
 							"fontStyle": "normal",
 							"fontWeight": "500",
 							"src": [
-								"file:./assets/fonts/Roboto/Roboto-Medium.ttf"
-							]
-						},
-						{
-							"fontFamily": "Roboto",
-							"fontStyle": "italic",
-							"fontWeight": "500",
-							"src": [
-								"file:./assets/fonts/Roboto/Roboto-MediumItalic.ttf"
+								"file:./assets/fonts/roboto/roboto-500-normal.woff2"
 							]
 						},
 						{
@@ -328,7 +319,47 @@
 							"fontStyle": "normal",
 							"fontWeight": "700",
 							"src": [
-								"file:./assets/fonts/Roboto/Roboto-Bold.ttf"
+								"file:./assets/fonts/roboto/roboto-700-normal.woff2"
+							]
+						},
+						{
+							"fontFamily": "Roboto",
+							"fontStyle": "normal",
+							"fontWeight": "900",
+							"src": [
+								"file:./assets/fonts/roboto/roboto-900-normal.woff2"
+							]
+						},
+						{
+							"fontFamily": "Roboto",
+							"fontStyle": "italic",
+							"fontWeight": "100",
+							"src": [
+								"file:./assets/fonts/roboto/roboto-100-italic.woff2"
+							]
+						},
+						{
+							"fontFamily": "Roboto",
+							"fontStyle": "italic",
+							"fontWeight": "300",
+							"src": [
+								"file:./assets/fonts/roboto/roboto-300-italic.woff2"
+							]
+						},
+						{
+							"fontFamily": "Roboto",
+							"fontStyle": "italic",
+							"fontWeight": "400",
+							"src": [
+								"file:./assets/fonts/roboto/roboto-400-italic.woff2"
+							]
+						},
+						{
+							"fontFamily": "Roboto",
+							"fontStyle": "italic",
+							"fontWeight": "500",
+							"src": [
+								"file:./assets/fonts/roboto/roboto-500-italic.woff2"
 							]
 						},
 						{
@@ -336,52 +367,118 @@
 							"fontStyle": "italic",
 							"fontWeight": "700",
 							"src": [
-								"file:./assets/fonts/Roboto/Roboto-BoldItalic.ttf"
+								"file:./assets/fonts/roboto/roboto-700-italic.woff2"
+							]
+						},
+						{
+							"fontFamily": "Roboto",
+							"fontStyle": "italic",
+							"fontWeight": "900",
+							"src": [
+								"file:./assets/fonts/roboto/roboto-900-italic.woff2"
 							]
 						}
-						
-						
 					],
-					"fontFamily": "\"Roboto\", serif",
+					"fontFamily": "Roboto, sans-serif",
 					"name": "Roboto",
 					"slug": "roboto"
 				},
 				{
 					"fontFace": [
 						{
-							"fontFamily": "Open Sans",
-							"fontStretch": "normal",
+							"fontFamily": "\"Open Sans\"",
+							"fontStyle": "normal",
+							"fontWeight": "300",
+							"src": [
+								"file:./assets/fonts/open-sans/open-sans-300-normal.woff2"
+							]
+						},
+						{
+							"fontFamily": "\"Open Sans\"",
+							"fontStyle": "normal",
+							"fontWeight": "400",
+							"src": [
+								"file:./assets/fonts/open-sans/open-sans-400-normal.woff2"
+							]
+						},
+						{
+							"fontFamily": "\"Open Sans\"",
 							"fontStyle": "normal",
 							"fontWeight": "500",
 							"src": [
-								"file:./assets/fonts/Open_Sans/static/OpenSans-Medium.ttf"
+								"file:./assets/fonts/open-sans/open-sans-500-normal.woff2"
 							]
 						},
 						{
-							"fontFamily": "Open Sans",
-							"fontStretch": "normal",
-							"fontStyle": "italic",
-							"fontWeight": "500",
+							"fontFamily": "\"Open Sans\"",
+							"fontStyle": "normal",
+							"fontWeight": "600",
 							"src": [
-								"file:./assets/fonts/Open_Sans/static/OpenSans-MediumItalic.ttf"
+								"file:./assets/fonts/open-sans/open-sans-600-normal.woff2"
 							]
 						},
 						{
-							"fontFamily": "Open Sans",
-							"fontStretch": "normal",
+							"fontFamily": "\"Open Sans\"",
 							"fontStyle": "normal",
 							"fontWeight": "700",
 							"src": [
-								"file:./assets/fonts/Open_Sans/static/OpenSans-Bold.ttf"
+								"file:./assets/fonts/open-sans/open-sans-700-normal.woff2"
 							]
 						},
 						{
-							"fontFamily": "Open Sans",
-							"fontStretch": "normal",
+							"fontFamily": "\"Open Sans\"",
+							"fontStyle": "normal",
+							"fontWeight": "800",
+							"src": [
+								"file:./assets/fonts/open-sans/open-sans-800-normal.woff2"
+							]
+						},
+						{
+							"fontFamily": "\"Open Sans\"",
+							"fontStyle": "italic",
+							"fontWeight": "300",
+							"src": [
+								"file:./assets/fonts/open-sans/open-sans-300-italic.woff2"
+							]
+						},
+						{
+							"fontFamily": "\"Open Sans\"",
+							"fontStyle": "italic",
+							"fontWeight": "400",
+							"src": [
+								"file:./assets/fonts/open-sans/open-sans-400-italic.woff2"
+							]
+						},
+						{
+							"fontFamily": "\"Open Sans\"",
+							"fontStyle": "italic",
+							"fontWeight": "500",
+							"src": [
+								"file:./assets/fonts/open-sans/open-sans-500-italic.woff2"
+							]
+						},
+						{
+							"fontFamily": "\"Open Sans\"",
+							"fontStyle": "italic",
+							"fontWeight": "600",
+							"src": [
+								"file:./assets/fonts/open-sans/open-sans-600-italic.woff2"
+							]
+						},
+						{
+							"fontFamily": "\"Open Sans\"",
 							"fontStyle": "italic",
 							"fontWeight": "700",
 							"src": [
-								"file:./assets/fonts/Open_Sans/static/OpenSans-BoldItalic.ttf"
+								"file:./assets/fonts/open-sans/open-sans-700-italic.woff2"
+							]
+						},
+						{
+							"fontFamily": "\"Open Sans\"",
+							"fontStyle": "italic",
+							"fontWeight": "800",
+							"src": [
+								"file:./assets/fonts/open-sans/open-sans-800-italic.woff2"
 							]
 						}
 					],
@@ -540,7 +637,7 @@
 			},
 			"heading": {
 				"typography": {
-					"fontFamily": "var(--wp--preset--font-family--roboto)",
+					"fontFamily": "var:preset|font-family|roboto",
 					"fontWeight": "500",
 					"lineHeight": "1.4"
 				}
@@ -564,8 +661,8 @@
 			}
 		},
 		"typography": {
-			"fontFamily": "var(--wp--preset--font-family--open-sans)",
-			"fontSize": "var(--wp--preset--font-size--medium)",
+			"fontFamily": "var:preset|font-family|open-sans",
+			"fontSize": "var:preset|font-size|medium",
 			"lineHeight": "1.6"
 		},
 		"color": {
