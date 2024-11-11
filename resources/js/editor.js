@@ -1,1 +1,6 @@
-console.log( 'editor.js' );
+( () => {
+    'use strict'
+    
+    console.log( 'editor.js' );
+
+} )();

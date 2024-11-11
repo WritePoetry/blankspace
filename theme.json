@@ -184,6 +184,11 @@
 					"name": "Midnight",
 					"gradient": "linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%)",
 					"slug": "midnight"
+				},
+				{
+					"slug": "gradient-1",
+					"gradient": "linear-gradient(0deg,rgb(54,28,28) 42%,rgb(247,247,247) 76%)",
+					"name": "Vertical black to white"
 				}
 			],
 			"heading": true,
@@ -208,6 +213,11 @@
 					"color": "#473BF0",
 					"name": "Secondary",
 					"slug": "secondary"
+				},
+				{
+					"color": "#FFFD77",
+					"name": "Accent 1",
+					"slug": "accent-1"
 				}
 			],
 			"text": true
