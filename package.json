@@ -6,6 +6,7 @@
 	"files": [
 		"assets",
 		"inc",
+		"vendor",
 		"functions.php",
 		"parts",
 		"patterns",
