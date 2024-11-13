@@ -19,8 +19,8 @@
     <h2 class="wp-block-heading has-text-align-center has-xx-large-font-size" id="#"><?php echo esc_html_x( 'The beginning of an incredible story', 'Heading of the hero section', 'blankspace' ); ?></h2>
     <!-- /wp:heading -->
 
-    <!-- wp:paragraph {"className":"has-text-align-center"} -->
-    <p class="has-text-align-center">With <strong>BlankSpace theme</strong> you will be able<br>to create an <strong>incredible website</strong> with ease!</p>
+    <!-- wp:paragraph {"className":"has-text-align-center","fontSize":"medium"} -->
+    <p class="has-text-align-center has-medium-font-size">With <strong>BlankSpace theme</strong> you will be able<br>to create an <strong>incredible website</strong> with ease!</p>
     <!-- /wp:paragraph -->
 
     <!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"}} -->

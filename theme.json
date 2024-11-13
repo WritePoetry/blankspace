@@ -288,7 +288,9 @@
 		},
 		"typography": {
 			"customFontSize": true,
+			"defaultFontSizes": false,
 			"dropCap": true,
+			"fluid": false,
 			"fontFamilies": [
 				{
 					"fontFace": [
@@ -499,38 +501,44 @@
 			],
 			"fontSizes": [
 				{
-					"name": "Tiny",
-					"slug": "tiny",
-					"size": "0.75rem"
-				},
-				{
-					"name": "Small",
-					"slug": "small",
-					"size": "0.8rem"
-				},
-				{
-					"name": "Medium",
-					"slug": "medium",
-					"size": "1rem"
+					"fluid": {
+						"min": "0.875rem",
+						"max": "1rem"
+					},
+					"size": "1rem",
+					"slug": "small"
 				},
 				{
 					"fluid": {
-						"min": "1.75rem",
-						"max": "1.875rem"
+						"min": "1rem",
+						"max": "1.25rem"
 					},
-					"name": "Large",
-					"slug": "large",
-					"size": "1.875rem"
+					"size": "1.125rem",
+					"slug": "medium"
 				},
 				{
-					"name": "Extra Large",
-					"slug": "x-large",
-					"size": "2rem"
+					"fluid": {
+						"min": "1.5rem",
+						"max": "2rem"
+					},
+					"size": "1.75rem",
+					"slug": "large"
 				},
 				{
-					"name": "Extra Extra Large",
-					"slug": "xx-large",
-					"size": "3.5rem"
+					"fluid": {
+						"min": "2rem",
+						"max": "2.5rem"
+					},
+					"size": "2.25rem",
+					"slug": "x-large"
+				},
+				{
+					"fluid": {
+						"min": "3rem",
+						"max": "4rem"
+					},
+					"size": "3.5rem",
+					"slug": "xx-large"
 				}
 			],
 			"fontStyle": true,
@@ -672,7 +680,7 @@
 		},
 		"typography": {
 			"fontFamily": "var:preset|font-family|open-sans",
-			"fontSize": "var:preset|font-size|medium",
+			"fontSize": "var:preset|font-size|small",
 			"lineHeight": "1.6"
 		},
 		"color": {
