@@ -1,0 +1,19 @@
+// Define a z-index mapping with descriptive names
+$z-index: (
+  "background": -1,
+  "base": 0,
+  "modal": 100,
+  "popover": 200,
+  "tooltip": 300,
+  "sticky": 400,
+  "dropdown": 500,
+  "overlay": 600,
+  "top": 1000,
+  "header-basic": 2,
+  "notification-bar-warning": 3
+);
+
+// Function to get the z-index value from the mapping
+@function z-index($name) {
+  @return map-get($z-index, $name);
+}

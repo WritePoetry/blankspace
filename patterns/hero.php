@@ -1,7 +1,7 @@
 <?php
 /**
  * Title: Hero
- * Slug: blank-theme/hero
+ * Slug: blankspace/hero
  * Categories: featured
  * Keywords: Hero
  * Block Types: core/buttons

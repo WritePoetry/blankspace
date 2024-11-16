@@ -12,7 +12,7 @@
 
 <!-- wp:template-part {"slug":"header","tagName":"header"} /-->
 
-<!-- wp:pattern {"slug":"blank-theme/hero"} /-->
+<!-- wp:pattern {"slug":"blankspace/hero"} /-->
 
 
 <!-- wp:template-part {"slug":"footer","tagName":"footer"} /-->

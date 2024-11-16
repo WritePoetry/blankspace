@@ -1,0 +1,13 @@
+@use '@utils/utils' as utils; 
+
+.wp-block-group {
+    &.notification-bar-warning {
+        z-index: utils.z-index("notification-bar-warning");
+    }
+    
+    &.header-basic {
+        z-index: utils.z-index("header-basic");
+    }
+}
+
+

@@ -54,6 +54,13 @@ const blockStylesheets = ( folder ) => {
 // Add any new entry points by extending the webpack config.
 module.exports = {
 	...defaultConfig,
+	resolve: {
+        ...defaultConfig.resolve,
+        alias: {
+            ...defaultConfig.resolve.alias,
+            '@utils': path.resolve(__dirname, 'resources/scss/utils'), // Alias per utils
+        },
+    },
 	...{
 		entry: {
 			...getWebpackEntryPoints(),

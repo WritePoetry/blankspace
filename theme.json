@@ -597,6 +597,23 @@
 						}
 					}
 				}
+			},
+			"core/site-title": {
+				"elements": {
+					"link": {
+						"typography": {
+							"fontFamily": "var:preset|font-family|roboto",
+							"fontWeight": "500",
+							"letterSpacing": "0.02em",
+							"textDecoration": "none"
+						},
+						":hover": {
+							"typography": {
+								"textDecoration": "underline"
+							}
+						}
+					}
+				}
 			}
 		},
 		"elements": {
