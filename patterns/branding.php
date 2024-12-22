@@ -12,7 +12,7 @@
 
 <!-- wp:group -->
 <div class="wp-block-group">
-    <!-- wp:site-title {"style":{"elements":{"link":{"color":{"text":"var:preset|color|base"}}}}} /-->
+    <!-- wp:site-title {"level":0,"align":"wide","fontSize":"large"} /-->
 
     <!-- wp:site-tagline /-->
 </div>
