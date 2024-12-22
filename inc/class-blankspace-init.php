@@ -27,6 +27,8 @@ final class Init {
 		$services = array(
 			Setup::class,
 			Main_Theme_Assets::class,
+			Enqueue_Additional_Assets::class,
+			Block_Assets::class,
 			Block_Bindings_API::class,
 			Block_Styles::class,
 		);
