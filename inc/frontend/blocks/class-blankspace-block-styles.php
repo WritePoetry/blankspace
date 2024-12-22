@@ -42,8 +42,6 @@ if ( ! class_exists( 'Block_Styles' ) ) :
 			add_action( 'init', array( $this, 'register_block_styles' ) );
 
 			add_filter( 'blankspace_register_block_style', array( $this, 'get_block_styles' ) );
-			
-			add_action( 'after_setup_theme', array( $this, 'load_blocks_styles' ) );
 		}
 
 		/**
@@ -159,59 +157,11 @@ if ( ! class_exists( 'Block_Styles' ) ) :
 
 			return $block_styles;
 		}	
-		
-
-		
-		/**
-		 * Load additional block styles.
-		 */
-		public function load_additional_block_styles( $blocks_files, $theme_name, $theme_version ) {
-
-			foreach ( $blocks_files as $block_path ) {
-
-				$block_info = pathinfo( $block_path );
-
-				// Add blocks styles.
-				// Reconstruct block name core/site-title.
-				$block_name = basename( $block_info['dirname'] ) . '/' . $block_info['filename'];
-
-				// Replace slash with hyphen for filename.
-				$block_slug = str_replace( '/', '-', $block_name );
-
-				// Enqueue asset.
-				wp_enqueue_block_style(
-					$block_name,
-					array(
-						'handle' => "$theme_name-block-$block_slug",
-						'src'    => get_theme_file_uri( "$this->assets_path/$block_name.css" ),
-						'path'   => wp_normalize_path( $block_path ),
-						'ver'    => $theme_version,
-					)
-				);
-			}
-		}
-	
-	
+ 
 		
 		public function get_blocks_path() {
 			// Get the list of stylesheets files in the assets folder. 			
 			return get_template_directory() . '/' . $this->blocks_assets_path;
-		}
-
-		
-		/**
-		 * Enqueues a stylesheet for a specific block.
-		 *
-		 * @return void
-		 */
-		public function load_blocks_styles() {
-
-			$blocks_files = $this->filter_rtl_files( 
-				$this->get_css_files_from_folder( $this->get_blocks_path())
-			);
-
-			// Load block styles of the active theme
-			$this->load_additional_block_styles( $blocks_files, $this->theme_name, $this->theme_version );
 		}
 	}
 endif;

@@ -22,9 +22,19 @@ if ( ! class_exists( 'Main_Theme_Assets' ) ) :
 	 * The Assets class
 	 */
 	class Main_Theme_Assets extends Assets {
-		
+		/**
+		 * The theme name.
+		 *
+		 * @var string
+		 */
 		private $theme_name;
 		
+		/**
+		 * Is child theme.
+		 *
+		 * @var bool
+		 */
+		private $is_child_theme;
 
 		/**
 		 * Setup class.
@@ -36,8 +46,8 @@ if ( ! class_exists( 'Main_Theme_Assets' ) ) :
 			
 			// Get the theme name.
 			$this->theme_name = get_template();
-			
-			
+			$this->is_child_theme = false;
+				
 			add_action( 'wp_enqueue_scripts', array( $this, 'load_assets' ) );
 		}
 
@@ -47,19 +57,20 @@ if ( ! class_exists( 'Main_Theme_Assets' ) ) :
 		 * @return void
 		 */
 		public function load_assets() {
-		
+ 
+			// Get the asset files.
 			$js = $this->get_files( $this->assets_js_path );
+			$css = $this->get_files( $this->assets_css_path );
+		
 			// Load theme assets.
-			$this->load_theme_assets( $js, $this->get_files( $this->assets_css_path ), $this->theme_name );
+			$this->load_theme_assets( $js, $css, $this->theme_name, $this->is_child_theme );
 
 			// Load active plugin assets.
 			// $this->load_plugins_assets( $this->theme_name );
 		}
 		
 		
-		private function get_files( $file_path ) {
-			 
-			
+		private function get_files( $file_path ) {	
 			// Get the asset files.
 			return $this->get_dependencies_files_from_folder( get_parent_theme_file_path( $file_path ) );			
 		}

@@ -44,11 +44,18 @@ if ( ! class_exists( 'Assets' ) ) :
 		protected $assets_css_path;
 
 		/**
-		 * The path to the blocks assets directory.
+		 * The path to the blocks scripts assets directory.
 		 *
 		 * @var string
 		 */
-		protected $blocks_assets_path;
+		protected $blocks_scripts_path;
+		
+		/**
+		 * The path to the blocks styles assets directory.
+		 *
+		 * @var string
+		 */
+		protected $blocks_styles_path;
 		
 		
 		/**
@@ -65,6 +72,7 @@ if ( ! class_exists( 'Assets' ) ) :
 		 */
 		protected $active_plugins;
 		
+		
 
 		/**
 		 * Setup class.
@@ -77,7 +85,9 @@ if ( ! class_exists( 'Assets' ) ) :
 			$this->assets_path = apply_filters( 'blank_theme_asset_path', 'assets' );
 
 			// This allows customization of the path through the 'blank_theme_blocks_styles_asset_path' filter.
-			$this->blocks_assets_path = apply_filters( 'blank_theme_blocks_styles_asset_path', $this->assets_path . '/css/blocks' );
+			$this->blocks_styles_path = apply_filters( 'blank_theme_blocks_styles_asset_path', $this->assets_path . '/css/blocks' );
+			$this->blocks_scripts_path = apply_filters( 'blank_theme_blocks_scripts_asset_path', $this->assets_path . '/js/blocks' );
+			
 			$this->plugins_assets_path = apply_filters( 'blank_theme_plugins_styles_asset_path', $this->assets_path . '/css/plugins' );
 
 			$this->assets_js_path  = apply_filters( 'blank_theme_js_asset_path', $this->assets_path . '/js/' );
@@ -95,14 +105,65 @@ if ( ! class_exists( 'Assets' ) ) :
 			} );
 		}
 		
+		
+		
 		/**
 		 * Enqueue JavaScript assets.
 		 *
 		 * @param array  $asset_files The asset files to enqueue.
 		 * @param string $handle      The handle for the enqueued script.
 		 */
-		public function enqueue_js_assets( $asset_files, $handle ) {
-			$this->enqueue_assets( $asset_files, $handle, 'js' );
+		public function enqueue_js_assets( $asset_files, $theme_name, $is_child_theme ) {
+			foreach ( $asset_files as $asset_file ) {
+
+				// Get file extension.
+				$file_extension = pathinfo( $asset_file, PATHINFO_EXTENSION );
+				
+				$file_name = pathinfo( $asset_file, PATHINFO_FILENAME );
+				
+				// Remove the '.asset' suffix from the file name.
+				if ( str_ends_with( $file_name, '.asset' ) ) {
+					$file_name = substr( $file_name, 0, -strlen( '.asset' ) );
+				}
+				
+				// Check if the file extension is 'php'.
+				if ( 'php' === $file_extension ) {
+					$asset = include $asset_file;
+				}
+
+				$handle = $theme_name . '-' . $file_name;
+				
+				// Get the source of the file.
+				$src = $this->get_theme_file_uri_src( $this->assets_js_path . $file_name . '.js', $is_child_theme );
+
+
+				// Pass the script $args as parameters.
+				$params = array(
+					$handle,
+					$src,
+				);
+				
+				// Add the dependencies and version to the parameters when the file extension is 'php'.
+				if ( isset( $asset ) ) {
+					$params = array_merge( $params, array(
+						$asset['dependencies'],
+						$asset['version'],
+					) );
+				}
+			
+								
+				$params = array_merge( $params, array(
+					true, // in_footer
+					'defer', // strategy
+				) );
+				
+			
+
+
+				
+				// Enqueue theme scripts.
+				wp_enqueue_script( ...$params );
+			}
 		}
 		
 		/**
@@ -111,8 +172,49 @@ if ( ! class_exists( 'Assets' ) ) :
 		 * @param array  $asset_files The asset files to enqueue.
 		 * @param string $handle      The handle for the enqueued stylesheet.
 		 */
-		public function enqueue_css_assets( $asset_files, $handle ) {
-			$this->enqueue_assets( $asset_files, $handle, 'css' );
+		public function enqueue_css_assets( $asset_files, $theme_name, $is_child_theme ) {
+			foreach ( $asset_files as $asset_file ) {
+				// Get file extension.
+				$file_extension = pathinfo( $asset_file, PATHINFO_EXTENSION );
+				
+				$file_name = pathinfo( $asset_file, PATHINFO_FILENAME );
+				
+				// Remove the '.asset' suffix from the file name.
+				if ( str_ends_with( $file_name, '.asset' ) ) {
+					$file_name = substr( $file_name, 0, -strlen( '.asset' ) );
+				}
+				
+				// Check if the file extension is 'php'.
+				if ( 'php' === $file_extension ) {
+					$asset = include $asset_file;
+				}
+ 
+				$handle = $theme_name . '-' . $file_name;
+				
+				// Get the source of the file.
+				$src = $this->get_theme_file_uri_src( $this->assets_css_path . $file_name . '.css', $is_child_theme );
+			
+ 				$params = array(
+					$handle,
+					$src,
+				);
+				
+				// Add the dependencies and version to the parameters when the file extension is 'php'.
+				if ( isset( $asset ) ) {
+					$params = array_merge( $params, array(
+						$asset['dependencies'],
+						$asset['version'],
+					) );
+				}		
+				
+				// Enqueue theme stylesheet.
+				wp_enqueue_style( ...$params );
+			}
+		}
+		
+		
+		public function get_theme_file_uri_src( $file, $is_child_theme ) {
+			return $is_child_theme ? get_theme_file_uri( $file ) : get_parent_theme_file_uri( $file );
 		}
 		
 		
@@ -121,12 +223,11 @@ if ( ! class_exists( 'Assets' ) ) :
 		 *
 		 * @return void
 		 */
-		public function load_theme_assets( $js_files, $css_files, $theme_name) {
-
-			$this->enqueue_js_assets( $js_files, $theme_name );
-			$this->enqueue_css_assets( $css_files, $theme_name );
+		public function load_theme_assets( $js_files, $css_files, $theme_name, $is_child_theme ) {
+			$this->enqueue_js_assets( $js_files, $theme_name, $is_child_theme );
+			$this->enqueue_css_assets( $css_files, $theme_name, $is_child_theme );
 		}
-	   
+		
  
 		/**
 		 * Load front-end assets.
@@ -136,49 +237,7 @@ if ( ! class_exists( 'Assets' ) ) :
 		 *
 		 * @return void
 		 */
-		private function enqueue_assets( $asset_files, $stylesheet, $assets_type = 'css' ) {
-			foreach ( $asset_files as $asset_file ) {
-				// Get file extension.
-				$file_extension = pathinfo( $asset_file, PATHINFO_EXTENSION );
-				
-				if ( 'php' === $file_extension ) {
-					$asset = include $asset_file;
-
-					$file_name = basename( $asset_file, '.asset.php' );
-				} else {
-					$file_name = basename( $asset_file, ".$file_extension" );
-				}
-
-
-				$handle = "$stylesheet-$file_name";
-				
-				$src = get_theme_file_uri( "$this->assets_css_path$file_name.$assets_type" );
-
-				$params = array(
-					$handle,
-					$src,
-					$asset['dependencies'],
-					$asset['version'],
-				);
-				
-				if ( 'css' === $assets_type ) {
-					// Enqueue theme stylesheet.
-					wp_enqueue_style( ...$params );
-				}
-
-				if ( 'js' === $assets_type ) {
-					// Pass the script $args as parameters.
-					$params[] = $args = array(
-						'in_footer' => true,
-						'strategy'  => 'defer',
-					);
-
-					// Enqueue theme scripts.
-					wp_enqueue_script( ...$params );
-				}
-			}
-		}
-		
+ 
 		/**
 		 * Get CSS files from a folder.
 		 *
@@ -193,6 +252,19 @@ if ( ! class_exists( 'Assets' ) ) :
 		}
 		
 		/**
+		 * Get JS files from a folder.
+		 *
+		 * @param string $file_path The path to the folder.
+		 *
+		 * @return mixed The list of files.
+		 */
+		public function get_js_files_from_folder( $file_path ) {
+			$search_pattern = '*/*.js';
+
+			return $this->get_files_from_folder( $file_path, $search_pattern );
+		}
+		
+		/**
 		 * Get dependencies files from a folder.
 		 *
 		 * @param string $file_path The path to the folder.
@@ -201,8 +273,7 @@ if ( ! class_exists( 'Assets' ) ) :
 		 */
 		public function get_dependencies_files_from_folder( $file_path ) {
 			$search_pattern = '*.asset.php';
-
-			
+	
 			return $this->get_files_from_folder( $file_path, $search_pattern );
 		}
 			
