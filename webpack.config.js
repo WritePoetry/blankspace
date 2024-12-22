@@ -25,23 +25,28 @@ const {
  * are not imported into the primary stylesheets and are enqueued separately.
  *
  * @since  1.0.0
- * @param {string} folder
+ * @param {string} srcDirectory		The folder to search (e.g., 'blocks', 'plugins').
+ * @param {string} extension		The file extension to process (e.g., 'scss', 'js').
+ * @param {string} [distDirectory]	The output folder (e.g., 'css', 'js'). Defaults to the source folder.
  * @return {Object.<string, string>}
  */
-const blockStylesheets = ( folder ) => {
-	return globSync( `./resources/scss/${ folder }/**/*.scss` ).reduce(
+const blockAssets = ( srcDirectory, extension, distDirectory ) => {
+	return globSync( `./resources/${extension}/${ srcDirectory }/**/*.${extension}` ).reduce(
 		( files, filepath ) => {
 			const relativePath = path.relative(
-				'./resources/scss/${ folder }',
+				`./resources/${extension}/${ srcDirectory }`,
 				filepath
 			);
 			const namespace = path.dirname( relativePath );
 			const name = path.parse( filepath ).name;
+			
+			// If outputFolder is not specified, use the source folder (`extension`).
+			const finalOutputFolder = distDirectory || extension;
 
-			files[ `css/${ folder }/${ namespace }/${ name }` ] = path.resolve(
+			files[ `${finalOutputFolder}/${ srcDirectory }/${ namespace }/${ name }` ] = path.resolve(
 				process.cwd(),
-				`resources/scss/${ folder }/${ namespace }`,
-				`${ name }.scss`
+				`resources/${extension}/${ srcDirectory }/${ namespace }`,
+				`${ name }.${extension}`
 			);
 
 			return files;
@@ -64,8 +69,11 @@ module.exports = {
 	...{
 		entry: {
 			...getWebpackEntryPoints(),
-			...blockStylesheets( 'blocks' ),
-			...blockStylesheets( 'plugins' ),
+			...blockAssets( 'blocks', 'scss', 'css'  ),
+			...blockAssets( 'plugins', 'scss', 'css' ),
+			...blockAssets( 'blocks', 'js' ),
+			...blockAssets( 'modules', 'js' ),
+			...blockAssets( 'plugins', 'js' ),
 			'js/editor': path.resolve(
 				process.cwd(),
 				'resources/js',
