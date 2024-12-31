@@ -2,7 +2,7 @@
 /**
  * Class SampleTest
  *
- * @package Write_White
+ * @package Blankspace
  */
 
 /**
