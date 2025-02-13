@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! class_exists( 'Jetpack' ) ) :
+if ( ! class_exists( '\WritePoetry\BlankSpace\Jetpack' ) ) :
 
 	/**
 	 * The main Jetpack class
