@@ -20,7 +20,7 @@ function demo_get_option( $name ) {
 /**
  * Sample test case.
  */
-class TestBlankSpace extends TestCase {
+class BlankSpaceTest extends TestCase {
 
 	use AssertIsType;
 	public function test_theme_activated() {

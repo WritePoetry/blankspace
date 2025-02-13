@@ -6,8 +6,12 @@
             "inc/"
         ],
 		"psr-4": {
-			"WritePoetry\\BlankSpace\\": "./inc",
-            "WritePoetry\\BlankSpace\\Tests\\": "./tests"
+			"WritePoetry\\BlankSpace\\": "./inc"
+		}
+    },
+    "autoload-dev": {      
+		"psr-4": {
+            "WritePoetry\\BlankSpace\\Tests\\": "tests/"
 		}
     },
     "authors": [
