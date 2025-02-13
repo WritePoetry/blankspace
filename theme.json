@@ -598,6 +598,20 @@
 					}
 				}
 			},
+			"core/navigation": {
+				"elements": {
+					"link": {
+						":hover": {
+							"typography": {
+								"textDecoration": "none"
+							}
+						},
+						"typography": {
+							"textDecoration": "none"
+						}
+					}
+				}
+			},
 			"core/site-title": {
 				"elements": {
 					"link": {

@@ -1,9 +1,13 @@
 <?php
 /**
- * Title: Basic header
- * Slug: blankspace/header-basic
+ * Title: Header
+ * Slug: blankspace/header
  * Categories: header
+ * Keywords: Basic Header, header
+ * Viewport Width: 1500
  * Block Types: core/template-part/header
+ * Description: Header with site title and navigation.
+ * Inserter: true
  */
 ?>
 
@@ -13,6 +17,9 @@
     <!-- wp:pattern {"slug":"blankspace/branding"} /-->
 
     <!-- wp:pattern {"slug":"blankspace/nav-main"} /-->
+     
+    <!-- wp:pattern {"slug":"blankspace/language-switcher"} /-->
 </div>
 <!-- /wp:group --></div>
 <!-- /wp:group -->
+ 
