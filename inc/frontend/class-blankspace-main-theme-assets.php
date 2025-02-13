@@ -72,7 +72,8 @@ if ( ! class_exists( 'Main_Theme_Assets' ) ) :
 		
 		private function get_files( $file_path ) {	
 			// Get the asset files.
-			return $this->get_dependencies_files_from_folder( get_parent_theme_file_path( $file_path ) );			
+			$asset_path = get_parent_theme_file_path( $file_path );
+			return $this->get_dependencies_files_from_folder( $asset_path );			
 		}
 	}
 endif;
