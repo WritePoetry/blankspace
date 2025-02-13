@@ -14,6 +14,6 @@
 <!-- wp:pattern {"slug":"blankspace/github-project-versions"} /-->
 <!-- wp:pattern {"slug":"blankspace/banner-list-right"} /-->
 <!-- wp:pattern {"slug":"blankspace/jetpack-testimonials"} /-->
-<!-- wp:pattern {"slug":"blankspace/three-columns-icons"} /-->
+<!-- wp:pattern {"slug":"blankspace/features-3-col"} /-->
 <!-- wp:pattern {"slug":"blankspace/media-rounded-image-right"} /-->
 
