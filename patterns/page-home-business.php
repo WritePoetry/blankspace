@@ -10,7 +10,7 @@
  */
 ?>
 
-<!-- wp:pattern {"slug":"blankspace/banner-hero-full-screen"} /-->
+<!-- wp:pattern {"slug":"blankspace/hero-full-screen"} /-->
 <!-- wp:pattern {"slug":"blankspace/github-project-versions"} /-->
 <!-- wp:pattern {"slug":"blankspace/banner-list-right"} /-->
 <!-- wp:pattern {"slug":"blankspace/jetpack-testimonials"} /-->

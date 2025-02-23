@@ -104,7 +104,7 @@
 		<!-- /wp:social-links -->
 
 		<!-- wp:navigation {"overlayMenu":"never","fontSize":"small"} -->
-			<!-- wp:navigation-link {"label":"Sitemap","type":"custom","url":"#","kind":"custom","isTopLevelLink":true} /-->
+			<!-- wp:navigation-link {"label":"Sitemap","type":"custom","url":"<?php echo esc_url( home_url( 'sitemap.xml' ) ); ?>","kind":"custom","isTopLevelLink":true} /-->
 			<!-- wp:navigation-link {"label":"Open an Issue","type":"custom","url":"#","kind":"custom","isTopLevelLink":true} /-->
 			<!-- wp:navigation-link {"label":"Credits","type":"custom","url":"#","kind":"custom","isTopLevelLink":true} /-->
  		<!-- /wp:navigation -->
