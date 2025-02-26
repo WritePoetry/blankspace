@@ -10,7 +10,7 @@
 
     
 <!-- wp:cover {"url":"<?php echo esc_url( get_template_directory_uri() ); ?>/assets/images/2985330911_45946e689c_o.jpg","dimRatio":0,"minHeight":100,"minHeightUnit":"vh","align":"full","style":{"color":{"duotone":"var:preset|duotone|blue-orange"}}} -->
-	 <div class="wp-block-cover alignfull" style="min-height:100vh" id="business-english"><span aria-hidden="true" class="wp-block-cover__background has-background-dim-0 has-background-dim"></span><img class="wp-block-cover__image-background" alt="" src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/images/2985330911_45946e689c_o.jpg" data-object-fit="cover"/>
+	 <div class="wp-block-cover alignfull" style="min-height:100vh" id="lorem-ipsum"><span aria-hidden="true" class="wp-block-cover__background has-background-dim-0 has-background-dim"></span><img class="wp-block-cover__image-background" alt="" src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/images/2985330911_45946e689c_o.jpg" data-object-fit="cover"/>
      <div class="wp-block-cover__inner-container">
 	<!-- wp:group {"layout":{"type":"constrained"}} -->
     <div class="wp-block-group">

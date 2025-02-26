@@ -1,7 +1,7 @@
 <?php
 /**
  * Title: Header inside hero
- * Slug: blankspace/header-hero
+ * Slug: blankspace/banner-2-col-video
  * Categories: header, banner, call-to-action
  * Keywords: header, nav, links, button
  * Viewport Width: 1500
@@ -9,14 +9,12 @@
  * Inserter: true
  */
 ?>
-
-
-<!-- wp:cover {"metadata":{"name":"Merged banner with header"},"url":"<?php echo esc_url( get_template_directory_uri() ); ?>/assets/images/pexels-charlotte-may-5824814.jpg","dimRatio":50,"isUserOverlayColor":true,"minHeight":100,"minHeightUnit":"vh","layout":{"type":"constrained"}} -->
-<div class="wp-block-cover" style="min-height:100vh" id="header-cover"><span aria-hidden="true" class="wp-block-cover__background has-background-dim has-background-dim "></span>
-<img class="wp-block-cover__image-background " alt="" src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/images/pexels-charlotte-may-5824814.jpg" data-object-fit="cover" />
+ 
+<!-- wp:cover {"metadata":{"name":"Banner with video"},"url":"<?php echo esc_url( get_template_directory_uri() ); ?>/assets/images/pexels-andrew-3178818.jpg","dimRatio":50,"isUserOverlayColor":true,"minHeight":100,"minHeightUnit":"vh","align":"full", "layout":{"type":"constrained"}} -->
+<div class="wp-block-cover alignfull" style="min-height:100vh" id="banner-cover"><span aria-hidden="true" class="wp-block-cover__background has-background-dim has-background-dim "></span>
+<img class="wp-block-cover__image-background" alt="" src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/images/pexels-andrew-3178818.jpg" data-object-fit="cover" />
     <div class="wp-block-cover__inner-container">
-		<!-- wp:pattern {"slug":"blankspace/header"} /--> 
-
+ 
 		<!-- wp:columns {"align":"wide","style":{"layout":{"selfStretch":"fill","flexSize":null}}} -->
 		<div class="wp-block-columns alignwide">
 			<!-- wp:column {"verticalAlignment":"center"} -->
