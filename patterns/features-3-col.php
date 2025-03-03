@@ -7,15 +7,7 @@
  */
 ?>
 
-<!-- wp:group {"align":"wide","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignwide" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:paragraph {"align":"center","style":{"typography":{"textTransform":"uppercase"},"elements":{"link":{"color":{"text":"var:preset|color|secondary"}}}},"textColor":"secondary","fontSize":"small"} -->
-<p class="has-text-align-center has-secondary-color has-text-color has-link-color has-small-font-size" style="text-transform:uppercase">Feature list</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:heading {"level":3,"className":"wp-block-heading alignwide has-text-align-center has-primary-color has-text-color has-link-color","style":{"spacing":{"margin":{"top":"0"}}}} -->
-<h3 class="wp-block-heading alignwide has-text-align-center has-primary-color has-text-color has-link-color" style="margin-top:0">This is a Heading</h3>
-<!-- /wp:heading --></div>
-<!-- /wp:group -->
+<!-- wp:pattern {"slug":"blankspace/hidden-heading-kicker"} /-->
 
 <!-- wp:columns {"verticalAlignment":null,"align":"wide","style":{"spacing":{"blockGap":{"top":"var:preset|spacing|70","left":"var:preset|spacing|60"}}}} -->
 <div class="wp-block-columns alignwide"><!-- wp:column {"verticalAlignment":"stretch","style":{"border":{"width":"1px"},"spacing":{"padding":{"right":"var:preset|spacing|50","left":"var:preset|spacing|50","top":"var:preset|spacing|50","bottom":"var:preset|spacing|50"}}},"backgroundColor":"base","borderColor":"cyan-bluish-gray"} -->
