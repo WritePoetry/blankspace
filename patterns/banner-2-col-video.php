@@ -1,11 +1,10 @@
 <?php
 /**
- * Title: Header inside hero
+ * Title: Banner with video
  * Slug: blankspace/banner-2-col-video
  * Categories: header, banner, call-to-action
  * Keywords: header, nav, links, button
  * Viewport Width: 1500
- * Block Types: core/template-part/header
  * Inserter: true
  */
 ?>
