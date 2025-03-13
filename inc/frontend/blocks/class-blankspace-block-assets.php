@@ -49,7 +49,7 @@ if ( ! class_exists( 'Block_Assets' ) ) :
 		public function load_additional_block_styles( $blocks_files, $theme_name, $theme_version ) {
 
  			foreach ( $blocks_files as $block_path ) {
-				
+				 
 
 				// Retrieve the block name from the given file path.
 				$block_name = $this->get_block_name_from_path( $block_path );

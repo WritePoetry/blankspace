@@ -156,12 +156,6 @@ if ( ! class_exists( 'Block_Styles' ) ) :
 			);
 
 			return $block_styles;
-		}	
- 
-		
-		public function get_blocks_path() {
-			// Get the list of stylesheets files in the assets folder. 			
-			return get_template_directory() . '/' . $this->blocks_assets_path;
 		}
 	}
 endif;

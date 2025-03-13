@@ -63,7 +63,7 @@ final class Init {
 		if ( is_child_theme() ) {
 			array_push(
 				$services,
-				Child_Block_Styles::class,
+				Child_Theme_Block_Assets::class,
 				Child_Theme_Assets::class
 			);
 		}
