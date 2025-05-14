@@ -35,8 +35,8 @@ if ( ! class_exists( 'Block_Styles' ) ) :
 		public function __construct() {
 			parent::__construct();
 			
-			$this->theme_name = Theme_Config::get_theme_name();
-			$this->theme_version = Theme_Config::get_theme_version();
+			$this->theme_name = Theme_Config::name();
+			$this->theme_version = Theme_Config::version();
 
 			
 			add_action( 'init', array( $this, 'register_block_styles' ) );

@@ -34,9 +34,11 @@ if ( ! class_exists( 'Block_Assets' ) ) :
 		 */
 		public function __construct() {
 			parent::__construct();
+
+		 
 			
-			$this->theme_name = Theme_Config::get_theme_name();
-			$this->theme_version = Theme_Config::get_theme_version();
+			$this->theme_name = Theme_Config::name();
+			$this->theme_version = Theme_Config::version();
 			
 			add_action( 'after_setup_theme', array( $this, 'load_blocks_assets' ) );
 			// add_action( 'render_block', array( $this, 'load_blocks_scripts' ), 10, 2 );

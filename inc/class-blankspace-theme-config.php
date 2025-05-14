@@ -17,51 +17,74 @@ namespace WritePoetry\BlankSpace;
  */
 class Theme_Config {
 	/**
-	 * Stores the current active theme object.
-	 *
-	 * @var WP_Theme
-	 */
-	private static $theme;
+     * L'unica istanza della classe.
+     * @var Theme_Config|null
+     */
+    private static $instance = null;
 
 	/**
-	 * Initializes the theme object.
+	 * Stores the current active theme version.
+	 *
+	 * @var string
 	 */
-	public static function init() {
-		self::$theme = wp_get_theme( self::get_theme_name() );
-	}
+	private $version;
 
 	/**
-	 * Get the current theme version.
-	 * Ensures the theme is initialized before accessing it.
+	 * Stores the current active theme name.
 	 *
-	 * @return string|false Theme version or false if not available.
+	 * @var string
 	 */
-	public static function get_theme_version() {
-		if ( ! self::$theme ) {
-			self::init();
-		}
+	private $name;
 
-		$theme_version = self::$theme->get( 'Version' );
 
-		return is_string( $theme_version ) ? $theme_version : false;
-	}
+	/**
+     * Costruttore privato per evitare istanze esterne.
+     */
+    private function __construct() {
+		$theme = wp_get_theme( get_template() );
+        $this->version =  (string) $theme->get( 'Version' );
+        $this->name =  (string) $theme->get( 'Name' );
+    }
+
+ 	/**
+     * Ottieni l'istanza singleton.
+     * @return Theme_Config
+     */
+    public static function get_instance() {
+        if ( self::$instance === null ) {
+            self::$instance = new self();
+        }
+        return self::$instance;
+    }
+
+	/**
+     * Blocca la clonazione (per evitare duplicati).
+     */
+    private function __clone() {}
+
+	 /**
+     * Blocca la deserializzazione (per evitare duplicati).
+     */
+    public function __wakeup() {
+        throw new \Exception( "Cannot unserialize a singleton." );
+    }	
+
+	/**
+	 * Get the active theme version.
+	 *
+	 * @return string Active theme version.
+	 */
+
+	public static function version() {
+        return self::get_instance()->version;
+    }
 
 	/**
 	 * Get the active theme name.
 	 *
 	 * @return string Active theme name (stylesheet for child theme or template).
 	 */
-	public static function get_theme_name() {
-		return get_template();
-	}
-	
- 
-	/**
-	 * Get the name of the parent active theme name.
-	 *
-	 * @return string Active theme name (stylesheet for child theme or template).
-	 */
-	public static function get_parent_theme_version() {
-		return is_child_theme() ?  wp_get_theme( get_template() )->get( 'Version' )  : null;
-	}
+    public static function name() {
+        return self::get_instance()->name;
+    }
 }
