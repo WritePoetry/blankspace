@@ -17,10 +17,11 @@ namespace WritePoetry\BlankSpace;
  */
 class Theme_Config {
 	/**
-     * L'unica istanza della classe.
-     * @var Theme_Config|null
+     * Stores the singleton instances.
+     * 
+     * @var array
      */
-    private static $instance = null;
+    protected static $instances = [];
 
 	/**
 	 * Stores the current active theme version.
@@ -36,25 +37,44 @@ class Theme_Config {
 	 */
 	private $name;
 
+    /**
+     * Stores the current active theme template.
+     *
+     * @var string
+     */
+    protected $template_name;
 
 	/**
      * Costruttore privato per evitare istanze esterne.
      */
-    private function __construct() {
-		$theme = wp_get_theme( get_template() );
-        $this->version =  (string) $theme->get( 'Version' );
-        $this->name =  (string) $theme->get( 'Name' );
+    protected function __construct() {
+        $this->init_theme_data( get_template() );
     }
 
- 	/**
+    /**
+     * Inizializza i dati del tema.
+     *
+     * @param string $source Il nome del tema (stylesheet o template).
+     */
+    protected function init_theme_data( $source ) {
+        $theme = wp_get_theme( $source );
+        $this->version = ( string ) $theme->get( 'Version' );
+        $this->name = ( string ) $theme->get( 'Name' );
+        $this->template_name = $source;
+    }
+
+    /**
      * Ottieni l'istanza singleton.
      * @return Theme_Config
      */
     public static function get_instance() {
-        if ( self::$instance === null ) {
-            self::$instance = new self();
+        $class = static::class;
+        
+        if ( !isset( self::$instances[$class] ) ) {
+            self::$instances[$class] = new static();
         }
-        return self::$instance;
+        
+        return self::$instances[$class];
     }
 
 	/**
@@ -74,9 +94,8 @@ class Theme_Config {
 	 *
 	 * @return string Active theme version.
 	 */
-
 	public static function version() {
-        return self::get_instance()->version;
+        return static::get_instance()->version;
     }
 
 	/**
@@ -85,6 +104,15 @@ class Theme_Config {
 	 * @return string Active theme name (stylesheet for child theme or template).
 	 */
     public static function name() {
-        return self::get_instance()->name;
+        return static::get_instance()->name;
+    }
+
+    /**
+     * Get the active theme template name.
+     * 
+     * @return string Active theme template name (template for child theme or template).
+     */
+    public static function template_name() {
+        return static::get_instance()->template_name;
     }
 }

@@ -17,51 +17,25 @@ namespace WritePoetry\BlankSpace;
  */
 class Child_Theme_Config extends Theme_Config {
 	/**
-	 * Stores the current active theme object.
-	 *
-	 * @var WP_Theme
+	 * L'unica istanza della classe.
+	 * @var Child_Theme_Config|null
 	 */
-	private static $theme;
-	
-	
 	public static $theme_name;
 
+	/**
+     * Stores the current active theme template.
+     *
+     * @var string
+     */
+    protected  $template_name;
 
 	/**
-	 * Initializes the theme object.
-	 */
-	public static function init() {
-		self::$theme = wp_get_theme( self::get_theme_name() );
-		self::$theme_name = self::get_theme_name();
-	}
+     * Costruttore privato per evitare istanze esterne.
+     */
+	protected function __construct() {
+        $this->init_theme_data( get_stylesheet() );
+    }
 
-	/**
-	 * Get the current theme version.
-	 * Ensures the theme is initialized before accessing it.
-	 *
-	 * @return string|false Theme version or false if not available.
-	 */
-	public static function get_theme_version() {
-		if ( ! self::$theme ) {
-			self::init();
-		}
-		
-
-		$theme_version = self::$theme->get( 'Version' );
-
-		return is_string( $theme_version ) ? $theme_version : false;
-	}
-
-	/**
-	 * Get the active theme name.
-	 *
-	 * @return string Active theme name (stylesheet for child theme or template).
-	 */
-	public static function get_theme_name() {
-		return get_stylesheet();
-	}
-	
- 
 	/**
 	 * Get the name of the parent active theme name.
 	 *
