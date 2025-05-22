@@ -18,13 +18,13 @@
 	<!-- /wp:heading -->
 	
 	<!-- wp:spacer {"height":"40px"} -->
-<div style="height:40px" aria-hidden="true" class="wp-block-spacer"></div>
-<!-- /wp:spacer -->
+	<div style="height:40px" aria-hidden="true" class="wp-block-spacer"></div>
+	<!-- /wp:spacer -->
  
 	<!-- wp:html -->
 	<?php
 		// print the newsletter shortcode this way to prevent the <p> tags from being added
-	 	echo do_shortcode( '[testimonials columns=3 display_content=full]' );
+		echo do_shortcode( '[testimonials columns=3 display_content=full]' );
 	?>
 	<!-- /wp:html -->
 </div>
