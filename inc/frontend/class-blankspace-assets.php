@@ -228,16 +228,6 @@ if ( ! class_exists( 'Assets' ) ) :
 			$this->enqueue_css_assets( $css_files, $theme_name, $is_child_theme );
 		}
 		
- 
-		/**
-		 * Load front-end assets.
-		 *
-		 * @param string $path The path to the assets.
-		 * @param string $file_extension The file_extension of assets to load ('css' or 'js').
-		 *
-		 * @return void
-		 */
- 
 		/**
 		 * Get CSS files from a folder.
 		 *
@@ -285,14 +275,43 @@ if ( ! class_exists( 'Assets' ) ) :
 		 *
 		 * @return array The list of files.
 		 */
-		public function get_files_from_folder( $file_path, $search_pattern = '*.txt' ) {
-			// check if the path is not ending with a slash.
-			$pattern = rtrim( $file_path, '/' ) . '/' . $search_pattern;
-
-			// Get files.
-			return glob( $pattern );
+		public function get_files_from_folder($file_path, $search_pattern = '*.txt') {
+			// Normalizza i separatori di percorso
+			$normalized_path = wp_normalize_path(rtrim($file_path, '/\\'));
+			
+			// Verifica che la directory esista
+			if ( ! is_dir( $normalized_path ) ) {
+				return [];
+			}
+			
+			try {
+				$directory = new \RecursiveDirectoryIterator(
+					$normalized_path,
+					\FilesystemIterator::SKIP_DOTS | \FilesystemIterator::UNIX_PATHS
+				);
+				
+				$iterator = new \RecursiveIteratorIterator( $directory );
+				$files = [];
+				
+				// Converti il pattern glob in regex
+				$regex_pattern = preg_quote( $search_pattern, '/' );
+				$regex_pattern = str_replace( '\*', '.*', $regex_pattern );
+				$regex_pattern = '/^' . str_replace( '\.', '\.', $regex_pattern) . '$/';
+				
+				foreach ( $iterator as $file ) {
+					if ( $file->isFile() && preg_match($regex_pattern, $file->getFilename() ) ) {
+						$files[] = $file->getPathname();
+					}
+				}
+				
+				return $files;
+				
+			} catch ( UnexpectedValueException $e ) {
+				// Logga l'errore se necessario
+				error_log( 'Directory access error: ' . $e->getMessage() );
+				return [];
+			}
 		}
-		
 		/**
 		 * Load plugin related assets.
 		 *

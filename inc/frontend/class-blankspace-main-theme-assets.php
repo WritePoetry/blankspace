@@ -45,7 +45,7 @@ if ( ! class_exists( 'Main_Theme_Assets' ) ) :
 			parent::__construct();
 			
 			// Get the theme name.
-			$this->theme_name = get_template();
+			$this->theme_name = Theme_Config::template_name();
 			$this->is_child_theme = false;
 				
 			add_action( 'wp_enqueue_scripts', array( $this, 'load_assets' ) );
