@@ -1,0 +1,9 @@
+// Display utility classes
+// This utility generates classes for different display properties
+$displays: block, inline, inline-block, flex, inline-flex, grid, inline-grid, flow-root, none, contents, table, table-row, table-item, inherit, initial, revert, revert-layer, unset;
+
+@each $display in $displays {
+  .d-#{$display} {
+    display: $display !important;
+  }
+}

@@ -1,0 +1,10 @@
+// Display utility classes
+// This utility generates classes for different display properties
+$overflows: visible, hidden, clip, scroll, auto,  inherit, initial, revert, revert-layer, unset;
+
+
+@each $overflow in $overflows {
+  .overflow-#{$overflow} {
+    overflow: $overflow !important;
+  }
+}

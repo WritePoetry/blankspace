@@ -1,3 +1,6 @@
+@use 'utils/display';
+@use 'utils/overflow';
+
 html {
     transition: all 10s ease-in-out;
 }
