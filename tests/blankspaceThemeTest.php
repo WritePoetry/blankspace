@@ -2,6 +2,7 @@
 namespace WritePoetry\BlankSpace\Tests;
 
 use WritePoetry\BlankSpace\Theme_Config;
+use WritePoetry\BlankSpace\Child_Theme_Config;
 use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 class blankspaceThemeTest extends TestCase {
@@ -16,13 +17,22 @@ class blankspaceThemeTest extends TestCase {
     }
 
     /**
-     * Test that constructor is private
+     * Test that constructor is protected (to allow inheritance while blocking direct instantiation)
      */
-    public function test_constructor_is_private() {
-        $reflection = new \ReflectionClass(Theme_Config::class);
+    public function test_constructor_is_protected() {
+        $reflection = new \ReflectionClass( Theme_Config::class );
         $constructor = $reflection->getConstructor();
         
-        $this->assertTrue( $constructor->isPrivate(), 'Constructor must be private' );
+        $this->assertTrue(
+            $constructor->isProtected(), 
+            'Constructor must be protected to allow child classes while maintaining singleton pattern'
+        );
+        
+        // Additional check to ensure it's not public
+        $this->assertFalse(
+            $constructor->isPublic(),
+            'Constructor should not be public'
+        );
     }
 
     /**
@@ -84,6 +94,12 @@ class blankspaceThemeTest extends TestCase {
             Theme_Config::name(),
             'name() should match theme name'
         );
+
+        $this->assertEquals(
+            get_template(),
+            Theme_Config::template_name(),
+            'template_name() should match theme name'
+        );
     }
 
     /**
@@ -101,4 +117,150 @@ class blankspaceThemeTest extends TestCase {
         $name = Theme_Config::name();
         $this->assertIsString( $name, 'Name should be string type' );
     }
+
+    /**
+     * Test that template name is properly cast to string
+     */
+    public function test_template_name_is_cast_to_string() {
+        $template_name = Theme_Config::template_name();
+        $this->assertIsString( $template_name, 'Template should be string type' );
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     /**
+     * Test that child class returns different instance than parent
+     */
+    public function test_child_class_returns_different_instance() {
+        $parent = Theme_Config::get_instance();
+        $child = Child_Theme_Config::get_instance();
+        
+        $this->assertNotSame(
+            $parent,
+            $child,
+            'Child class should return its own singleton instance'
+        );
+    }
+
+    /**
+     * Test that child class returns correct instance type
+     */
+    public function test_child_class_instance_type() {
+        $child = Child_Theme_Config::get_instance();
+        $this->assertInstanceOf(
+            Child_Theme_Config::class,
+            $child,
+            'get_instance() should return Child_Theme_Config instance'
+        );
+        
+        $this->assertInstanceOf(
+            Theme_Config::class,
+            $child,
+            'Child instance should also be instance of parent'
+        );
+    }
+
+    /**
+     * Test that child template_name() returns stylesheet instead of template
+     */
+    public function test_child_template_name_returns_stylesheet() {
+        if ( ! is_child_theme() ) {
+            $this->markTestSkipped('Test requires active child theme');
+        }
+        
+        $this->assertEquals(
+            get_stylesheet(),
+            Child_Theme_Config::template_name(),
+            'Child theme should return stylesheet instead of template'
+        );
+        
+        $this->assertNotEquals(
+            Theme_Config::template_name(),
+            Child_Theme_Config::template_name(),
+            'Parent and child should return different template names'
+        );
+    }
+
+    /**
+     * Test child theme version matches child theme data
+     */
+    public function test_child_version_matches_theme_data() {
+        if ( ! is_child_theme() ) {
+            $this->markTestSkipped('Test requires active child theme');
+        }
+        
+        $theme = wp_get_theme( get_stylesheet() );
+        $this->assertEquals(
+            $theme->get('Version'),
+            Child_Theme_Config::version(),
+            'Child version should match child theme version'
+        );
+    }
+    
+
+    /**
+     * Test that parent theme version is available in child
+     */
+    public function test_parent_theme_version_available() {
+        if ( ! is_child_theme() ) {
+            $this->markTestSkipped( 'Test requires active child theme' );
+        }
+        
+        $parent_theme = wp_get_theme(get_template());
+        $this->assertEquals(
+            $parent_theme->get( 'Version' ),
+            Child_Theme_Config::get_parent_theme_version(),
+            'Should return parent theme version'
+        );
+    }
+
+    /**
+     * Test constructor override in child class
+     */
+    public function test_child_constructor_override() {
+        $reflection = new \ReflectionClass( Child_Theme_Config::class );
+        $constructor = $reflection->getConstructor();
+        
+        $this->assertTrue(
+            $constructor->isProtected(),
+            'Child constructor must be protected'
+        );
+    }
+
+    /**
+     * Test child theme name matches child theme data
+     */
+    public function test_child_name_matches_theme_data() {
+        if ( ! is_child_theme() ) {
+            $this->markTestSkipped( 'Test requires active child theme' );
+        }
+        
+        $theme = wp_get_theme( get_stylesheet() );
+        $this->assertEquals(
+            $theme->get('Name'),
+            Child_Theme_Config::name(),
+            'Child name should match child theme name'
+        );
+    }
 }
+
+
