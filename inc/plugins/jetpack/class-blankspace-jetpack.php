@@ -37,10 +37,13 @@ if ( ! class_exists( '\WritePoetry\BlankSpace\Jetpack' ) ) :
 			// add_action( 'init', array( $this, 'register_block_bindings' ) );
 
 			add_filter(
-				'init',
+				'wp_loaded',
 				function () {
 					add_filter( 'pre_render_block', array( $this, 'projects_pre_render_block' ), 10, 2 );
-					add_filter( 'rest_jetpack-portfolio_query', array( $this, 'rest_project_date' ), 10, 2 );
+
+					if ( post_type_exists( self::CUSTOM_POST_TYPE ) ) {
+       					add_filter( 'rest_' . self::CUSTOM_POST_TYPE . '_query', array( $this, 'rest_project_date' ), 10, 2 );
+					}
 				},
 				10,
 				2
@@ -48,9 +51,15 @@ if ( ! class_exists( '\WritePoetry\BlankSpace\Jetpack' ) ) :
 		}
 
 
-
+		/**
+		 * Adds a filter to modify the read more block.
+		 *
+		 * @param string $pre_render The pre-rendered block content.
+		 * @param array  $parsed_block The parsed block attributes.
+		 * @return string The modified block content.
+		 */
 		public function rest_project_date( $args, $request ) {
-
+			
 			// add same meta query arguments for rest api (backend).
 			$args = $this->filter_query();
 			return $args;
@@ -71,16 +80,16 @@ if ( ! class_exists( '\WritePoetry\BlankSpace\Jetpack' ) ) :
 				);
 			}
 
-			$query['post_type'] = 'jetpack-portfolio';
+			$query['post_type'] = self::CUSTOM_POST_TYPE;
 
 			// The meta key would be the writepoetry_project_year field assigned to the jetpack-portfolio CPT
 			$query['meta_key'] = 'writepoetry_project_year';
 
 			// Show all posts
-			// $query['nopaging'] = true;
+			$query['nopaging'] = true;
 
 			// Skip SQL_CALC_FOUND_ROWS for performance (no pagination).
-			// $query['no_found_rows'] = true;
+			$query['no_found_rows'] = true;
 
 			// $query['posts_per_page'] = 1;
 
