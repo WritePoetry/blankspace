@@ -10,7 +10,6 @@
  * @since             0.2.0
  */
 namespace WritePoetry\BlankSpace;
-use function WritePoetry\BlankSpace\Helpers\scandir;
 
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -61,33 +60,13 @@ if ( ! class_exists( 'Child_Theme_Assets' ) ) :
 			$this->assets_folder = trim( apply_filters( 'blankspace_child_assets_path', 'assets' ), '/' );
 
 
-			add_action( 'wp_enqueue_scripts', array( $this, 'load_assets' ) );
+			add_action( 'wp_enqueue_scripts', function(  ) {
+				$path = get_stylesheet_directory() . '/' . $this->assets_folder;
+
+				$this->load_assets(
+					$path, $this->theme_name, $this->is_child_theme
+				);
+			}, 10, 1 );
 		}
-
-		/**
-		 * Load front-end assets.
-		 *
-		 * @return void
-		 */
-		public function load_assets() {
-			$path = get_stylesheet_directory() . '/' . $this->assets_folder;
-
-			// Check if the path exists.
-			if ( ! is_dir( $path ) ) {
-				return;
-			}
-
-			// Get the CSS and JS files from the child theme.
-			$js_files = (array) scandir( $path, 'js', -1 );
-			$css_files = (array) scandir( $path, 'css', -1 );
-					 
-			$this->enqueue_theme_assets( $js_files, $css_files, $this->theme_name, $this->is_child_theme );
-
-
-			// Get the active plugins list.
-			// $this->load_plugins_assets( $this->theme_name );
-		}
-		
-
 	}
 endif;

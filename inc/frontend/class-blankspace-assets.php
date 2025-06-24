@@ -11,6 +11,8 @@
  */
 
 namespace WritePoetry\BlankSpace;
+use function WritePoetry\BlankSpace\Helpers\scandir;
+
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -279,6 +281,24 @@ if ( ! class_exists( 'Assets' ) ) :
 			$search_pattern = '*.asset.php';
 	
 			return $this->get_files_from_folder( $file_path, $search_pattern );
+		}
+
+		/**
+		 * Load front-end assets.
+		 *
+		 * @return void
+		 */
+		public function load_assets( $path = null, $theme_name = null, $is_child_theme = false ) {
+			// Check if the path exists.
+			if ( ! is_dir( $path ) ) {
+				return;
+			}
+
+			// Get the CSS and JS files from the child theme.
+			$js_files = (array) scandir( $path, 'js', -1 );
+			$css_files = (array) scandir( $path, 'css', -1 );
+					 
+			$this->enqueue_theme_assets( $js_files, $css_files, $theme_name, $is_child_theme );
 		}
 			
 		/**
