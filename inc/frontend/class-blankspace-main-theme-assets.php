@@ -11,6 +11,8 @@
  */
 
 namespace WritePoetry\BlankSpace;
+use function WritePoetry\BlankSpace\Helpers\scandir;
+
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -37,6 +39,13 @@ if ( ! class_exists( 'Main_Theme_Assets' ) ) :
 		private $is_child_theme;
 
 		/**
+		 * The assets folder.
+		 *
+		 * @var string
+		 */
+		private $assets_folder;
+
+		/**
 		 * Setup class.
 		 *
 		 * @since 1.0
@@ -47,6 +56,7 @@ if ( ! class_exists( 'Main_Theme_Assets' ) ) :
 			// Get the theme name.
 			$this->theme_name = Theme_Config::template_name();
 			$this->is_child_theme = false;
+			$this->assets_folder = trim( apply_filters( 'blankspace_assets_path', 'assets' ), '/' );
 				
 			add_action( 'wp_enqueue_scripts', array( $this, 'load_assets' ) );
 		}
@@ -57,13 +67,19 @@ if ( ! class_exists( 'Main_Theme_Assets' ) ) :
 		 * @return void
 		 */
 		public function load_assets() {
- 
-			// Get the asset files.
-			$js = $this->get_files( $this->assets_js_path );
-			$css = $this->get_files( $this->assets_css_path );
-		
-			// Load theme assets.
-			$this->load_theme_assets( $js, $css, $this->theme_name, $this->is_child_theme );
+ 			$path = get_template_directory() . '/' . $this->assets_folder;
+
+			// Check if the path exists.
+			if ( ! is_dir( $path ) ) {
+				return;
+			}
+
+			// Get the CSS and JS files from the child theme.
+			$js_files = (array) scandir( $path, 'js', -1 );
+			$css_files = (array) scandir( $path, 'css', -1 );
+					 
+			$this->enqueue_theme_assets( $js_files, $css_files, $this->theme_name, $this->is_child_theme );
+
 
 			// Load active plugin assets.
 			// $this->load_plugins_assets( $this->theme_name );

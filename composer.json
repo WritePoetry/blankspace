@@ -5,6 +5,9 @@
         "classmap": [
             "inc/"
         ],
+        "files": [
+            "inc/helpers/functions.php"
+        ],
 		"psr-4": {
 			"WritePoetry\\BlankSpace\\": "./inc"
 		}
