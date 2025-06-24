@@ -1,176 +1,201 @@
 <?php
 namespace WritePoetry\BlankSpace\Tests;
+require_once '/var/www/html/wp-content/themes/blankspace/inc/helpers/functions.php';
 
-use WritePoetry\BlankSpace\Assets;
+
 use Yoast\PHPUnitPolyfills\TestCases\TestCase;
+use function WritePoetry\BlankSpace\Helpers\scandir;
 
-class blankspaceFileFunctionsTest extends TestCase {
+ 
 
+class blankspaceFileFunctionsTest extends TestCase
+{
     protected $testDir;
-    protected $testFiles = [
-        'file1.txt',
-        'file2.txt',
-        'css/main.css',
-        'css/theme.css',
-        'js/app.js',
-        'js/utils.js',
-        'libs/jquery.js',
-        'document.pdf',
-        'image.jpg',
-        'subdir/file3.txt'
+    protected $testStructure = [
+        'file1.php' => '',
+        'file2.js' => '',
+        'file3.css' => '',
+        'subdir' => [
+            'subfile1.php' => '',
+            'subfile2.js' => '',
+            'ignored.txt' => '',
+            'node_modules' => [
+                'module_file.js' => ''
+            ]
+        ],
+        'vendor' => [
+            'vendor_file.php' => ''
+        ],
+        '.hidden' => 'content',
+        'ignored.txt' => ''
     ];
 
-    protected function setUp(): void {
-        // Crea una directory temporanea per i test
-        $this->testDir = sys_get_temp_dir() . '/file_test_' . uniqid();
-        
-        mkdir( $this->testDir );
-        
-        // Crea i file di test
-        foreach ( $this->testFiles as $file ) {
-            $path = $this->testDir . '/' . $file;
+    protected function setUp(): void
+    {
+        // Create a temporary directory structure
+        $this->testDir = sys_get_temp_dir() . '/scandir_test_' . uniqid();
+        $this->createDirectoryStructure( $this->testDir, $this->testStructure );
+    }
+
+    protected function tearDown(): void
+    {
+        // Clean up the temporary directory
+        $this->removeDirectory( $this->testDir );
+    }
+
+    private function createDirectoryStructure( $base, $structure )
+    {
+        if ( ! file_exists( $base ) ) {
+            mkdir( $base, 0777, true );
+        }
+
+        foreach ( $structure as $name => $content ) {
+            $path = $base . '/' . $name;
             
-            if ( strpos($file, '/' ) !== false) {
-                mkdir( dirname( $path ), 0777, true );
+            if ( is_array( $content ) ) {
+                $this->createDirectoryStructure( $path, $content );
+            } else {
+                file_put_contents( $path, $content );
             }
-            
-            touch( $path );
         }
     }
 
-    protected function tearDown(): void {
-        // Rimuove la directory temporanea e il suo contenuto
-        $this->deleteDirectory( $this->testDir );
-    }
-
-    private function deleteDirectory( $dir ) {
+    private function removeDirectory( $dir )
+    {
         if ( ! file_exists( $dir ) ) {
             return;
         }
-        
-        $files = new \RecursiveIteratorIterator(
+
+        $files = new \RecursiveIteratorIterator( 
             new \RecursiveDirectoryIterator( $dir, \RecursiveDirectoryIterator::SKIP_DOTS ),
             \RecursiveIteratorIterator::CHILD_FIRST
-        );
-        
+         );
+
         foreach ( $files as $fileinfo ) {
             $action = ( $fileinfo->isDir() ? 'rmdir' : 'unlink' );
             $action( $fileinfo->getRealPath() );
         }
-        
+
         rmdir( $dir );
     }
- 
 
-    public function testGetAllFilesFromFolder() {
-        $instance = new Assets();
-        
-        $result = $instance->get_files_from_folder( $this->testDir, '*' );
- 
-   
-        
-       
-
-
-           $expected  = [
-        $this->testDir . 'file1.txt',
-        $this->testDir . 'file2.txt',
-        $this->testDir . 'css/main.css',
-        $this->testDir . 'css/theme.css',
-        $this->testDir . 'js/app.js',
-        $this->testDir . 'js/utils.js',
-        $this->testDir . 'libs/jquery.js',
-        $this->testDir . 'document.pdf',
-        $this->testDir . 'image.jpg',
-        $this->testDir . 'subdir/file3.txt'
-    ];
-
-        sort( $result );
-        sort( $expected );
-
-        
-        $this->assertEquals( $expected, $result );
-    }
- 
-
-    public function testGetFilesFromNonexistentFolder() {
-        $instance = new Assets();
-        
-        $result = $instance->get_files_from_folder( $this->testDir . '/nonexistent', '*.txt');
-        
-        
-        $this->assertEquals([], $result);
+    public function testScandirReturnsFalseForNonExistentPath()
+    {
+        $result = scandir( '/nonexistent/path' );
+        $this->assertFalse( $result );
     }
 
-    public function testGetFilesWithTrailingSlash() {
-        $instance = new Assets();
-        
-        $result1 = $instance->get_files_from_folder( $this->testDir, '*.txt');
-        $result2 = $instance->get_files_from_folder( $this->testDir . '/', '*.txt');
-        
-        $this->assertEquals($result1, $result2);
-    }
-
-    public function testGetFilesFromSubdirectory() {
-        $instance = new Assets();
-        
-        $result = $instance->get_files_from_folder( $this->testDir . '/subdir', '*.txt');
+    public function testScandirReturnsAllFilesWithoutExtensionsFilter()
+    {
+        $result = scandir( $this->testDir );
         
         $expected = [
-            $this->testDir . '/subdir/file3.txt'
+            'file1.php' => $this->testDir . '/file1.php',
+            'file2.js' => $this->testDir . '/file2.js',
+            'file3.css' => $this->testDir . '/file3.css',
+            'ignored.txt' => $this->testDir . '/ignored.txt',
+            'subdir/subfile1.php' => $this->testDir . '/subdir/subfile1.php',
+            'subdir/subfile2.js' => $this->testDir . '/subdir/subfile2.js',
+            'subdir/ignored.txt' => $this->testDir . '/subdir/ignored.txt'
         ];
         
         $this->assertEquals( $expected, $result );
     }
 
-    public function testGetCssFilesFromFolder() {
-        $assets = new Assets();
-        
-        $result = $assets->get_css_files_from_folder($this->testDir);
+    public function testScandirFiltersBySingleExtension()
+    {
+        $result = scandir( $this->testDir, 'php' );
         
         $expected = [
-            $this->testDir . '/css/main.css',
-            $this->testDir . '/css/theme.css'
+            'file1.php' => $this->testDir . '/file1.php',
+            'subdir/subfile1.php' => $this->testDir . '/subdir/subfile1.php'
         ];
-        
-        sort( $result );
-        sort( $expected );
         
         $this->assertEquals( $expected, $result );
     }
 
-    public function testGetJsFilesFromFolder() {
-        $assets = new Assets();
-        
-        $result = $assets->get_js_files_from_folder( $this->testDir );
+    public function testScandirFiltersByMultipleExtensions()
+    {
+        $result = scandir( $this->testDir, ['php', 'js'] );
         
         $expected = [
-            $this->testDir . '/js/app.js',
-            $this->testDir . '/js/utils.js',
-            $this->testDir . '/libs/jquery.js'
+            'file1.php' => $this->testDir . '/file1.php',
+            'file2.js' => $this->testDir . '/file2.js',
+            'subdir/subfile1.php' => $this->testDir . '/subdir/subfile1.php',
+            'subdir/subfile2.js' => $this->testDir . '/subdir/subfile2.js'
         ];
-        
-        sort( $result );
-        sort( $expected );
         
         $this->assertEquals( $expected, $result );
     }
 
-    public function testGetDependenciesFilesFromFolder() {
-        $assets = new Assets();
-        
-        $result = $assets->get_dependencies_files_from_folder( $this->testDir );
+    public function testScandirWithDepthZero()
+    {
+        $result = scandir( $this->testDir, null, 0 );
         
         $expected = [
-            $this->testDir . '/dist/main.asset.php',
-            $this->testDir . '/dist/vendor.asset.php'
+            'file1.php' => $this->testDir . '/file1.php',
+            'file2.js' => $this->testDir . '/file2.js',
+            'file3.css' => $this->testDir . '/file3.css',
+            'ignored.txt' => $this->testDir . '/ignored.txt'
         ];
         
-        sort( $result );
-        sort( $expected );
+        $this->assertEquals( $expected, $result );
+    }
+
+    public function testScandirWithDepthOne()
+    {
+        $result = scandir( $this->testDir, null, 1 );
         
-        $this->assertEquals($expected, $result);
+        $expected = [
+            'file1.php' => $this->testDir . '/file1.php',
+            'file2.js' => $this->testDir . '/file2.js',
+            'file3.css' => $this->testDir . '/file3.css',
+            'ignored.txt' => $this->testDir . '/ignored.txt',
+            'subdir/subfile1.php' => $this->testDir . '/subdir/subfile1.php',
+            'subdir/subfile2.js' => $this->testDir . '/subdir/subfile2.js',
+            'subdir/ignored.txt' => $this->testDir . '/subdir/ignored.txt'
+        ];
+        
+        $this->assertEquals( $expected, $result );
+    }
+
+    public function testScandirExcludesNodeModulesAndVendor()
+    {
+        $result = scandir( $this->testDir );
+        
+        $this->assertArrayNotHasKey( 'subdir/node_modules/module_file.js', $result );
+        $this->assertArrayNotHasKey( 'vendor/vendor_file.php', $result );
+    }
+
+    public function testScandirExcludesHiddenFiles()
+    {
+        $result = scandir( $this->testDir );
+        $this->assertArrayNotHasKey( '.hidden', $result );
+    }
+
+    public function testScandirWithRelativePath()
+    {
+        $result = scandir( $this->testDir . '/subdir', null, 0, 'custom_prefix' );
+        
+        $expected = [
+            'custom_prefix/subfile1.php' => $this->testDir . '/subdir/subfile1.php',
+            'custom_prefix/subfile2.js' => $this->testDir . '/subdir/subfile2.js',
+            'custom_prefix/ignored.txt' => $this->testDir . '/subdir/ignored.txt'
+        ];
+        
+        $this->assertEquals( $expected, $result );
+    }
+
+    public function testScandirWithMultipleFiltersAndDepth()
+    {
+        $result = scandir( $this->testDir, ['css', 'js'], 1 );
+        
+        $expected = [
+            'file2.js' => $this->testDir . '/file2.js',
+            'file3.css' => $this->testDir . '/file3.css',
+            'subdir/subfile2.js' => $this->testDir . '/subdir/subfile2.js'
+        ];
+        
+        $this->assertEquals( $expected, $result );
     }
 }
-
-
