@@ -45,6 +45,20 @@ if ( ! class_exists( 'Main_Theme_Assets' ) ) :
 		private $assets_folder;
 
 		/**
+		 * The theme version.
+		 *
+		 * @var string
+		 */
+		private $theme_version;
+
+		/**
+		 * The theme path.
+		 *
+		 * @var string
+		 */
+		private $theme_path;
+
+		/**
 		 * Setup class.
 		 *
 		 * @since 1.0
@@ -54,15 +68,14 @@ if ( ! class_exists( 'Main_Theme_Assets' ) ) :
 			
 			// Get the theme name.
 			$this->theme_name = Theme_Config::template_name();
+			$this->theme_version = Theme_Config::version();
 			$this->is_child_theme = false;
+			$this->theme_path = Theme_Config::directory();
 			$this->assets_folder = trim( apply_filters( 'blankspace_assets_path', 'assets' ), '/' );
 
 			add_action( 'wp_enqueue_scripts', function( ) {
-				$path = get_template_directory() . '/' . $this->assets_folder;
-
-				$this->load_assets(
-					$path, $this->theme_name, $this->is_child_theme
-				);
+				// Load the assets from the theme folder.
+				$this->load_assets( $this->theme_path, $this->theme_name, $this->theme_version, $this->is_child_theme );
 			}, 10, 1 );
 		}
 

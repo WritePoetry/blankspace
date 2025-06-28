@@ -99,83 +99,47 @@ if ( ! class_exists( 'Assets' ) ) :
 			$this->active_plugins = get_option( 'active_plugins' );
 		}
 		
-			
-		public function filter_rtl_files( $all_files) {
-			// Use array_filter to conditionally return the right files based on is_rtl()
+		/**
+		 * Filter RTL files based on the current language direction.
+		 *
+		 * @param array $all_files The list of all files.
+		 *
+		 * @return array The filtered list of files.
+		 */	
+		public function filter_rtl_files( array $all_files ): array {
+			// Use array_filter to conditionally return the right files based on is_rtl(),
 			return array_filter( $all_files, function ( $file ) {
 				return strpos( $file, '-rtl.css' ) === ( is_rtl() ? 0 : false );
 			} );
 		}
-		
-		
+			
 		
 		/**
 		 * Enqueue JavaScript assets.
 		 *
 		 * @param array  $asset_files The asset files to enqueue.
 		 * @param string $handle      The handle for the enqueued script.
+		 * @param bool   $is_child_theme Whether this is a child theme.
 		 */
-		public function enqueue_js_assets( $asset_files, $theme_name, $is_child_theme ) {
-			foreach ( $asset_files as $key => $asset_file ) {
-
-				if (is_string($key)) {
-					$file_name = pathinfo( $key, PATHINFO_FILENAME );
-					$file_extension = pathinfo( $key, PATHINFO_EXTENSION );
-				} else {
-					$file_extension = pathinfo( $asset_file, PATHINFO_EXTENSION );
-					$file_name = pathinfo( $asset_file, PATHINFO_FILENAME );
-					
-					// Remove the '.asset' suffix from the file name.
-					if ( str_ends_with( $file_name, '.asset' ) ) {
-						$file_name = substr( $file_name, 0, -strlen( '.asset' ) );
-					}
-				}
-
-  
-				// Check if the file extension is 'php'.
-				if ( 'php' === $file_extension ) {
-					$asset = include $asset_file;
-				}
-
-				$handle = $theme_name . '-' . $file_name;
-				
-				// Get the source of the file.
-				$src = $this->get_theme_file_uri_src( $this->assets_js_path . $file_name . '.js', $is_child_theme );
-
-
-				// Pass the script $args as parameters.
-				$params = array(
-					$handle,
-					$src,
-				);
-				
-				// Add the dependencies and version to the parameters when the file extension is 'php'.
-				if ( isset( $asset ) ) {
-					$params = array_merge( $params, array(
-						$asset['dependencies'],
-						$asset['version'],
-					) );
-				} else {
-					// If the file is not a PHP file, set the dependencies and version to empty.
-					$params = array_merge( $params, array(
-						array(), // dependencies
-						false, // TODO: add theme version if no $asset['version'] is provided
-					) );
-				}
-
-				
+		public function enqueue_scripts(array $scripts, string $theme_name, bool $is_child_theme ): void {
 			
-								
-				$params = array_merge( $params, array(
-					true, // in_footer
-					'defer', // strategy
-				) );
-				
-
-				
-				// Enqueue theme scripts.
-				wp_enqueue_script( ...$params );
-			}
+			$this->enqueue_assets(
+				files: $scripts,
+				theme_name: $theme_name,
+				is_child_theme: $is_child_theme,
+				base_path: $this->assets_js_path,
+				callback: function( $handle, $src, $dependencies, $version ) {
+					wp_enqueue_script(
+						$handle,
+						$src,
+						$dependencies,
+						$version,
+						true, // in_footer
+						'defer', // strategy
+					);
+					// wp_script_add_data($handle, 'strategy', 'defer');
+				}
+			);
 		}
 		
 		/**
@@ -184,65 +148,63 @@ if ( ! class_exists( 'Assets' ) ) :
 		 * @param array  $asset_files The asset files to enqueue.
 		 * @param string $handle      The handle for the enqueued stylesheet.
 		 */
-		public function enqueue_css_assets( $asset_files, $theme_name, $is_child_theme ) {
-			foreach ( $asset_files as $key => $asset_file ) {
-				if ( is_string($key) ) {
-					$file_name = pathinfo( $key, PATHINFO_FILENAME );
-					$file_extension = pathinfo( $key, PATHINFO_EXTENSION );
-				} else {
-					$file_extension = pathinfo( $asset_file, PATHINFO_EXTENSION );
-					$file_name = pathinfo( $asset_file, PATHINFO_FILENAME );
-					
-					// Remove the '.asset' suffix from the file name.
-					if ( str_ends_with( $file_name, '.asset' ) ) {
-						$file_name = substr( $file_name, 0, -strlen( '.asset' ) );
-					}
+		public function enqueue_styles(array $styles, string $theme_name, bool $is_child_theme ): void {
+			$this->enqueue_assets(
+				files: $styles,
+				theme_name: $theme_name,
+				is_child_theme: $is_child_theme,
+				base_path: $this->assets_css_path,
+				callback: function( $handle, $src, $dependencies, $version ) {
+					wp_enqueue_style(
+						$handle,
+						$src,
+						$dependencies,
+						$version
+					);
 				}
-
-				
-				// Check if the file extension is 'php'.
-				if ( 'php' === $file_extension ) {
-					$asset = include $asset_file;
-				}
- 
-				$handle = $theme_name . '-' . $file_name;
-				
-				// Get the source of the file.
-				$src = $this->get_theme_file_uri_src( $this->assets_css_path . $file_name . '.css', $is_child_theme );
-			
- 				$params = array(
-					$handle,
-					$src,
-				);
-				
-				// Add the dependencies and version to the parameters when the file extension is 'php'.
-				if ( isset( $asset ) ) {
-					$params = array_merge( $params, array(
-						$asset['dependencies'],
-						$asset['version'],
-					) );
-				}		
-				
-				// Enqueue theme stylesheet.
-				wp_enqueue_style( ...$params );
-			}
+			);
 		}
-		
-		
-		public function get_theme_file_uri_src( $file, $is_child_theme ) {
-			return $is_child_theme ? get_theme_file_uri( $file ) : get_parent_theme_file_uri( $file );
-		}
-		
 		
 		/**
-		 * Load theme related assets.
+		 * Private unified asset handler.
 		 *
-		 * @return void
+		 * @param array    $files The files to enqueue.
+		 * @param string   $theme_name The theme name for handle prefix.
+		 * @param bool     $is_child_theme Whether this is a child theme.
+		 * @param string   $base_path Base path for the assets.
+		 * @param callable $enqueue_callback Function to handle the actual enqueuing.
 		 */
-		public function enqueue_theme_assets( $js_files, $css_files, $theme_name, $is_child_theme ) {
-			$this->enqueue_js_assets( $js_files, $theme_name, $is_child_theme );
-			$this->enqueue_css_assets( $css_files, $theme_name, $is_child_theme );
+		private function enqueue_assets(
+			array $files,
+			string $theme_name,
+			bool $is_child_theme,
+			string $base_path,
+			callable $callback
+		): void {
+			foreach ( $files as $file => $asset ) {
+				$filename = pathinfo( $file, PATHINFO_FILENAME );
+				
+				// Skip files starting with underscore.
+				if ( $filename[0] === '_' ) {
+					continue;
+				}
+
+				$handle = $theme_name . '-' . $filename;
+				$relative_path = trailingslashit( $base_path ) . $file;
+				
+				$src = $is_child_theme 
+					? get_theme_file_uri( $relative_path ) 
+					: get_parent_theme_file_uri( $relative_path );
+
+				$callback(
+					$handle,
+					$src,
+					$asset['dependencies'] ?? [],
+					$asset['version'] ?? false
+				);
+			}
 		}
+	
 		
 		/**
 		 * Get CSS files from a folder.
@@ -270,35 +232,126 @@ if ( ! class_exists( 'Assets' ) ) :
 			return $this->get_files_from_folder( $file_path, $search_pattern );
 		}
 		
+		
+
 		/**
-		 * Get dependencies files from a folder.
-		 *
-		 * @param string $file_path The path to the folder.
-		 *
-		 * @return mixed The list of files.
+		 * Load and enqueue all theme assets (JS and CSS)
+		 * 
+		 * @param string $path The base path to assets directory
+		 * @param string $theme_name The theme name for handle prefixing
+		 * @param string $theme_version Version number for cache busting
+		 * @param bool $is_child_theme Whether we're loading child theme assets
 		 */
-		public function get_dependencies_files_from_folder( $file_path ) {
-			$search_pattern = '*.asset.php';
+		public function load_assets( string $path, string $theme_name, string $theme_version, bool $is_child_theme ): void {
 	
-			return $this->get_files_from_folder( $file_path, $search_pattern );
+			$js_metadata = $this->get_assets_metadata( 
+				trailingslashit( $path ) . $this->assets_js_path, 
+				'js',
+				 $theme_version
+			);
+			
+			$css_metadata = $this->get_assets_metadata( 
+				trailingslashit( $path ) . $this->assets_css_path,
+				'css',
+				$theme_version
+			);
+
+
+			if ( ! empty( $css_metadata ) ) {
+				$this->enqueue_styles( $css_metadata, $theme_name, $is_child_theme );
+			}
+
+			if (! empty( $js_metadata )  ) {
+				$this->enqueue_scripts( $js_metadata, $theme_name, $is_child_theme );
+			}
 		}
 
 		/**
-		 * Load front-end assets.
+		 * Scan a directory for assets and their associated metadata.
 		 *
-		 * @return void
+		 * Searches for .asset.php files to gather dependencies and version information,
+		 * and falls back to theme version or file modification time for unregistered assets.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param string $path           Absolute path to the directory containing assets.
+		 * @param string $extension The file extension to look for (js, css, etc.). Default 'js'.
+		 * @param string $theme_version  Fallback version string if no asset version is provided.
+		 * @return array Associative array of asset files with their metadata.
 		 */
-		public function load_assets( $path = null, $theme_name = null, $is_child_theme = false ) {
+		public function get_assets_metadata( $path = null, $extension = 'js', $theme_version = null ) {
+			// Normalize the path and ensure a trailing slash.
+			$path = untrailingslashit( wp_normalize_path( $path ) );
+			
 			// Check if the path exists.
 			if ( ! is_dir( $path ) ) {
 				return;
 			}
+	
+			// Get all files in the directory.
+			$all_files = ( array ) scandir( $path, null, -1 );
 
-			// Get the CSS and JS files from the child theme.
-			$js_files = (array) scandir( $path, 'js', -1 );
-			$css_files = (array) scandir( $path, 'css', -1 );
-					 
-			$this->enqueue_theme_assets( $js_files, $css_files, $theme_name, $is_child_theme );
+			if ( empty( $all_files ) ) {
+				return;
+			}
+
+			// Filter RTL files if the extension is CSS.
+			if ( 'css' === $extension ) {
+				$all_files = $this->filter_rtl_files( $all_files );
+			}
+			
+			// Arrays to hold files to be loaded.
+			$assets_metadata = array();
+			$processed_files = array();
+
+			foreach ( $all_files as $key => $file ) {
+				$file_ext = pathinfo( $file, PATHINFO_EXTENSION );
+		 
+				// Process asset files first.
+				if ( 'php' === $file_ext || 
+					false !== strpos( $file, '.asset.php' ) ) {
+					
+					if ( file_exists( $file ) && is_readable( $file ) ) {
+						continue;
+					} 
+
+					$asset = include $file;
+					
+
+					if ( ! is_array( $asset ) ) {
+						continue;
+					}
+
+					// Replace the '.asset.php' suffix with the target extension from the file name.
+					$filename = str_replace( '.asset.php', '.' . $extension, $file );
+					
+						
+					if ( ! in_array( $filename, $all_files ) ) {
+						continue;
+					}
+
+					// Merges asset metadata with fallback values (empty deps, theme/file version, or current timestamp) and tracks processed files.
+					$assets_metadata[$key] = wp_parse_args( $asset, array(
+						'dependencies' => array(),
+						'version' => $theme_version ?: ( file_exists( $filename ) ? filemtime( $filename ) : time() )
+					) );
+
+					$processed_files[] = $filename;
+						
+					continue;
+				}
+
+				// Case 2: Process target extension files not already processed
+				if ( $file_ext === $extension && ! in_array( $file, $processed_files, true ) ) {
+				
+					$assets_metadata[$key] = array(
+						'dependencies' => array(),
+						'version' => $theme_version ?: ( file_exists( $file ) ? filemtime( $file ) : time() )
+					);
+				}
+			}
+
+			return $assets_metadata;
 		}
 			
 		/**
@@ -365,8 +418,8 @@ if ( ! class_exists( 'Assets' ) ) :
  
 				
 				// Load plugin related assets.
-				$this->enqueue_css_assets( $css_path, $theme_name );
-				$this->enqueue_js_assets( $js_path, $theme_name );
+				// $this->enqueue_styles( $css_path, $theme_name );
+				// $this->enqueue_scripts( $js_path, $theme_name );
 			}
 
 		}
