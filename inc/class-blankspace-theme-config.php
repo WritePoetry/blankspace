@@ -44,6 +44,13 @@ class Theme_Config {
      */
     protected $template_name;
 
+    /**
+     * Stores the current active theme directory.
+     *
+     * @var string
+     */
+    protected $directory;
+
 	/**
      * Costruttore privato per evitare istanze esterne.
      */
@@ -61,6 +68,7 @@ class Theme_Config {
         $this->version = ( string ) $theme->get( 'Version' );
         $this->name = ( string ) $theme->get( 'Name' );
         $this->template_name = $source;
+        $this->directory = get_template_directory();
     }
 
     /**
@@ -114,5 +122,14 @@ class Theme_Config {
      */
     public static function template_name() {
         return static::get_instance()->template_name;
+    }
+
+    /**
+     * Get the active theme directory.
+     *
+     * @return string Active theme directory.
+     */
+    public static function directory() {
+        return static::get_instance()->directory;
     }
 }

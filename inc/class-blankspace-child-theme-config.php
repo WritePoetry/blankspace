@@ -36,6 +36,11 @@ class Child_Theme_Config extends Theme_Config {
         $this->init_theme_data( get_stylesheet() );
     }
 
+	public static function directory() {
+		return get_stylesheet_directory();
+	}
+	
+
 	/**
 	 * Get the name of the parent active theme name.
 	 *
