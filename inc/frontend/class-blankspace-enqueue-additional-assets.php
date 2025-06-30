@@ -39,7 +39,7 @@ if ( ! class_exists( 'Enqueue_Additional_Assets' ) ) :
 		}
 
 		/**
-		 * Load Dashicons official icon font.
+		 * Load Dashicons official icon font for the frontend.
 		 *
 		 * @return void
 		 */

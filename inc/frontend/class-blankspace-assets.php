@@ -311,7 +311,7 @@ if ( ! class_exists( 'Assets' ) ) :
 				if ( 'php' === $file_ext || 
 					false !== strpos( $file, '.asset.php' ) ) {
 					
-					if ( file_exists( $file ) && is_readable( $file ) ) {
+					if ( ! file_exists( $file ) && ! is_readable( $file ) ) {
 						continue;
 					} 
 
@@ -329,9 +329,11 @@ if ( ! class_exists( 'Assets' ) ) :
 					if ( ! in_array( $filename, $all_files ) ) {
 						continue;
 					}
+					
+					$k = str_replace( 'asset.php', '', $key ) . $extension;
 
 					// Merges asset metadata with fallback values (empty deps, theme/file version, or current timestamp) and tracks processed files.
-					$assets_metadata[$key] = wp_parse_args( $asset, array(
+					$assets_metadata[$k] = wp_parse_args( $asset, array(
 						'dependencies' => array(),
 						'version' => $theme_version ?: ( file_exists( $filename ) ? filemtime( $filename ) : time() )
 					) );
