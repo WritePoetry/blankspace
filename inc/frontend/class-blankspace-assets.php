@@ -188,7 +188,7 @@ if ( ! class_exists( 'Assets' ) ) :
 				if ( $filename[0] === '_' ) {
 					continue;
 				}
-
+				
 				$handle = $theme_name . '-' . $filename;
 				$relative_path = trailingslashit( $base_path ) . $file;
 				
@@ -235,37 +235,34 @@ if ( ! class_exists( 'Assets' ) ) :
 		
 
 		/**
-		 * Load and enqueue all theme assets (JS and CSS)
+		 * Load and enqueue all theme assets (JS and CSS).
 		 * 
-		 * @param string $path The base path to assets directory
-		 * @param string $theme_name The theme name for handle prefixing
-		 * @param string $theme_version Version number for cache busting
-		 * @param bool $is_child_theme Whether we're loading child theme assets
+		 * @param string $path The base path to assets directory.
+		 * @param string $theme_name The theme name for handle prefixing.
+		 * @param string $theme_version Version number for cache busting.
+		 * @param bool $is_child_theme Whether we're loading child theme assets.
 		 */
-		public function load_assets( string $path, string $theme_name, string $theme_version, bool $is_child_theme ): void {
-	
-			$js_metadata = $this->get_assets_metadata( 
-				trailingslashit( $path ) . $this->assets_js_path, 
-				'js',
-				 $theme_version
-			);
-			
-			$css_metadata = $this->get_assets_metadata( 
-				trailingslashit( $path ) . $this->assets_css_path,
-				'css',
-				$theme_version
-			);
+		public function load_assets(
+			string $path,
+			string $theme_name,
+			string $theme_version,
+			bool $is_child_theme
+		): void {
+			$js_path = trailingslashit( $path ) . $this->assets_js_path;
+			$css_path = trailingslashit( $path ) . $this->assets_css_path;
 
+			$js_metadata = $this->get_assets_metadata( $js_path, 'js', $theme_version );
+			$css_metadata = $this->get_assets_metadata( $css_path, 'css', $theme_version );
 
-			if ( ! empty( $css_metadata ) ) {
-				$this->enqueue_styles( $css_metadata, $theme_name, $is_child_theme );
+			// Early return if both are empty.
+			if ( empty( array_filter( [$css_metadata, $js_metadata] ) ) ) {
+				return;
 			}
 
-			if (! empty( $js_metadata )  ) {
-				$this->enqueue_scripts( $js_metadata, $theme_name, $is_child_theme );
-			}
+			$this->enqueue_styles( $css_metadata, $theme_name, $is_child_theme );
+			$this->enqueue_scripts( $js_metadata, $theme_name, $is_child_theme );
 		}
-
+		
 		/**
 		 * Scan a directory for assets and their associated metadata.
 		 *
@@ -287,6 +284,17 @@ if ( ! class_exists( 'Assets' ) ) :
 			if ( ! is_dir( $path ) ) {
 				return;
 			}
+
+			\add_filter( 'blankspace_theme_scandir_exclusions', function ( $exclusions ) {
+				// Add new exclusions for blocks and plugins.
+				$new_exclusions = array(
+					'blocks',
+					'plugins'
+				);
+				
+				return array_merge( $exclusions, $new_exclusions );
+			} ); 
+
 	
 			// Get all files in the directory.
 			$all_files = ( array ) scandir( $path, null, -1 );

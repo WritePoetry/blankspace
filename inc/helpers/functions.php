@@ -45,7 +45,7 @@ function scandir( $path, $extensions = null, $depth = 0, $relative_path = '' ) {
      *
      * @param string[] $exclusions Array of excluded directories and files.
      */
-    $exclusions = (array) apply_filters( 'theme_scandir_exclusions', array( 'CVS', 'node_modules', 'vendor', 'bower_components' ) );
+    $exclusions = (array) apply_filters( 'blankspace_theme_scandir_exclusions', array( 'CVS', 'node_modules', 'vendor', 'bower_components' ) );
 
     foreach ( $results as $result ) {
         if ( '.' === $result[0] || in_array( $result, $exclusions, true ) ) {
