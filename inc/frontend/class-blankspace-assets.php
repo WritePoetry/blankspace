@@ -289,11 +289,13 @@ if ( ! class_exists( 'Assets' ) ) :
 				// Add new exclusions for blocks and plugins.
 				$new_exclusions = array(
 					'blocks',
-					'plugins'
+					'plugins',
+					'admin',
 				);
-				
+
+				// Merge existing exclusions with new ones.
 				return array_merge( $exclusions, $new_exclusions );
-			} ); 
+			} );
 
 	
 			// Get all files in the directory.
