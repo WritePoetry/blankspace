@@ -117,8 +117,8 @@ if ( ! class_exists( 'Assets' ) ) :
 		/**
 		 * Enqueue JavaScript assets.
 		 *
-		 * @param array  $asset_files The asset files to enqueue.
-		 * @param string $handle      The handle for the enqueued script.
+		 * @param array  $scripts		The asset files to enqueue.
+		 * @param string $theme_name	The handle for the enqueued script.
 		 * @param bool   $is_child_theme Whether this is a child theme.
 		 */
 		public function enqueue_scripts(array $scripts, string $theme_name, bool $is_child_theme ): void {
@@ -145,8 +145,8 @@ if ( ! class_exists( 'Assets' ) ) :
 		/**
 		 * Enqueue CSS assets.
 		 *
-		 * @param array  $asset_files The asset files to enqueue.
-		 * @param string $handle      The handle for the enqueued stylesheet.
+		 * @param array  $styles The asset files to enqueue.
+		 * @param string $theme_name      The handle for the enqueued stylesheet.
 		 */
 		public function enqueue_styles(array $styles, string $theme_name, bool $is_child_theme ): void {
 			$this->enqueue_assets(
@@ -254,13 +254,14 @@ if ( ! class_exists( 'Assets' ) ) :
 			$js_metadata = $this->get_assets_metadata( $js_path, 'js', $theme_version );
 			$css_metadata = $this->get_assets_metadata( $css_path, 'css', $theme_version );
 
-			// Early return if both are empty.
-			if ( empty( array_filter( [$css_metadata, $js_metadata] ) ) ) {
-				return;
+			// Early return if no metadata found.
+			if ( ! empty( $js_metadata ) ) {
+				$this->enqueue_scripts( $js_metadata, $theme_name, $is_child_theme );
 			}
 
-			$this->enqueue_styles( $css_metadata, $theme_name, $is_child_theme );
-			$this->enqueue_scripts( $js_metadata, $theme_name, $is_child_theme );
+			if ( ! empty( $css_metadata ) ) {
+				$this->enqueue_styles( $css_metadata, $theme_name, $is_child_theme );
+			}
 		}
 		
 		/**

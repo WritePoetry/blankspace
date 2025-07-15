@@ -30,7 +30,7 @@ final class Init {
 			Enqueue_Additional_Assets::class,
 			Block_Assets::class,
 			Block_Bindings_API::class,
-			Block_Styles::class,
+			Block_Styles::class
 		);
 
 		if ( is_admin() ) {
