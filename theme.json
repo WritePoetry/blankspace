@@ -648,10 +648,8 @@
 		"spacing": {
 			"blockGap": "var(--wp--preset--spacing--50)",
 			"padding": {
-				"top": "var(--wp--preset--spacing--50)",
-				"right": "var(--wp--preset--spacing--50)",
-				"bottom": "var(--wp--preset--spacing--50)",
-				"left": "var(--wp--preset--spacing--50)"
+				"left": "var(--wp--preset--spacing--50)",
+				"right": "var(--wp--preset--spacing--50)"
 			}
 		},
 		"typography": {
