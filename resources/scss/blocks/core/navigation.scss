@@ -1,1 +1,6 @@
- 
+.wp-block-navigation .wp-block-navigation-item.current-menu-item {    
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 7px;
+    text-decoration-color: var(--wp--preset--color--primary);
+}
