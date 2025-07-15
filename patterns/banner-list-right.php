@@ -26,8 +26,8 @@
 					<p class="has-base-color has-text-color has-small-font-size" style="text-transform:uppercase">Only 4 slots available</p>
 					<!-- /wp:paragraph -->
 
-					<!-- wp:heading {"level":2,"anchor":"lorem-ipsum","style":{"typography":{"fontStyle":"normal","fontWeight":"300"},"spacing":{"margin":{"top":"0"}}}} -->
-					<h2 class="wp-block-heading" id="lorem-ipsum" style="margin-top:0;font-style:normal;font-weight:300">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
+					<!-- wp:heading {"level":2,"anchor":"lorem-ipsum","style":{"spacing":{"margin":{"top":"0"}}}} -->
+					<h2 class="wp-block-heading" id="lorem-ipsum" style="margin-top:0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
 					<!-- /wp:heading -->
 
 

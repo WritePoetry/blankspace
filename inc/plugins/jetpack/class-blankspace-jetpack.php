@@ -48,6 +48,16 @@ if ( ! class_exists( '\WritePoetry\BlankSpace\Jetpack' ) ) :
 				10,
 				2
 			);
+
+			// Force the Testimonials and Portfolios CPT settings to remain visible.
+			// https://jetpack.com/support/custom-content-types/#block-themes-and-custom-content-types
+			add_filter( 'classic_theme_helper_should_display_testimonials', function( $should_display ) {
+				return true;
+			} );
+
+			add_filter( 'classic_theme_helper_should_display_portfolios', function( $should_display ) {
+				return true;
+			} );
 		}
 
 

@@ -10,10 +10,13 @@
  */
 ?>
 
-<!-- wp:pattern {"slug":"blankspace/hero-full-screen"} /-->
-<!-- wp:pattern {"slug":"blankspace/github-project-versions"} /-->
-<!-- wp:pattern {"slug":"blankspace/banner-list-right"} /-->
-<!-- wp:pattern {"slug":"blankspace/jetpack-testimonials"} /-->
-<!-- wp:pattern {"slug":"blankspace/features-3-col"} /-->
-<!-- wp:pattern {"slug":"blankspace/media-rounded-image-right"} /-->
+ 
 
+<!-- wp:pattern {"slug":"blankspace/hero-full-screen-video"} /-->
+<!-- wp:pattern {"slug":"blankspace/features-3-col"} /-->
+<!-- wp:pattern {"slug":"blankspace/banner-2-col-video"} /-->
+<!-- wp:pattern {"slug":"blankspace/banner-latest-posts"} /-->
+<!-- wp:pattern {"slug":"blankspace/banner-list-right"} /-->
+<!-- wp:pattern {"slug":"blankspace/github-project-versions"} /-->
+<!-- wp:pattern {"slug":"blankspace/jetpack-testimonials"} /-->
+<!-- wp:pattern {"slug":"blankspace/media-rounded-image-right"} /-->
