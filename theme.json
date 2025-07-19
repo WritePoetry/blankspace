@@ -175,12 +175,6 @@
 			},
 			"coreMediaText": {
 				"borderRadius": "50px"
-			},
-			"jetpackTestimonial": {
-				"borderRadius": "50px",
-				"tileBackground": "var(--wp--preset--color--primary)",
-				"width": "var(--wp--style--global--wide-size)",
-				"descriptionEllipsis": "6"
 			}
 		},
 		"layout": {
