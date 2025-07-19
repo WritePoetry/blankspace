@@ -21,12 +21,23 @@
 	<div style="height:40px" aria-hidden="true" class="wp-block-spacer"></div>
 	<!-- /wp:spacer -->
  
-	<!-- wp:html -->
-	<?php
-		// print the newsletter shortcode this way to prevent the <p> tags from being added
-		echo do_shortcode( '[testimonials columns=3 display_content=full]' );
-	?>
-	<!-- /wp:html -->
+	<!-- wp:query {"query":{"perPage":10,"pages":0,"offset":0,"postType":"jetpack-testimonial","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"","inherit":false,"parents":[],"format":[]},"align":"wide"} -->
+	<div class="wp-block-query alignwide"><!-- wp:post-template {"style":{"spacing":{"blockGap":"var:preset|spacing|70"}},"layout":{"type":"grid","columnCount":3}} -->
+
+	<!-- wp:post-title {"level":3} /-->
+	<!-- wp:post-featured-image {"aspectRatio":"3/4","height":"200px","sizeSlug":"full"} /-->
+	<!-- wp:post-excerpt /-->
+
+	<!-- /wp:post-template -->
+
+	<!-- wp:query-no-results -->
+	<!-- wp:paragraph {"placeholder":"Your Testimonial Archive currently has no entries. You can start creating them on your dashboard."} -->
+	<p><em><?php esc_html_e( 'Your Testimonial Archive currently has no entries. You can start creating them on your dashboard.', 'jetpack-classic-theme-helper' ); ?></em></p>
+	<!-- /wp:paragraph -->
+	<!-- /wp:query-no-results -->
+
+	</div>
+	<!-- /wp:query -->
 </div>
 <!-- /wp:group -->
 
