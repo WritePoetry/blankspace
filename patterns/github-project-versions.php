@@ -31,7 +31,7 @@
 
 <!-- wp:group {"style":{"spacing":{"blockGap":"0"}},"layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"center"}} -->
 <div class="wp-block-group"><!-- wp:paragraph -->
-<p>_BlankSpace Theme latest version:&nbsp;</p>
+<p>BlankSpace Theme latest version:&nbsp;</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:write-poetry/api-fetcher {"url":"https://api.github.com/repos/WritePoetry/blankspace-theme/releases/latest","text":"tag_name","link":"html_url"} -->
