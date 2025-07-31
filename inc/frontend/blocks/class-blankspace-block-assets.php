@@ -36,14 +36,11 @@ if ( ! class_exists( 'Block_Assets' ) ) :
 		 */
 		public function __construct() {
 			parent::__construct();
-
-		 
 			
 			$this->theme_name = strtolower( Theme_Config::name() );
 			$this->theme_version = Theme_Config::version();
 			
 			add_action( 'after_setup_theme', array( $this, 'load_blocks_assets' ) );
-			// add_action( 'render_block', array( $this, 'load_blocks_scripts' ), 10, 2 );
 		}
 
 		
@@ -75,16 +72,16 @@ if ( ! class_exists( 'Block_Assets' ) ) :
 		 * @return string The block name in 'namespace/block-name' format or empty string if invalid.
 		 */
 		private function get_block_name( $block_path ) {
-			// Validate input
+			// Validate input.
 			if ( ! is_string( $block_path ) || empty( $block_path ) ) {
 				return '';
 			}
 
-			// Extract directory name and filename without extension
+			// Extract directory name and filename without extension.
 			$block_dir = basename( dirname( $block_path ) );
 			$block_file = pathinfo( $block_path, PATHINFO_FILENAME );
 
-			// Combine to standard block name format (namespace/block-name)
+			// Combine to standard block name format (namespace/block-name).
 			return $block_dir . '/' . $block_file;
 		}
 
@@ -95,13 +92,13 @@ if ( ! class_exists( 'Block_Assets' ) ) :
 		 * @return string The formatted block slug with theme prefix.
 		 */
 		private function get_block_slug( $block_path ) {
-			// First get the standard block name
+			// First get the standard block name.
 			$block_name = $this->get_block_name( $block_path );
 			
-			// Convert to slug format (replace slashes with hyphens)
+			// Convert to slug format (replace slashes with hyphens).
 			$block_slug = str_replace( '/', '-', $block_name );
 			
-			// Add theme prefix and return
+			// Add theme prefix and return.
 			return $this->theme_name . '-block-' . $block_slug;
 		}
 				
@@ -109,41 +106,41 @@ if ( ! class_exists( 'Block_Assets' ) ) :
 		 * Load additional block scripts.
 		 */
 		public function load_additional_block_scripts( $blocks_files, $theme_version ) {
-			// Hook to track rendered blocks.
-			add_action('render_block', function ( $block_content, $block ) use ( &$blocks_files, &$theme_version ) {
+			// Initialize an array to track rendered blocks.
+			$rendered_blocks = [];
+			add_action( 'render_block', function( $block_content, $block ) use ( &$rendered_blocks ) {
+		 
 				if ( isset( $block['blockName'] ) ) {
- 
-					// TODO: Check this logic, it does not seem to be correct.
-					foreach ( $blocks_files as $block_path ) {
-
-						$block_name = $this->get_block_name( $block_path );;
- 
-						if ( $block['blockName'] == $block_name ) {
- 
-							$handle = $this->get_block_slug( $block_path );
-
-
-							$path = trailingslashit( $this->blocks_scripts_path ) . $block_name . '.js';
- 
-							$src = get_theme_file_uri( $path );
-							// $is_child_theme ? get_theme_file_uri( $this->blocks_scripts_path . '/' . $block_name . '.js' ) : get_parent_theme_file_uri( $file );
-
-							$params = array(
-								$handle,
-								$src,
-								['wp-dom-ready'],
-								null,
-							);
-														
-							// Enqueue asset.
-							wp_enqueue_script( ...$params ); 
-						}
-					}
-
+					$rendered_blocks[ $block['blockName'] ] = true;
 				}
-
 				return $block_content;
-			}, 10, 2);
+			}, 10, 2 );
+
+
+			// Hook to track rendered blocks.
+			add_action( 'wp_footer', function() use ( $blocks_files, $theme_version, &$rendered_blocks ) {
+				foreach ( $blocks_files as $block_path ) {
+
+					$block_name = $this->get_block_name( $block_path );
+		 
+					if ( isset( $rendered_blocks[$block_name] ) ) {
+						
+						$handle = $this->get_block_slug( $block_path );
+						$path = trailingslashit( $this->blocks_scripts_path ) . $block_name . '.js';
+						$src = get_theme_file_uri( $path );
+						// $is_child_theme ? get_theme_file_uri( $this->blocks_scripts_path . '/' . $block_name . '.js' ) : get_parent_theme_file_uri( $file );
+
+						// Enqueue asset.
+						wp_enqueue_script(
+							$handle,
+							$src,
+							['wp-dom-ready'],
+							$theme_version
+						);
+					}
+				}
+			} );
+			 
 	   }
 
 	   /**
