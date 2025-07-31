@@ -1,7 +1,6 @@
 <?php
 namespace WritePoetry\BlankSpace\Tests;
-require_once '/var/www/html/wp-content/themes/blankspace/inc/helpers/functions.php';
-
+ 
 
 use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use function WritePoetry\BlankSpace\Helpers\scandir;
@@ -87,7 +86,7 @@ class blankspaceFileFunctionsTest extends TestCase
 
     public function testScandirReturnsAllFilesWithoutExtensionsFilter()
     {
-        $result = scandir( $this->testDir );
+        $result = scandir( $this->testDir, null, 1 );
         
         $expected = [
             'file1.php' => $this->testDir . '/file1.php',
@@ -104,7 +103,7 @@ class blankspaceFileFunctionsTest extends TestCase
 
     public function testScandirFiltersBySingleExtension()
     {
-        $result = scandir( $this->testDir, 'php' );
+        $result = scandir( $this->testDir, 'php', 1 );
         
         $expected = [
             'file1.php' => $this->testDir . '/file1.php',
@@ -116,7 +115,7 @@ class blankspaceFileFunctionsTest extends TestCase
 
     public function testScandirFiltersByMultipleExtensions()
     {
-        $result = scandir( $this->testDir, ['php', 'js'] );
+        $result = scandir( $this->testDir, ['php', 'js'], 1 );
         
         $expected = [
             'file1.php' => $this->testDir . '/file1.php',

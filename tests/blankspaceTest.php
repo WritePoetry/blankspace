@@ -3,8 +3,7 @@
 namespace WritePoetry\BlankSpace\Tests;
 
 use PHPUnit\Framework\TestCase;
-use Yoast\PHPUnitPolyfills\Polyfills\AssertIsType;
-
+ 
 
 /**
  * Get a plugin option from the WordPress database.
@@ -21,8 +20,7 @@ function demo_get_option( $name ) {
  * Sample test case.
  */
 class BlankSpaceTest extends TestCase {
-
-	use AssertIsType;
+ 
 	public function test_theme_activated() {
         $this->assertTrue( wp_get_theme()->get( 'TextDomain' ) === 'blankspace' );
     }
