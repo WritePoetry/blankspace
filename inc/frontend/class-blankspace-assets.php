@@ -205,34 +205,6 @@ if ( ! class_exists( 'Assets' ) ) :
 			}
 		}
 	
-		
-		/**
-		 * Get CSS files from a folder.
-		 *
-		 * @param string $file_path The path to the folder.
-		 *
-		 * @return mixed The list of files.
-		 */
-		public function get_css_files_from_folder( $file_path ) {
-			$search_pattern = '*/*.css';
-
-			return $this->get_files_from_folder( $file_path, $search_pattern );
-		}
-		
-		/**
-		 * Get JS files from a folder.
-		 *
-		 * @param string $file_path The path to the folder.
-		 *
-		 * @return mixed The list of files.
-		 */
-		public function get_js_files_from_folder( $file_path ) {
-			$search_pattern = '*/*.js';
-
-			return $this->get_files_from_folder( $file_path, $search_pattern );
-		}
-		
-		
 
 		/**
 		 * Load and enqueue all theme assets (JS and CSS).
@@ -354,7 +326,7 @@ if ( ! class_exists( 'Assets' ) ) :
 					continue;
 				}
 
-				// Case 2: Process target extension files not already processed
+				// Case 2: Process target extension files not already processed.
 				if ( $file_ext === $extension && ! in_array( $file, $processed_files, true ) ) {
 				
 					$assets_metadata[$key] = array(
@@ -366,52 +338,7 @@ if ( ! class_exists( 'Assets' ) ) :
 
 			return $assets_metadata;
 		}
-			
-		/**
-		 * Get files from a folder.
-		 *
-		 * @param string $file_path The path to the folder.
-		 * @param string $search_pattern The search pattern.
-		 *
-		 * @return array The list of files.
-		 */
-		public function get_files_from_folder($file_path, $search_pattern = '*.txt') {
-			// Normalizza i separatori di percorso
-			$normalized_path = wp_normalize_path(rtrim($file_path, '/\\'));
-			
-			// Verifica che la directory esista
-			if ( ! is_dir( $normalized_path ) ) {
-				return [];
-			}
-			
-			try {
-				$directory = new \RecursiveDirectoryIterator(
-					$normalized_path,
-					\FilesystemIterator::SKIP_DOTS | \FilesystemIterator::UNIX_PATHS
-				);
-				
-				$iterator = new \RecursiveIteratorIterator( $directory );
-				$files = [];
-				
-				// Converti il pattern glob in regex
-				$regex_pattern = preg_quote( $search_pattern, '/' );
-				$regex_pattern = str_replace( '\*', '.*', $regex_pattern );
-				$regex_pattern = '/^' . str_replace( '\.', '\.', $regex_pattern) . '$/';
-				
-				foreach ( $iterator as $file ) {
-					if ( $file->isFile() && preg_match($regex_pattern, $file->getFilename() ) ) {
-						$files[] = $file->getPathname();
-					}
-				}
-				
-				return $files;
-				
-			} catch ( UnexpectedValueException $e ) {
-				// Logga l'errore se necessario
-				error_log( 'Directory access error: ' . $e->getMessage() );
-				return [];
-			}
-		}
+	
 		/**
 		 * Load plugin related assets.
 		 *
