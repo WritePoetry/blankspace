@@ -17,8 +17,8 @@
 		"theme.json"
 	],
 	"dependencies": {
-		"@wordpress/api-fetch": "^7.14.0",
-		"@wordpress/dom-ready": "^4.14.0"
+		"@wordpress/api-fetch": "^7.27.0",
+		"@wordpress/dom-ready": "^4.27.0"
 	},
 	"devDependencies": {
 		"@wordpress/browserslist-config": "^6.14.0",

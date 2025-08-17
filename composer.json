@@ -45,5 +45,8 @@
             "dealerdirect/phpcodesniffer-composer-installer": true
         },
         "sort-packages": true
+    },
+    "require": {
+        "afragen/git-updater-lite": "^2.3"
     }
 }
