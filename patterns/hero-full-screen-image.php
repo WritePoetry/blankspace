@@ -26,7 +26,7 @@
 
     <!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"}} -->
     <div class="wp-block-buttons"><!-- wp:button -->
-    <div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="https://github.com/WritePoetry/blankspace-theme/releases/latest" target="_blank" rel=" noreferrer noopener nofollow"><?php esc_html_e( 'Download BlankSpace →', 'blankspace' ); ?></a></div>
+    <div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="https://github.com/WritePoetry/blankspace/releases/latest" target="_blank" rel=" noreferrer noopener nofollow"><?php esc_html_e( 'Download BlankSpace →', 'blankspace' ); ?></a></div>
     <!-- /wp:button -->
 
     <!-- wp:button {"className":"is-style-outline"} -->

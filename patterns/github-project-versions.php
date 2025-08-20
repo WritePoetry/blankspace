@@ -34,8 +34,8 @@
 <p>BlankSpace Theme latest version:&nbsp;</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:write-poetry/api-fetcher {"url":"https://api.github.com/repos/WritePoetry/blankspace-theme/releases/latest","text":"tag_name","link":"html_url"} -->
-<span data-url="https://api.github.com/repos/WritePoetry/blankspace-theme/releases/latest" data-link="html_url" data-text="tag_name" class="wp-block-write-poetry-api-fetcher">Fetching data…</span>
+<!-- wp:write-poetry/api-fetcher {"url":"https://api.github.com/repos/WritePoetry/blankspace/releases/latest","text":"tag_name","link":"html_url"} -->
+<span data-url="https://api.github.com/repos/WritePoetry/blankspace/releases/latest" data-link="html_url" data-text="tag_name" class="wp-block-write-poetry-api-fetcher">Fetching data…</span>
 <!-- /wp:write-poetry/api-fetcher --></div>
 <!-- /wp:group --></div>
 <!-- /wp:group -->
