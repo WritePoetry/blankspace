@@ -10,4 +10,4 @@
 ?>
 
 <!-- wp:pattern {"slug":"blankspace/hidden-blog-heading"} /-->
-<!-- wp:pattern {"slug":"blankspace/template-query-loop-blog"} /-->
+<!-- wp:pattern {"slug":"blankspace/template-query-loop"} /-->
