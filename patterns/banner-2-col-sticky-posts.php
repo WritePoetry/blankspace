@@ -8,11 +8,11 @@
  * Inserter: true
  */
 ?>
-
-<!-- wp:query {"query":{"pages":1,"offset":0,"postType":"post","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"only","inherit":false},"align":"full","layout":{"type":"default"}} -->
-<div class="wp-block-query alignfull"><!-- wp:post-template {"align":"full","style":{"spacing":{"blockGap":"0"}},"backgroundColor":"base","layout":{"type":"constrained"}} -->
-<!-- wp:columns {"verticalAlignment":"center","align":"full"} -->
-<div class="wp-block-columns alignfull are-vertically-aligned-center"><!-- wp:column {"verticalAlignment":"center"} -->
+<!-- wp:group {"align":"full","style":{"spacing":{"blockGap":"0"}},"backgroundColor":"base","layout":{"type":"default"}} -->
+<div class="wp-block-group alignfull has-base-background-color has-background"><!-- wp:query {"query":{"pages":1,"offset":0,"postType":"post","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"only","inherit":false,"perPage":10},"align":"full","layout":{"type":"default"}} -->
+<div class="wp-block-query alignfull"><!-- wp:post-template {"align":"full","style":{"spacing":{"blockGap":"0"}},"layout":{"type":"default"}} -->
+<!-- wp:columns {"verticalAlignment":"center","align":"wide"} -->
+<div class="wp-block-columns alignwide are-vertically-aligned-center"><!-- wp:column {"verticalAlignment":"center"} -->
 <div class="wp-block-column is-vertically-aligned-center"><!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|60"}}},"layout":{"type":"constrained"}} -->
 <div class="wp-block-group" style="padding-top:var(--wp--preset--spacing--60)"><!-- wp:paragraph {"style":{"typography":{"textTransform":"uppercase"},"elements":{"link":{"color":{"text":"var:preset|color|secondary"}}}},"textColor":"secondary","fontSize":"small"} -->
 <p class="has-secondary-color has-text-color has-link-color has-small-font-size" style="text-transform:uppercase">Newest post</p>
@@ -33,8 +33,5 @@
 <!-- /wp:column --></div>
 <!-- /wp:columns -->
 <!-- /wp:post-template --></div>
-<!-- /wp:query -->
-
-<!-- wp:spacer {"height":"var(--wp--preset--spacing--60)"} -->
-<div style="height:var(--wp--preset--spacing--60)" aria-hidden="true" class="wp-block-spacer"></div>
-<!-- /wp:spacer -->
+<!-- /wp:query --></div>
+<!-- /wp:group -->
