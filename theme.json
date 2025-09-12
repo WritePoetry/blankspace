@@ -175,6 +175,9 @@
 			},
 			"coreMediaText": {
 				"borderRadius": "50px"
+			},
+			"button": {
+				"borderRadius": "3px"
 			}
 		},
 		"layout": {
@@ -524,7 +527,7 @@
 					"outline": {
 						"border": {
 							"color": "var(--wp--preset--color--primary)",
-							"radius": "4px",
+							"radius": "var:custom|button|border-radius",
 							"style": "solid",
 							"width": "2px"
 						},
@@ -586,7 +589,7 @@
 				},
 				"border": {
 					"width": "0",
-					"radius": "3px"
+					"radius": "var:custom|button|border-radius"
 				}
 			},
 			"h1": {
