@@ -4,6 +4,8 @@
 
 // WordPress webpack config.
 const defaultConfig = require( '@wordpress/scripts/config/webpack.config' );
+const { getProjectSourcePath } = require('@wordpress/scripts/utils/config');
+
 
 // Plugins.
 const RemoveEmptyScriptsPlugin = require( 'webpack-remove-empty-scripts' );
@@ -11,51 +13,10 @@ const CopyPlugin = require( 'copy-webpack-plugin' );
 
 // Utilities.
 const path = require( 'path' );
-const { globSync } = require( 'glob' );
+const { getAsset, getAllAssets } = require( '@writepoetry/webpack-utils' );
 
-// Import the helper to find and generate the entry points in the src directory
-const {
-	fromProjectRoot,
-	getWebpackEntryPoints,
-	getWordPressSrcDirectory,
-} = require( '@wordpress/scripts/utils' );
-
-/**
- * Processes individual block stylesheets for a specific block namespace. These
- * are not imported into the primary stylesheets and are enqueued separately.
- *
- * @since  1.0.0
- * @param {string} srcDirectory		The folder to search (e.g., 'blocks', 'plugins').
- * @param {string} extension		The file extension to process (e.g., 'scss', 'js').
- * @param {string} [distDirectory]	The output folder (e.g., 'css', 'js'). Defaults to the source folder.
- * @return {Object.<string, string>}
- */
-const blockAssets = ( srcDirectory, extension, distDirectory ) => {
-	return globSync( `./resources/${extension}/${ srcDirectory }/**/*.${extension}` ).reduce(
-		( files, filepath ) => {
-			const relativePath = path.relative(
-				`./resources/${extension}/${ srcDirectory }`,
-				filepath
-			);
-			const namespace = path.dirname( relativePath );
-			const name = path.parse( filepath ).name;
-			
-			// If outputFolder is not specified, use the source folder (`extension`).
-			const finalOutputFolder = distDirectory || extension;
-
-			files[ `${finalOutputFolder}/${ srcDirectory }/${ namespace }/${ name }` ] = path.resolve(
-				process.cwd(),
-				`resources/${extension}/${ srcDirectory }/${ namespace }`,
-				`${ name }.${extension}`
-			);
-
-			return files;
-		},
-		{}
-	);
-};
+const projectSourcePath = getProjectSourcePath();
  
-
 // Add any new entry points by extending the webpack config.
 module.exports = {
 	...defaultConfig,
@@ -63,37 +24,14 @@ module.exports = {
         ...defaultConfig.resolve,
         alias: {
             ...defaultConfig.resolve.alias,
-            '@utils': path.resolve(__dirname, 'resources/scss/utils'), // Alias per utils
+            '@utils': path.resolve( projectSourcePath,  path.join( 'scss', 'utils' ) ), // Alias per utils
         },
     },
 	...{
 		entry: {
-			...getWebpackEntryPoints(),
-			...blockAssets( 'blocks', 'scss', 'css'  ),
-			...blockAssets( 'plugins', 'scss', 'css' ),
-			...blockAssets( 'blocks', 'js' ),
-			...blockAssets( 'modules', 'js' ),
-			...blockAssets( 'plugins', 'js' ),
-			'js/editor': path.resolve(
-				process.cwd(),
-				'resources/js',
-				'editor.js'
-			),
-			'js/screen': path.resolve(
-				process.cwd(),
-				'resources/js',
-				'screen.js'
-			),
-			'css/admin/editor': path.resolve(
-				process.cwd(),
-				'resources/scss',
-				'editor.scss'
-			),
-			'css/screen': path.resolve(
-				process.cwd(),
-				'resources/scss',
-				'screen.scss'
-			),
+			...getAllAssets( { 
+				remapDirs: { 'scss': 'css' }
+			} ),
 		},
 		plugins: [
 			// Include WP's plugin config.
